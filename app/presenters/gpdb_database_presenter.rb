@@ -1,0 +1,1 @@
+class GpdbDatabasePresenter < DatabasePresenter; end
