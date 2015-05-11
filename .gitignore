@@ -7,6 +7,9 @@
 # Ignore bundler config
 app/assets/javascripts/environment.js
 
+# Ignore .ruby-gemset file ...
+.ruby-gemset
+
 # Ignore API doc directory
 /public/api
 /doc/api_documentation.tar.gz
