@@ -45,15 +45,12 @@ group :test do
   gem 'fakefs',              :require => false
   gem 'chunky_png'
   gem 'database_cleaner',    :require => false
-  gem 'poltergeist'
 end
 
 group :development, :test do
   gem 'foreman', '>= 0.62',      :require => false
   gem 'rake',                    :require => false
   gem 'rspec', '2.14.1',                :require => 'rspec/core/rake_task'
-  gem 'jasmine', :github => 'pivotal/jasmine-gem'
-  gem 'jasmine-core', :github => 'pivotal/jasmine'
   gem 'sunspot_matchers'
   gem 'fixture_builder'
   gem 'ci_reporter', '>= 1.8.2'
@@ -61,7 +58,6 @@ group :development, :test do
   gem 'fakeweb'
   gem 'quiet_assets'
   gem 'sunspot_solr', :github => 'taktsoft/sunspot', :ref => '78717a33894271d012682dbe8902458badb0ca63' # https://github.com/sunspot/sunspot/pull/267
-  gem 'backbone_fixtures_rails', :github => 'charleshansen/backbone_fixtures_rails'
   gem 'rspec_api_documentation', :github => 'Chorus/rspec_api_documentation', :require => false
   gem 'pry' # Drop in to an extended Rails console by creating a 'binding.pry' breakpoint
   gem 'pry-nav' # Adds debugger functionality to Pry
