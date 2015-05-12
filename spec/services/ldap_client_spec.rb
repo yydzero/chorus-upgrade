@@ -562,8 +562,7 @@ describe LdapClient do
 
   describe "with a local ApacheDS ldap server" do
 
-    # KMT TODO
-    pending("fix these up. Commenting out at start of upgrades, as these are failing, and lots to do")
+    pending("KT TODO: commenting out at start of upgrades, as these are failing, and lots to do.")
 
     # before(:all) do
     #   ldif_path = Rails.root.join('spec', 'fixtures', 'ldap_fixture.ldif').to_s
