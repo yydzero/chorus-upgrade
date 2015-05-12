@@ -13,7 +13,7 @@ class DataSource < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User'
   has_many :accounts, :class_name => 'DataSourceAccount', :inverse_of => :data_source, :foreign_key => 'data_source_id', :dependent => :destroy
-  has_one :owner_account, :class_name => 'DataSourceAccount', :foreign_key => 'data_source_id', :inverse_of => :data_source, :conditions => proc { {:owner_id => owner_id} }
+  has_one :owner_account, -> { where :owner_id => owner_id }, :class_name => 'DataSourceAccount', :foreign_key => 'data_source_id', :inverse_of => :data_source
 
   has_many :activities, :as => :entity
   has_many :events, :through => :activities

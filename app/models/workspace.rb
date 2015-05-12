@@ -25,11 +25,11 @@ class Workspace < ActiveRecord::Base
   has_many :workfiles, :dependent => :destroy
   has_many :activities, :as => :entity
   has_many :events, :through => :activities
-  has_many :owned_notes, :class_name => 'Events::Base', :conditions => "events.action ILIKE 'Events::Note%'"
+  has_many :owned_notes, -> { where "events.action ILIKE 'Events::Note%'" }, :class_name => 'Events::Base'
   has_many :owned_events, :class_name => 'Events::Base'
   has_many :comments, :through => :owned_events
   has_many :chorus_views, :dependent => :destroy
-  belongs_to :sandbox, :class_name => 'Schema', :conditions => { :type => %w(GpdbSchema PgSchema) }
+  belongs_to :sandbox, -> { where :type => %w(GpdbSchema PgSchema) }, :class_name => 'Schema'
 
   has_many :csv_files
 
@@ -54,7 +54,7 @@ class Workspace < ActiveRecord::Base
   before_save :update_has_added_sandbox
   after_create :add_owner_as_member
 
-  scope :active, where(:archived_at => nil)
+  scope :active, -> { where(:archived_at => nil) }
 
   after_update :solr_reindex_later, :if => :public_changed?
   # PT 12/19/14 This will auto-refresh the JSON data object for workspace

@@ -4,7 +4,7 @@ class OracleDataSource < ConcreteDataSource
   has_many :schemas, :as => :parent, :class_name => 'OracleSchema'
   has_many :datasets, :through => :schemas
   has_many :imports_as_source, :through => :datasets, :source => :imports
-  has_many :workfile_execution_locations, :foreign_key => :execution_location_id, :conditions => { :execution_location_type => 'DataSource' }, :dependent => :destroy
+  has_many :workfile_execution_locations, -> { where :execution_location_type => 'DataSource' }, :foreign_key => :execution_location_id, :dependent => :destroy
 
   def self.create_for_user(user, params)
     user.oracle_data_sources.create!(params) do |data_source|

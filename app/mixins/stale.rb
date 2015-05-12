@@ -2,7 +2,7 @@ module Stale
   extend ActiveSupport::Concern
 
   included do
-    scope :not_stale, where(:stale_at => nil)
+    scope :not_stale, -> { where(:stale_at => nil) }
   end
 
   def stale?

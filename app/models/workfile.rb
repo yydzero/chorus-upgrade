@@ -22,7 +22,8 @@ class Workfile < ActiveRecord::Base
   has_many :activities, :as => :entity
   has_many :events, :through => :activities
   has_many :comments, :through => :events
-  has_many :most_recent_comments, :through => :events, :source => :comments, :class_name => "Comment", :order => "id DESC", :limit => 1
+  has_many :most_recent_comments, -> { order("id DESC").limit(1) }, :through => :events, :source => :comments,
+           :class_name => "Comment"
   has_many :versions, :class_name => 'WorkfileVersion', :dependent => :destroy
 
   belongs_to :latest_workfile_version, :class_name => 'WorkfileVersion'
