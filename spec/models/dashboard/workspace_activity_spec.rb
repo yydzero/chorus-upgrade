@@ -8,7 +8,7 @@ describe Dashboard::WorkspaceActivity do
 
   describe '#result by date groupings' do
 
-    pending("KMT commenting out at start of upgrades, as these are failing, and lots to do ...")
+    pending("KT TODO: commenting out at start of upgrades, as these are failing, and lots to do.")
 
     # [ { :additional => {} },
     #   { :additional => { :date_group => 'day' } },
