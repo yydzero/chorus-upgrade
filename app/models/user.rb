@@ -93,13 +93,13 @@ class User < ActiveRecord::Base
     admin.size
   end
 
-  scope :admin, where(:admin => true)
+  scope :admin, -> { where(:admin => true) }
 
   def admin=(value)
     write_attribute(:admin, value) unless admin? && self.class.admin_count == 1 # don't unset last admin
   end
 
-  scope :developer, where(:developer => true)
+  scope :developer, -> { where(:developer => true) }
 
   def self.developer_count
     developer.size

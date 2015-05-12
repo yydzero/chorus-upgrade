@@ -2,7 +2,7 @@ module SoftDelete
   extend ActiveSupport::Concern
 
   included do
-    default_scope :conditions => {:deleted_at => nil}
+    default_scope { where deleted_at: nil }
   end
 
   def destroy

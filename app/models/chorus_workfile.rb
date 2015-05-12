@@ -5,7 +5,7 @@ class ChorusWorkfile < Workfile
 
   alias_attribute :execution_schema, :execution_location
 
-  has_many :versions, :foreign_key => :workfile_id, :class_name => 'WorkfileVersion', :order => 'version_num DESC', :inverse_of => :workfile, :dependent => :destroy
+  has_many :versions, -> { order 'version_num DESC' }, :foreign_key => :workfile_id, :class_name => 'WorkfileVersion', :inverse_of => :workfile, :dependent => :destroy
   has_many :drafts, :class_name => 'WorkfileDraft', :foreign_key => :workfile_id
 
   before_validation :ensure_version_exists, :on => :create, :prepend => true
