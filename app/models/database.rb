@@ -5,7 +5,7 @@ class Database < ActiveRecord::Base
   attr_accessible :name
 
   validates :name,
-            :format => /^[^\/?&]*$/,
+            :format => /\A[^\/?&]*\z/,
             :presence => true,
             :uniqueness => { :scope => :data_source_id }
 
