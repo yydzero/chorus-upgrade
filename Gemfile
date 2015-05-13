@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.13'
 gem 'activeresource'
 
+# KT TODO: "Rails 4.0 has removed attr_accessible and attr_protected feature in favor of Strong Parameters. You can use the
+# Protected Attributes gem for a smooth upgrade path."
+# Due to config/initializers/additional_data.rb it's not trivial to delete all the attr_accessible pieces from the
+# models.  This gem should be removed via refactoring after the Rails 4 upgrades are merged into master.
+gem 'protected_attributes'
+
 gem 'will_paginate'
 gem 'net-ldap', '0.11',    :require => false
 gem 'paperclip', '3.0.4'
