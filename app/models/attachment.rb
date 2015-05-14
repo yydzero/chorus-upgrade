@@ -7,6 +7,7 @@ class Attachment < ActiveRecord::Base
                     :path => ":rails_root/system/:class/:id/:style/:basename.:extension",
                     :url => "/notes/:note_id/attachments/:id?style=:style",
                     :styles => {:original => "", :icon => "50x50>" }
+  do_not_validate_attachment_file_type :contents
 
   before_post_process :contents_are_image?
 
