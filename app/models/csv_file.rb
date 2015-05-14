@@ -11,6 +11,7 @@ class CsvFile < ActiveRecord::Base
   belongs_to :import, :touch => true
 
   has_attached_file :contents, :path => ":rails_root/system/:class/:id/:basename.:extension"
+  validates_attachment_content_type :contents, :content_type => "text/csv"
 
   validates :contents, :attachment_presence => true
   validates_attachment_size :contents,

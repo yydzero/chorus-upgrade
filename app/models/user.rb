@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   has_attached_file :image, :path => ":rails_root/system/:class/:id/:style/:basename.:extension",
                     :url => "/:class/:id/image?style=:style",
                     :default_url => '/images/general/default-user.png', :styles => {:icon => "50x50>"}
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates_presence_of :username, :first_name, :last_name, :email
   validates_uniqueness_of :username, :case_sensitive => false, :allow_blank => true, :scope => :deleted_at
