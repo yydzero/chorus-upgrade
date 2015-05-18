@@ -23,6 +23,8 @@ require 'external_service_detector'
 FACTORY_GIRL_SEQUENCE_OFFSET = 44444
 FactoryGirl.find_definitions
 
+SPEC_PASSWORD = 'password'
+
 require 'support/fixture_builder'
 silence_warnings { FACTORY_GIRL_SEQUENCE_OFFSET = 0 }
 
