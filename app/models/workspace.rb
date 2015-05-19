@@ -240,7 +240,7 @@ class Workspace < ActiveRecord::Base
 
   def self.workspaces_for(user)
     if user.admin?
-      scoped
+      all
     else
       accessible_to(user)
     end

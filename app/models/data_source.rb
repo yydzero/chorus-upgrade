@@ -43,7 +43,7 @@ class DataSource < ActiveRecord::Base
 
   def self.owned_by(user)
     if user.admin?
-      scoped
+      all
     else
       where(:owner_id => user.id)
     end
