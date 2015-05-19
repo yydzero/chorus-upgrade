@@ -11,7 +11,7 @@ module Clockwork
   configure do |config|
     logger = Logger.new(STDOUT)
     logger.formatter = Logger::Formatter.new
-    logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+    logger.formatter.datetime_format = "%Y-%m-%d %H:%M:%S"
     config[:logger] = logger
   end
 end
