@@ -30,7 +30,7 @@ describe OracleDataSource do
     end
 
     it "removes itself from the execution location field of any workfiles it owns" do
-      workfiles = data_source.workfile_execution_locations.all
+      workfiles = data_source.workfile_execution_locations
       workfiles.length.should > 0
 
       expect {
