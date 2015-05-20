@@ -17,6 +17,6 @@ describe WorkfileDraft do
       FactoryGirl.create(:workfile_draft, :workfile_id => 1, :owner_id => 1)
     }.to raise_error(ActiveRecord::RecordNotUnique)
 
-    WorkfileDraft.find_all_by_owner_id_and_workfile_id(1, 1).should == [draft]
+    WorkfileDraft.where(owner_id: 1, workfile_id: 1).should == [draft]
   end
 end
