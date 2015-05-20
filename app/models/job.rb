@@ -116,13 +116,13 @@ class Job < ActiveRecord::Base
   end
 
   def notify_on(condition, user)
-    subscription = job_subscriptions.find_or_create_by_user_id_and_condition(user.id, condition)
+    subscription = job_subscriptions.find_or_initialize_by(user_id: user.id, condition: condition)
     subscription.update_attributes!(:condition => condition, :user => user)
     reload
   end
 
   def dont_notify_on(condition, user)
-    subscription = job_subscriptions.find_by_user_id_and_condition(user.id, condition)
+    subscription = job_subscriptions.where(user_id: user.id, condition: condition).first
     subscription.delete
     reload
   end

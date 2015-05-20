@@ -146,7 +146,7 @@ describe Hdfs::DataSourceRegistrar do
 
           updated_data_source = Hdfs::DataSourceRegistrar.update!(hdfs_data_source.id, data_source_attributes, user)
 
-          event = Events::HdfsDataSourceChangedName.find_last_by_actor_id(user.id)
+          event = Events::HdfsDataSourceChangedName.where(actor_id: user.id).last
           event.hdfs_data_source.should == updated_data_source
           event.old_name.should == old_name
           event.new_name.should == "new_data_source_name"
@@ -156,7 +156,7 @@ describe Hdfs::DataSourceRegistrar do
       context "when the name is not being changed" do
         it "does not generate an event" do
           Hdfs::DataSourceRegistrar.update!(hdfs_data_source.id, data_source_attributes, user)
-          Events::HdfsDataSourceChangedName.find_last_by_actor_id(owner).should be_nil
+          Events::HdfsDataSourceChangedName.where(actor_id: owner.id).last.should be_nil
         end
       end
     end
