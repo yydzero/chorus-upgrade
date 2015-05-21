@@ -32,6 +32,12 @@ gem 'jbuilder'
 # Gem that allows you to call view renders from anywhere (model, lib, rake, etc.)
 gem 'render_anywhere'
 
+# KT: Group all Solr related together ..
+gem 'sunspot_rails', '2.1.0'
+group :development, :test do
+  gem 'sunspot_matchers', '2.1.0'
+  gem 'sunspot_solr', '2.1.0'
+end
 # Need to install 0.99.4 version of mustache gem. Latest version is not compatible with Jruby 1.7
 gem 'mustache', '0.99.4'
 
@@ -59,13 +65,11 @@ group :development, :test do
   gem 'foreman', '>= 0.62',      :require => false
   gem 'rake',                    :require => false
   gem 'rspec', '2.14.1',                :require => 'rspec/core/rake_task'
-  gem 'sunspot_matchers'
   gem 'fixture_builder'
   gem 'ci_reporter', '>= 1.8.2'
   gem 'faker'
   gem 'fakeweb'
   gem 'quiet_assets'
-  gem 'sunspot_solr', :github => 'taktsoft/sunspot', :ref => '78717a33894271d012682dbe8902458badb0ca63' # https://github.com/sunspot/sunspot/pull/267
 
   # Needed for api-controller testing
   gem 'backbone_fixtures_rails', :github => 'charleshansen/backbone_fixtures_rails'

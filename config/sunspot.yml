@@ -4,46 +4,54 @@ production:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8983 %>
     log_level: WARNING
+    path: '/solr'
   auto_commit_after_request: false
 development:
   solr:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8982 %>
     log_level: INFO
+    path: '/solr'
   auto_commit_after_request: false
 test:
   solr:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8981 %>
     log_level: WARNING
+    path: '/solr'
   auto_commit_after_request: true
 ci_jasmine:
   solr:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8981 %>
     log_level: WARNING
+    path: '/solr'
   auto_commit_after_request: true
 integration:
   solr:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8984 %>
     log_level: WARNING
+    path: '/solr'
   auto_commit_after_request: true
 packaging:
   solr:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8981 %>
     log_level: WARNING
+    path: '/solr'
   auto_commit_after_request: true
 ci_legacy:
   solr:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8981 %>
     log_level: WARNING
+    path: '/solr'
   auto_commit_after_request: true
 ci_next:
   solr:
     hostname: localhost
     port: <%= ENV['SOLR_PORT'] || 8981 %>
     log_level: WARNING
+    path: '/solr'
   auto_commit_after_request: true
