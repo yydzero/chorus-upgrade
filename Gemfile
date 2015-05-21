@@ -15,7 +15,6 @@ gem 'paperclip', '4.2.1'
 gem 'queue_classic', :github => 'Chorus/queue_classic'
 gem 'clockwork',     :require => false
 gem 'allowy'
-gem 'sunspot_rails', '~> 2.0.0'
 gem 'jetpack', :github => 'Chorus/jetpack', :branch => '6c9253195b+chorus', :require => false
 gem 'nokogiri'
 gem 'sequel', '~> 4.0', :require => 'sequel/no_core_ext'
@@ -32,6 +31,12 @@ gem 'jbuilder'
 # Gem that allows you to call view renders from anywhere (model, lib, rake, etc.)
 gem 'render_anywhere'
 
+# KT: Group all Solr related together ..
+gem 'sunspot_rails', '2.1.0'
+group :development, :test do
+  gem 'sunspot_matchers', '2.1.0'
+  gem 'sunspot_solr', '2.1.0'
+end
 
 platform :jruby do
   gem 'jruby-openssl', :require => false
@@ -57,13 +62,11 @@ group :development, :test do
   gem 'foreman', '>= 0.62',      :require => false
   gem 'rake',                    :require => false
   gem 'rspec', '2.14.1',                :require => 'rspec/core/rake_task'
-  gem 'sunspot_matchers'
   gem 'fixture_builder'
   gem 'ci_reporter', '>= 1.8.2'
   gem 'faker'
   gem 'fakeweb'
   gem 'quiet_assets'
-  gem 'sunspot_solr', :github => 'taktsoft/sunspot', :ref => '78717a33894271d012682dbe8902458badb0ca63' # https://github.com/sunspot/sunspot/pull/267
   gem 'rspec_api_documentation', :github => 'Chorus/rspec_api_documentation', :require => false
   gem 'pry' # Drop in to an extended Rails console by creating a 'binding.pry' breakpoint
   gem 'pry-nav' # Adds debugger functionality to Pry
