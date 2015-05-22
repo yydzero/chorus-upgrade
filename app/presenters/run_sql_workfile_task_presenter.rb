@@ -1,1 +1,0 @@
-class RunSqlWorkfileTaskPresenter < JobTaskPresenter; end

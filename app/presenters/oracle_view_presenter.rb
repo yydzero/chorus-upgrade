@@ -1,1 +1,0 @@
-class OracleViewPresenter < ViewPresenter; end

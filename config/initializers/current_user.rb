@@ -1,5 +1,3 @@
-require 'presenter'
-
 module CurrentUser
   extend ActiveSupport::Concern
 
@@ -15,9 +13,5 @@ module CurrentUser
 end
 
 class ActiveRecord::Base
-  include CurrentUser
-end
-
-class Presenter
   include CurrentUser
 end

@@ -1,2 +1,0 @@
-class GreenplumSqlResultPresenter < SqlResultPresenter
-end
