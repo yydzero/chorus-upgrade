@@ -233,7 +233,7 @@ GEM
     render_anywhere (0.0.10)
       rails (>= 3.0.7)
     rr (1.1.2)
-    rsolr (1.0.12)
+    rsolr (1.0.10)
       builder (>= 2.1.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
@@ -337,6 +337,7 @@ DEPENDENCIES
   rake
   render_anywhere
   rr
+  rsolr (= 1.0.10)
   rspec (= 2.14.1)
   rspec-rails
   rspec_api_documentation!
