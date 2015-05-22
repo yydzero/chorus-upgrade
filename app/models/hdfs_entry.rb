@@ -18,7 +18,7 @@ class HdfsEntry < ActiveRecord::Base
   validates_format_of :path, :with => %r{\A/.*}
   validates_length_of :path, :maximum => 4096
 
-  scope :files, where(:is_directory => false)
+  scope :files, -> { where(:is_directory => false) }
 
   attr_accessor :highlighted_attributes, :search_result_notes
   searchable_model :unless => lambda { |model| model.is_directory? || model.stale? } do

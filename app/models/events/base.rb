@@ -28,9 +28,8 @@ module Events
 
     has_many :activities, :foreign_key => :event_id, :dependent => :destroy
     has_many :notifications, :foreign_key => :event_id, :dependent => :destroy
-    has_one :notification_for_current_user, :class_name => 'Notification', :conditions => proc {
-      "recipient_id = #{current_user.id}"
-    }, :foreign_key => :event_id
+    has_one :notification_for_current_user, -> { where "recipient_id = #{current_user.id}" },
+            :class_name => 'Notification', :foreign_key => :event_id
 
     has_many :comments, :foreign_key => :event_id, :dependent => :destroy
 

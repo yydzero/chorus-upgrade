@@ -30,7 +30,12 @@ describe Workspace do
     it { should have_many(:activities) }
     it { should have_many(:events) }
     it { should belong_to(:sandbox) }
-    it { should have_many(:owned_notes).class_name('Events::Base').conditions("events.action ILIKE 'Events::Note%'") }
+
+    it {
+      pending "KT: upgraded shoulda-matcher syntax potentially depends on RSpec 3 ..."
+      should have_many(:owned_notes).class_name('Events::Base').conditions("events.action ILIKE 'Events::Note%'")
+    }
+
     it { should have_many(:owned_events).class_name('Events::Base') }
     it { should have_many(:comments).through(:owned_events) }
   end
