@@ -1,1 +1,0 @@
-class OracleDataSourcePresenter < DataSourcePresenter; end
