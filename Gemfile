@@ -41,6 +41,7 @@ group :development, :test do
   gem 'sunspot_solr', '2.1.0'
   gem 'rsolr', '1.0.10' # block deprecation notices, delete this when upgrading Sunspot to 2.2.0
 end
+
 # Need to install 0.99.4 version of mustache gem. Latest version is not compatible with Jruby 1.7
 gem 'mustache', '0.99.4'
 
