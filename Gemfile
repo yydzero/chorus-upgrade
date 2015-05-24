@@ -31,6 +31,8 @@ gem 'honor_codes', '~> 0.1.0'
 gem 'jbuilder'
 # Gem that allows you to call view renders from anywhere (model, lib, rake, etc.)
 gem 'render_anywhere'
+# Need to install lower version of Mustache compatible with Jruby 1.7
+gem 'mustache', '~> 0.99.4'
 
 
 platform :jruby do
