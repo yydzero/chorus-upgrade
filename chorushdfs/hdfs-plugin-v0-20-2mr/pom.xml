@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.emc.greenplum</groupId>
+    <artifactId>hdfs-plugin-v0-20-2mr</artifactId>
+    <version>0.0.1</version>
+
+    <parent>
+        <artifactId>hdfs-query-service-parent</artifactId>
+        <groupId>com.example</groupId>
+        <version>0.0.1</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.emc.greenplum</groupId>
+            <artifactId>hdfs-plugin-interface</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-core</artifactId>
+            <version>0.20.2mr</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/hadoop-0.20.2mr-core.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.xeustechnologies</groupId>
+            <artifactId>jcl-core</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-exec</artifactId>
+            <version>0.13.0-mapr-1405</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/hive-exec-0.13.0-mapr-1405.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>0.13.0-mapr-1405</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/hive-jdbc-0.13.0-mapr-1405.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-metastore</artifactId>
+            <version>0.13.0-mapr-1405</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/hive-metastore-0.13.0-mapr-1405.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-service</artifactId>
+            <version>0.13.0-mapr-1405</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/hive-service-0.13.0-mapr-1405.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-shims</artifactId>
+            <version>0.13.0-mapr-1405</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/hive-shims-0.13.0-mapr-1405.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <!-- use UTF-8 for everything -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+    </build>
+</project>
