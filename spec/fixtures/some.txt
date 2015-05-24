@@ -1,9 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-hello
-</body>
-</html>
-
+I am a text file.

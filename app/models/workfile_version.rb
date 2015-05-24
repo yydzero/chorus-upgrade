@@ -5,6 +5,7 @@ class WorkfileVersion < ActiveRecord::Base
                     :path => ":rails_root/system/:class/:id/:style/:basename.:extension",
                     :url => "/:class/:id/image?style=:style",
                     :restricted_characters => nil #retain original filename
+  do_not_validate_attachment_file_type :contents
 
   belongs_to :workfile, :class_name => 'ChorusWorkfile', :touch => true
   belongs_to :owner, :class_name => 'User',  :touch => true
@@ -43,6 +44,7 @@ class WorkfileVersion < ActiveRecord::Base
     end
   end
 
+  # KT: should be named "attempt_to_resize? or should_post_process?"
   def check_file_type
     image?
   end
