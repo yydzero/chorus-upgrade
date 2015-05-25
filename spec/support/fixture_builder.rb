@@ -412,6 +412,7 @@ FixtureBuilder.configure do |fbuilder|
     File.open Rails.root + 'spec/fixtures/test.cpp' do |file|
       FactoryGirl.create(:chorus_workfile, :file_name => "code.cpp", :owner => owner, :workspace => public_workspace, :versions_attributes => [{:contents => file}])
     end
+
 #   TODO: (Prakash). Temp. commented out to run tests. Need to fix it.
 #    File.open Rails.root + 'spec/fixtures/model.pmml' do |file|
 #      FactoryGirl.create(:chorus_workfile, :file_name => 'model.pmml', :owner => owner, :workspace => public_workspace, :versions_attributes => [{:contents => file}])
