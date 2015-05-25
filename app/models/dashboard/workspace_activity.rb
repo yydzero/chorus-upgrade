@@ -112,10 +112,12 @@ module Dashboard
       end
 
       # Sort by date
-      events_by_datepart_workspace = events_by_datepart_workspace.sort_by { |k,v| Date.strptime(k.last, '%F %T') }
+      # Prakash (5/24). Need to append "to_s" to date string for strptime method to work. It is throwing exception otherwise.
+      # Not sure how it worked earlier in Rails 3.2
+      events_by_datepart_workspace = events_by_datepart_workspace.sort_by { |k,v| Date.strptime(k.last.to_s, '%F %T') }
       evs = events_by_datepart_workspace.map do |t, v|
         {
-          date_part: t.last[0..."YYYY-MM-DD".length],
+          date_part: t.last.to_s[0..."YYYY-MM-DD".length],
           workspace_id: t.first,
           event_count: v,
           rank: top_workspace_ids.find_index(t.first)
