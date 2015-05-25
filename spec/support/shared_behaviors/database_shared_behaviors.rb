@@ -60,7 +60,7 @@ shared_examples 'a well-behaved database' do
 
     it 'removes itself from the execution location field of any workfiles it owns' do
       workfile.workfile_execution_locations.create(execution_location: database)
-      workfiles = database.workfile_execution_locations.all
+      workfiles = database.workfile_execution_locations
       workfiles.length.should > 0
 
       # execution_location is polymorphic, so we want to make sure that only the workfiles associated with

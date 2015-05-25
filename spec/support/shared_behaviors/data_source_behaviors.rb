@@ -281,7 +281,7 @@ shared_examples_for :data_source_with_update do
     expect {
       data_source.update_attributes(:name => 'something_else')
     }.to change(Events::DataSourceChangedName, :count).by(1)
-    event = Events::DataSourceChangedName.find_last_by_actor_id(data_source.owner)
+    event = Events::DataSourceChangedName.where(actor_id: data_source.owner.id).last
     event.data_source.should == data_source
     event.old_name.should == old_name
     event.new_name.should == 'something_else'

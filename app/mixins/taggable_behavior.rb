@@ -14,7 +14,7 @@ module TaggableBehavior
 
   def tag_list=(tags_list)
     self.tags = tags_list.map do |tag_name|
-      Tag.find_or_create_by_tag_name(tag_name)
+      Tag.case_insensitive_find_or_create_by_tag_name(tag_name)
     end
   end
 end

@@ -158,7 +158,7 @@ shared_examples 'a sandbox schema' do
 
     it 'removes any execution schemas from associated workfiles' do
       FactoryGirl.create(:chorus_workfile, :execution_schema => schema)
-      workfiles = schema.workfiles_as_execution_location.all
+      workfiles = schema.workfiles_as_execution_location
       workfiles.length.should > 0
 
       schema.destroy
