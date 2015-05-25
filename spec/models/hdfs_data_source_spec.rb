@@ -62,7 +62,7 @@ describe HdfsDataSource do
     end
 
     it 'removes itself from the execution location field of any workfiles it owns' do
-      workfiles = subject.workfile_execution_locations.all
+      workfiles = subject.workfile_execution_locations
       workfiles.length.should > 0
 
       expect {

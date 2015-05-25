@@ -113,7 +113,7 @@ class Dataset < ActiveRecord::Base
       like_string = "%#{DataSourceConnection.escape_like_string(name)}%"
       where("datasets.name ILIKE ? ESCAPE '#{DataSourceConnection::LIKE_ESCAPE_CHARACTER}'", like_string)
     else
-      scoped
+      all
     end
   end
 

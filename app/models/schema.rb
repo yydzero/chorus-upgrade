@@ -30,7 +30,7 @@ class Schema < ActiveRecord::Base
     found_schemas = []
 
     schema_parent.connect_with(account).schemas.each do |name|
-      schema = schema_parent.schemas.find_or_initialize_by_name(name)
+      schema = schema_parent.schemas.find_or_initialize_by(name: name)
       next if schema.invalid?
       schema.stale_at = nil
       schema.save!

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Chorus/gnip.git
-  revision: c048a22652ed553ec6ab58dd84cfb4c9117eed24
+  revision: a6bcb4e7981022c6e0c9f70e311200b82451ef2e
   specs:
     chorusgnip (0.0.1)
 
@@ -30,22 +30,6 @@ GIT
       rspec (>= 2.6.0)
       webmock (>= 1.7.0)
 
-GIT
-  remote: git://github.com/charleshansen/backbone_fixtures_rails.git
-  revision: 0bb6b749407059980e81644c81a01e265b113607
-  specs:
-    backbone_fixtures_rails (0.0.3)
-      jasmine
-      railties (>= 3.1)
-      rspec
-
-GIT
-  remote: git://github.com/taktsoft/sunspot.git
-  revision: 78717a33894271d012682dbe8902458badb0ca63
-  ref: 78717a33894271d012682dbe8902458badb0ca63
-  specs:
-    sunspot_solr (2.0.0.pre.120720)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,7 +51,7 @@ GEM
       activesupport (= 4.0.13)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.4)
-    activerecord-jdbc-adapter (1.3.16)
+    activerecord-jdbc-adapter (1.3.7)
       activerecord (>= 2.2)
     activerecord-jdbcpostgresql-adapter (1.3.7)
       activerecord-jdbc-adapter (~> 1.3.7)
@@ -82,83 +66,91 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    addressable (2.3.8)
-    allowy (2.1.0)
+    addressable (2.3.5)
+    allowy (0.4.0)
       activesupport (>= 3.2)
       i18n
     arel (4.0.2)
-    attr_encrypted (1.3.4)
-      encryptor (>= 1.3.0)
+    attr_encrypted (1.2.1)
+      encryptor (>= 1.1.1)
     builder (3.1.4)
-    bullet (4.14.7)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.9.0)
+    bullet (4.6.0)
+      uniform_notifier
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    childprocess (0.5.6)
+    childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
-    choice (0.2.0)
-    chunky_png (1.3.4)
-    ci_reporter (2.0.0)
+    choice (0.1.6)
+    chunky_png (1.3.3)
+    ci_reporter (1.9.0)
       builder (>= 2.1.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    clockwork (1.2.0)
+    clockwork (0.6.0)
       activesupport
-      tzinfo
+      tzinfo (~> 0.3.35)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     codemirror-rails (3.23)
       railties (>= 3.0, < 5)
     coderay (1.1.0)
-    crack (0.4.2)
-      safe_yaml (~> 1.0.0)
-    css_parser (1.3.6)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
+    css_parser (1.3.4)
       addressable
-    database_cleaner (1.4.1)
+    database_cleaner (1.1.1)
     diff-lcs (1.2.5)
-    encryptor (1.3.0)
+    dotenv (0.8.0)
+    encryptor (1.1.3)
     erubis (2.7.0)
-    factory_girl (4.5.0)
+    factory_girl (4.2.0)
       activesupport (>= 3.0.0)
-    fakefs (0.6.7)
-    faker (1.4.3)
+    fakefs (0.4.2)
+    faker (1.2.0)
       i18n (~> 0.5)
     fakeweb (1.3.0)
-    ffi (1.9.8-java)
+    ffi (1.9.3)
+    ffi (1.9.3-java)
     fixture_builder (0.3.6)
       activerecord (>= 2)
       activesupport (>= 2)
-    foreman (0.78.0)
-      thor (~> 0.19.1)
-    fuubar (1.3.3)
-      rspec (>= 2.14.0, < 3.1.0)
-      ruby-progressbar (~> 1.4)
-    hashie (3.4.1)
-    highline (1.7.2)
-    honor_codes (0.1.2)
-      thor (~> 0.19.1)
-    htmlentities (4.3.3)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
+    foreman (0.63.0-java)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
+    fuubar (1.1.1)
+      rspec (~> 2.0)
+      rspec-instafail (~> 0.2.0)
+      ruby-progressbar (~> 1.0)
+    hashie (2.0.5)
+    highline (1.6.21)
+    honor_codes (0.1.1)
+      thor (~> 0.18.1)
+    htmlentities (4.3.1)
     i18n (0.7.0)
-    jasmine (2.3.0)
-      jasmine-core (~> 2.3)
-      phantomjs
-      rack (>= 1.2.1)
-      rake
-    jasmine-core (2.3.4)
-    jbuilder (2.2.16)
+    jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jdbc-postgres (9.4.1200)
-    jdbc-sqlite3 (3.8.10.1)
+    jdbc-postgres (9.3.1101)
+    jdbc-sqlite3 (3.7.2.1)
     journey (1.0.4)
-    jruby-openssl (0.9.7-java)
+    jruby-openssl (0.9.5-java)
+    json (1.8.2)
     json (1.8.2-java)
-    ladle (1.0.1-java)
+    ladle (1.0.0)
+      open4 (~> 1.0)
+    ladle (1.0.0-java)
+    license_finder (0.8.2)
+      bundler
+      sequel
+      sqlite3
+      thor
     license_finder (0.8.2-java)
       bundler
       jdbc-sqlite3
@@ -170,14 +162,15 @@ GEM
     messengerjs-rails (1.4.1)
     method_source (0.8.2)
     mime-types (2.5)
+    mini_portile (0.6.2)
     minitest (4.7.5)
-    mizuno (0.6.10)
+    mizuno (0.6.6)
       childprocess (>= 0.2.6)
       choice (>= 0.1.0)
       ffi (>= 1.0.0)
       rack (>= 1.0.0)
     multi_json (1.11.0)
-    mustache (0.99.8)
+    mustache (0.99.5)
     net-ldap (0.11)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -186,23 +179,29 @@ GEM
     net-ssh (2.9.2)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.12.0.288)
+    newrelic_rpm (3.6.6.147)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     nokogiri (1.6.6.2-java)
+    open4 (1.3.4)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    phantomjs (1.9.8.0)
     pr_geohash (1.0.0)
-    premailer (1.8.4)
-      css_parser (>= 1.3.6)
+    premailer (1.7.3)
+      css_parser (>= 1.1.9)
       htmlentities (>= 4.0.0)
-    premailer-rails (1.8.1)
-      actionmailer (>= 3, < 5)
-      premailer (~> 1.7, >= 1.7.9)
+    premailer-rails (1.4.0)
+      premailer (~> 1.7)
+      rails (>= 3)
     protected_attributes (1.0.9)
       activemodel (>= 4.0.1, < 5.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     pry (0.10.1-java)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -231,32 +230,32 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    render_anywhere (0.0.11)
+    render_anywhere (0.0.10)
       rails (>= 3.0.7)
     rr (1.1.2)
-    rsolr (1.0.12)
+    rsolr (1.0.10)
       builder (>= 2.1.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.8)
-    rspec-expectations (2.14.5)
+    rspec-core (2.14.7)
+    rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.14.6)
-    rspec-rails (2.14.2)
+    rspec-instafail (0.2.4)
+    rspec-mocks (2.14.4)
+    rspec-rails (2.14.0)
       actionpack (>= 3.0)
-      activemodel (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    ruby-progressbar (1.7.5)
-    safe_yaml (1.0.4)
+    ruby-progressbar (1.1.1)
+    safe_yaml (0.9.7)
     scrolls (0.0.9)
-    sequel (4.22.0)
-    shoulda-matchers (2.8.0)
+    sequel (4.6.0)
+    shoulda-matchers (2.3.0)
       activesupport (>= 3.0.0)
     slop (3.6.0)
     spoon (0.0.4)
@@ -267,33 +266,37 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sunspot (2.0.0)
+    sqlite3 (1.3.8)
+    sunspot (2.1.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
-    sunspot_matchers (2.2.0.1)
-    sunspot_rails (2.0.0)
+    sunspot_matchers (2.1.0.0)
+    sunspot_rails (2.1.0)
       nokogiri
-      sunspot (= 2.0.0)
-    thor (0.19.1)
+      rails (>= 3)
+      sunspot (= 2.1.0)
+    sunspot_solr (2.1.0)
+    thor (0.18.1)
+    thread_safe (0.3.5)
     thread_safe (0.3.5-java)
-    timecop (0.7.3)
+    timecop (0.6.3)
     tzinfo (0.3.44)
-    uniform_notifier (1.9.0)
+    uniform_notifier (1.2.0)
     vcr (2.3.0)
-    webmock (1.21.0)
-      addressable (>= 2.3.6)
+    webmock (1.16.0)
+      addressable (>= 2.2.7)
       crack (>= 0.3.2)
-    will_paginate (3.0.7)
+    will_paginate (3.0.4)
 
 PLATFORMS
   java
+  ruby
 
 DEPENDENCIES
   activerecord-jdbcpostgresql-adapter (= 1.3.7)
   activeresource
   allowy
   attr_encrypted
-  backbone_fixtures_rails!
   bullet
   capistrano (= 2.15.5)
   chorusgnip!
@@ -320,7 +323,6 @@ DEPENDENCIES
   logger-syslog
   messengerjs-rails
   mizuno
-  mustache (~> 0.99.4)
   net-ldap (= 0.11)
   newrelic_rpm
   nokogiri
@@ -335,14 +337,15 @@ DEPENDENCIES
   rake
   render_anywhere
   rr
+  rsolr (= 1.0.10)
   rspec (= 2.14.1)
   rspec-rails
   rspec_api_documentation!
   sequel (~> 4.0)
   shoulda-matchers
-  sunspot_matchers
-  sunspot_rails (~> 2.0.0)
-  sunspot_solr!
+  sunspot_matchers (= 2.1.0)
+  sunspot_rails (= 2.1.0)
+  sunspot_solr (= 2.1.0)
   timecop
   vcr (~> 2.3.0)
   will_paginate

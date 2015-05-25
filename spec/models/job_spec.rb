@@ -100,7 +100,7 @@ describe Job do
       end
 
       it 'returns only enabled jobs that should have run by now' do
-        Job.ready_to_run.all.should == [job1]
+        Job.ready_to_run.should == [job1]
       end
     end
 

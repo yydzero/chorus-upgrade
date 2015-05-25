@@ -15,7 +15,6 @@ gem 'paperclip', '4.2.1'
 gem 'queue_classic', :github => 'Chorus/queue_classic'
 gem 'clockwork',     :require => false
 gem 'allowy'
-gem 'sunspot_rails', '~> 2.0.0'
 gem 'jetpack', :github => 'Chorus/jetpack', :branch => '6c9253195b+chorus', :require => false
 gem 'nokogiri'
 gem 'sequel', '~> 4.0', :require => 'sequel/no_core_ext'
@@ -34,6 +33,13 @@ gem 'render_anywhere'
 # Need to install lower version of Mustache compatible with Jruby 1.7
 gem 'mustache', '~> 0.99.4'
 
+# KT: Group all Solr related together ..
+gem 'sunspot_rails', '2.1.0'
+group :development, :test do
+  gem 'sunspot_matchers', '2.1.0'
+  gem 'sunspot_solr', '2.1.0'
+  gem 'rsolr', '1.0.10' # block deprecation notices, delete this when upgrading Sunspot to 2.2.0
+end
 
 platform :jruby do
   gem 'jruby-openssl', :require => false
@@ -59,7 +65,6 @@ group :development, :test do
   gem 'foreman', '>= 0.62',      :require => false
   gem 'rake',                    :require => false
   gem 'rspec', '2.14.1',                :require => 'rspec/core/rake_task'
-  gem 'sunspot_matchers'
   gem 'fixture_builder'
   gem 'ci_reporter', '>= 1.8.2'
   gem 'faker'
