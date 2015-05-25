@@ -14,3 +14,13 @@ token_file = Rails.root.join('config/secret.token')
 abort "No config/secret.token file found.  Run rake development:init or rake development:generate_secret_token" unless token_file.exist?
 
 Chorus::Application.config.secret_token = token_file.read
+
+
+key_file = Rails.root.join('config/secret.key')
+abort "No config/secret.key file found.  Run rake development:init or rake development:generate_secret_key" unless key_file.exist?
+
+Chorus::Application.config.secret_key_base = key_file.read
+
+
+#Myapp::Application.config.secret_token = 'existing secret token'
+#Myapp::Application.config.secret_key_base = 'new secret key base'
