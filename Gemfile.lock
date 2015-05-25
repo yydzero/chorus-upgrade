@@ -39,13 +39,6 @@ GIT
       railties (>= 3.1)
       rspec
 
-GIT
-  remote: git://github.com/taktsoft/sunspot.git
-  revision: 78717a33894271d012682dbe8902458badb0ca63
-  ref: 78717a33894271d012682dbe8902458badb0ca63
-  specs:
-    sunspot_solr (2.0.0.pre.120720)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -234,7 +227,7 @@ GEM
     render_anywhere (0.0.11)
       rails (>= 3.0.7)
     rr (1.1.2)
-    rsolr (1.0.12)
+    rsolr (1.0.10)
       builder (>= 2.1.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
@@ -267,13 +260,15 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sunspot (2.0.0)
+    sunspot (2.1.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
-    sunspot_matchers (2.2.0.1)
-    sunspot_rails (2.0.0)
+    sunspot_matchers (2.1.0.0)
+    sunspot_rails (2.1.0)
       nokogiri
-      sunspot (= 2.0.0)
+      rails (>= 3)
+      sunspot (= 2.1.0)
+    sunspot_solr (2.1.0)
     thor (0.19.1)
     thread_safe (0.3.5-java)
     timecop (0.7.3)
@@ -335,14 +330,15 @@ DEPENDENCIES
   rake
   render_anywhere
   rr
+  rsolr (= 1.0.10)
   rspec (= 2.14.1)
   rspec-rails
   rspec_api_documentation!
   sequel (~> 4.0)
   shoulda-matchers
-  sunspot_matchers
-  sunspot_rails (~> 2.0.0)
-  sunspot_solr!
+  sunspot_matchers (= 2.1.0)
+  sunspot_rails (= 2.1.0)
+  sunspot_solr (= 2.1.0)
   timecop
   vcr (~> 2.3.0)
   will_paginate

@@ -15,7 +15,6 @@ gem 'paperclip', '4.2.1'
 gem 'queue_classic', :github => 'Chorus/queue_classic'
 gem 'clockwork',     :require => false
 gem 'allowy', '0.4.0'
-gem 'sunspot_rails', '~> 2.0.0'
 gem 'jetpack', :github => 'Chorus/jetpack', :branch => '6c9253195b+chorus', :require => false
 gem 'nokogiri'
 gem 'sequel', '~> 4.0', :require => 'sequel/no_core_ext'
@@ -31,8 +30,9 @@ gem 'honor_codes', '~> 0.1.0'
 gem 'jbuilder'
 # Gem that allows you to call view renders from anywhere (model, lib, rake, etc.)
 gem 'render_anywhere'
-# Need to install lower version of Mustache compatible with Jruby 1.7
-gem 'mustache', '~> 0.99.4'
+
+# Need to install 0.99.4 version of mustache gem. Latest version is not compatible with Jruby 1.7
+gem 'mustache', '0.99.4'
 
 # KT: Group all Solr related together ..
 gem 'sunspot_rails', '2.1.0'
@@ -41,9 +41,6 @@ group :development, :test do
   gem 'sunspot_solr', '2.1.0'
   gem 'rsolr', '1.0.10' # block deprecation notices, delete this when upgrading Sunspot to 2.2.0
 end
-
-# Need to install 0.99.4 version of mustache gem. Latest version is not compatible with Jruby 1.7
-gem 'mustache', '0.99.4'
 
 platform :jruby do
   gem 'jruby-openssl', :require => false
