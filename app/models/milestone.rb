@@ -21,8 +21,17 @@ class Milestone < ActiveRecord::Base
   end
 
   def update_workspace_target_date
-    date = workspace.milestones.any? ? workspace.milestones.order(:target_date).last.target_date : nil
-    workspace.update_attribute(:project_target_date, date)
+
+    # Prakash. using order on ActiveRecord_AssociationProxy does not load the objects in memory and resulting in exception.
+    # Had to force loading the milestones in memory before using order clause. (Rails 4 upgrade)
+    #date = workspace.milestones.any? ? workspace.milestones.order('milestones.target_date').last.target_date : nil
+    milestones = workspace.milestones
+    # using true will force a database query instead of using cache.
+    if workspace.milestones(true).size != 0
+      date = milestones.order('target_date').last.target_date
+      workspace.update_attribute(:project_target_date, date)
+    end
+
   end
 
   def update_counter_cache
