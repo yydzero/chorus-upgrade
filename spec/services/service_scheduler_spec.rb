@@ -2,8 +2,11 @@ require 'spec_helper'
 require 'service_scheduler'
 
 class ServiceScheduler
+  include Clockwork
+
   def job_named(job)
-    @@manager.events.find { |event|
+    # Prakash. 5/27/15. Changed referencing  to class variables using classname instead of @@
+    Clockwork.manager.events.find { |event|
       event.job == job
     }
   end
@@ -11,7 +14,8 @@ end
 
 module Clockwork
   def self.config
-    @@manager.config
+    # Prakash. 5/27/15. Changed referencing  to class variables using classname instead of @@
+    Clockwork.manager.config
   end
 
   class Manager
