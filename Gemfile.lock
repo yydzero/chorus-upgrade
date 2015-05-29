@@ -278,7 +278,7 @@ GEM
     webmock (1.21.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
-    will_paginate (3.0.7)
+    will_paginate (3.0.4)
 
 PLATFORMS
   java
@@ -341,4 +341,4 @@ DEPENDENCIES
   sunspot_solr (= 2.1.0)
   timecop
   vcr (~> 2.3.0)
-  will_paginate
+  will_paginate (= 3.0.4)

@@ -9,7 +9,7 @@ gem 'activeresource'
 # models.  This gem should be removed via refactoring after the Rails 4 upgrades are merged into master.
 gem 'protected_attributes'
 
-gem 'will_paginate'
+gem 'will_paginate', '3.0.4'
 gem 'net-ldap', '0.11',    :require => false
 gem 'paperclip', '4.2.1'
 gem 'queue_classic', :github => 'Chorus/queue_classic'

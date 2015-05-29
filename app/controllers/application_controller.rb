@@ -164,7 +164,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_collection_defaults
+    # PT: Need to fully qualify request.params in Rails 4.0
+    #TODO:Prakash Not sure why I have to add this twice. params and request.params have different storage.
+    #Some Rspec test cases are failing since request.parameteres do not get the :page and :per_page parameters.
     params.reverse_merge!(Chorus::Application.config.collection_defaults)
+    request.params.reverse_merge!(Chorus::Application.config.collection_defaults)
   end
 
   def present(model_or_collection, options={})
