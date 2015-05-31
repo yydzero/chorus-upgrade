@@ -11,7 +11,9 @@ class GnipDataSourcesController < ApplicationController
   def index
     succinct = params[:succinct] == 'true'
     includes = succinct ? [] : [{:owner => :tags}, :tags]
-    present paginate(GnipDataSource.scoped.includes(includes)), :presenter_options => {:succinct => succinct}
+    #PT. Replaced scoped with all. scoped is removed from Rails 4.
+    #present paginate(GnipDataSource.scoped.includes(includes)), :presenter_options => {:succinct => succinct}
+    present paginate(GnipDataSource.all.includes(includes)), :presenter_options => {:succinct => succinct}
   end
 
   def show

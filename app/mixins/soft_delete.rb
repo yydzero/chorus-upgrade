@@ -24,7 +24,10 @@ module SoftDelete
 
   module ClassMethods
     def find_with_destroyed *args
-      self.with_exclusive_scope { find(*args) }
+      # PT. replaced with_exclusive_scope with unscoped. with_exclusive_scope is removed from Rails 4.
+      #with_exclusive_scope { find(*args) }
+      unscoped { find(*args) }
+
     end
   end
 end

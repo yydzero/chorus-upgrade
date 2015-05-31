@@ -29,7 +29,8 @@ describe JobsController do
     end
 
     describe "pagination" do
-      let(:sorted_jobs) { workspace.jobs.sort_by! { |job| job.name.downcase } }
+      #let(:sorted_jobs) { workspace.jobs.sort_by! { |job| job.name.downcase } }
+      let(:sorted_jobs) { workspace.jobs.order(:name) }
 
       it "defaults the per_page to fifty" do
         get :index, :workspace_id => workspace.id

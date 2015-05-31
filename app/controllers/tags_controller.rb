@@ -1,7 +1,10 @@
 class TagsController < ApplicationController
   def index
     tags = params[:q].present? ? Tag.named_like(params[:q]) : Tag.all
-    present paginate(tags.sort_by!{ |tag| tag.name.downcase })
+    # Replace sort_by with order clause to let database do the sorting instead of Ruby. It is much faster.
+#    present paginate(tags.sort_by!{ |tag| tag.name.downcase })
+    present paginate(tags.order(:name))
+
   end
 
   def update

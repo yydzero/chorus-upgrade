@@ -15,7 +15,9 @@ class HdfsDataSourcesController < ApplicationController
   def index
     succinct = params[:succinct] == 'true'
     includes = succinct ? [] : [{:owner => :tags}, :tags]
-    hdfs_data_sources = HdfsDataSource.scoped.includes(includes)
+    #PT. Replaced scoped with all. scoped is removed from Rails 4.
+    #hdfs_data_sources = HdfsDataSource.scoped.includes(includes)
+    hdfs_data_sources = HdfsDataSource.all.includes(includes)
     hdfs_data_sources = hdfs_data_sources.with_job_tracker if params[:job_tracker]
     present paginate(hdfs_data_sources), :presenter_options => {:succinct => succinct}
   end
