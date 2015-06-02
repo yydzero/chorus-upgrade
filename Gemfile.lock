@@ -154,7 +154,7 @@ GEM
     jdbc-sqlite3 (3.8.10.1)
     journey (1.0.4)
     jruby-openssl (0.9.7-java)
-    json (1.8.2-java)
+    json (1.8.3-java)
     ladle (1.0.1-java)
     license_finder (0.8.2-java)
       bundler
@@ -174,7 +174,7 @@ GEM
       ffi (>= 1.0.0)
       rack (>= 1.0.0)
     multi_json (1.11.0)
-    mustache (0.99.8)
+    mustache (0.99.4)
     net-ldap (0.11)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -325,7 +325,7 @@ DEPENDENCIES
   logger-syslog
   messengerjs-rails
   mizuno
-  mustache (~> 0.99.4)
+  mustache (= 0.99.4)
   net-ldap (= 0.11)
   newrelic_rpm
   nokogiri
