@@ -5,7 +5,8 @@ Paperclip::UploadedFileAdapter.content_type_detector = Paperclip::ContentTypeDet
 # otherwise a "spoofed_media_type" exception is thrown, which cannot be turned off.
 # See: https://github.com/thoughtbot/paperclip#security-validations
 Paperclip.options[:content_type_mappings] = {
-  sql: 'text/plain'
+  sql: 'text/plain',
+  pmml: 'application/xml'
 }
 
 module Paperclip
