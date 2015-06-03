@@ -47,6 +47,7 @@ FixtureBuilder.configure do |fbuilder|
     stub(License.instance).[](:vendor) { License::OPEN_CHORUS }
 
     (ActiveRecord::Base.direct_descendants).each do |klass|
+      next if klass.table_name == "schema_migrations"
       ActiveRecord::Base.connection.execute("ALTER SEQUENCE #{klass.table_name}_id_seq RESTART WITH 1000000;")
     end
 
