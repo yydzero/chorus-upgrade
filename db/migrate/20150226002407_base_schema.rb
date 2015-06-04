@@ -195,6 +195,7 @@ class BaseSchema < ActiveRecord::Migration
     end
 
     add_index "datasets", ["deleted_at", "id"], name: "index_datasets_on_deleted_at_and_id", using: :btree
+    # add_index "datasets", ["name", "schema_id", "type", "deleted_at"], name: "index_datasets_on_name_schema_id_and_type", unique: true, using: :btree
     add_index "datasets", ["name", "schema_id", "type"], name: "index_datasets_on_name_schema_id_and_type", unique: true, using: :btree
     add_index "datasets", ["schema_id"], name: "index_database_objects_on_schema_id", using: :btree
 
@@ -587,6 +588,8 @@ class BaseSchema < ActiveRecord::Migration
       t.string "name"
       t.integer "taggings_count", default: 0, null: false
     end
+
+    add_index :tags, :name, :unique => true
 
     create_table "uploads", force: true do |t|
       t.integer "user_id"
