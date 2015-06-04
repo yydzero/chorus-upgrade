@@ -7,10 +7,6 @@ require_relative './database_integration/postgres_integration'
 require_relative './current_user'
 require 'rr'
 
-def FixtureBuilder.password
-  'password'
-end
-
 FixtureBuilder.configure do |fbuilder|
   # rebuild fixtures automatically when these files change:
   fbuilder.files_to_check += Dir[*%w{
@@ -51,6 +47,7 @@ FixtureBuilder.configure do |fbuilder|
     stub(License.instance).[](:vendor) { License::OPEN_CHORUS }
 
     (ActiveRecord::Base.direct_descendants).each do |klass|
+      next if klass.table_name == "schema_migrations"
       ActiveRecord::Base.connection.execute("ALTER SEQUENCE #{klass.table_name}_id_seq RESTART WITH 1000000;")
     end
 

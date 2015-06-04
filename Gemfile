@@ -44,7 +44,7 @@ end
 
 platform :jruby do
   gem 'jruby-openssl', :require => false
-  gem 'activerecord-jdbcpostgresql-adapter', '1.3.7'
+  gem 'activerecord-jdbcpostgresql-adapter'
 end
 
 group :test do

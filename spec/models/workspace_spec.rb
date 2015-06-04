@@ -78,7 +78,7 @@ describe Workspace do
     context "user is admin" do
       let(:admin) { users(:admin) }
       it "returns unscoped workspaces" do
-        mock(Workspace).scoped
+        mock(Workspace).all
 
         described_class.workspaces_for(admin)
       end
