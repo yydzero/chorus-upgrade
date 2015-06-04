@@ -30,6 +30,15 @@ GIT
       rspec (>= 2.6.0)
       webmock (>= 1.7.0)
 
+GIT
+  remote: git://github.com/charleshansen/backbone_fixtures_rails.git
+  revision: 0bb6b749407059980e81644c81a01e265b113607
+  specs:
+    backbone_fixtures_rails (0.0.3)
+      jasmine
+      railties (>= 3.1)
+      rspec
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -134,6 +143,12 @@ GEM
       thor (~> 0.18.1)
     htmlentities (4.3.1)
     i18n (0.7.0)
+    jasmine (2.3.0)
+      jasmine-core (~> 2.3)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+    jasmine-core (2.3.4)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -170,7 +185,7 @@ GEM
       ffi (>= 1.0.0)
       rack (>= 1.0.0)
     multi_json (1.11.0)
-    mustache (0.99.5)
+    mustache (0.99.4)
     net-ldap (0.11)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -189,6 +204,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    phantomjs (1.9.8.0)
     pr_geohash (1.0.0)
     premailer (1.7.3)
       css_parser (>= 1.1.9)
@@ -295,8 +311,9 @@ PLATFORMS
 DEPENDENCIES
   activerecord-jdbcpostgresql-adapter
   activeresource
-  allowy
+  allowy (= 0.4.0)
   attr_encrypted
+  backbone_fixtures_rails!
   bullet
   capistrano (= 2.15.5)
   chorusgnip!
@@ -323,6 +340,7 @@ DEPENDENCIES
   logger-syslog
   messengerjs-rails
   mizuno
+  mustache (= 0.99.4)
   net-ldap (= 0.11)
   newrelic_rpm
   nokogiri
@@ -348,4 +366,7 @@ DEPENDENCIES
   sunspot_solr (= 2.1.0)
   timecop
   vcr (~> 2.3.0)
-  will_paginate
+  will_paginate (= 3.0.4)
+
+BUNDLED WITH
+   1.10.2
