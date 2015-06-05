@@ -34,7 +34,7 @@ describe WorkfileDownloadController do
         workfile_version2.save!
         get :show, :workfile_id => workfile.id, :version_id => workfile_version.id
 
-        response.body.should include ("<!DOCTYPE")
+        response.body.should include ("I am a text file.")
         response.body.should_not include ("lame")
         response.headers['Content-Disposition'].should include("attachment")
         response.headers['Content-Disposition'].should include('filename="some.txt"')
