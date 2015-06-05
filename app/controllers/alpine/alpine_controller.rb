@@ -15,7 +15,7 @@ module Alpine
     end
 
     def address_local?(ip)
-      local_addresses = ActionDispatch::Request::LOCALHOST + ['::ffff:127.0.0.1']
+      local_addresses = [ActionDispatch::Request::LOCALHOST, '::ffff:127.0.0.1']
       local_addresses.any? {|local_addr_pattern| local_addr_pattern === ip }
     end
   end
