@@ -24,7 +24,7 @@ module SoftDelete
 
   module ClassMethods
     def find_with_destroyed *args
-      self.with_exclusive_scope { find(*args) }
+      self.unscoped { find(*args) }
     end
   end
 end
