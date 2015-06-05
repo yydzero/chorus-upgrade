@@ -194,10 +194,13 @@ class BaseSchema < ActiveRecord::Migration
       t.integer "hdfs_data_source_id"
     end
 
-    add_index "datasets", ["deleted_at", "id"], name: "index_datasets_on_deleted_at_and_id", using: :btree
-    # add_index "datasets", ["name", "schema_id", "type", "deleted_at"], name: "index_datasets_on_name_schema_id_and_type", unique: true, using: :btree
-    add_index "datasets", ["name", "schema_id", "type"], name: "index_datasets_on_name_schema_id_and_type", unique: true, using: :btree
-    add_index "datasets", ["schema_id"], name: "index_database_objects_on_schema_id", using: :btree
+    add_index "datasets", ["deleted_at", "id"], name: "index_datasets_on_deleted_at_and_id"
+
+    # KT TODO: note this is not database agnostic, not serializable to schema.rb, and forces use of structure.sql --
+    # Prakash says: "Rails 4 migrations support indexing and constraints. We should look into it."
+    execute "CREATE UNIQUE INDEX index_datasets_on_name_schema_id_and_type ON datasets ( name, schema_id, type ) WHERE deleted_at IS NULL"
+
+    add_index "datasets", ["schema_id"], name: "index_database_objects_on_schema_id"
 
     create_table "datasets_notes", force: true do |t|
       t.integer "dataset_id"
@@ -588,8 +591,6 @@ class BaseSchema < ActiveRecord::Migration
       t.string "name"
       t.integer "taggings_count", default: 0, null: false
     end
-
-    add_index :tags, :name, :unique => true
 
     create_table "uploads", force: true do |t|
       t.integer "user_id"
