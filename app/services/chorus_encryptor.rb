@@ -27,6 +27,9 @@ class ChorusEncryptor
       # pkcs5 is supposedly deprecated but jruby does not have support for pbkdf2_hmac
       cipher.pkcs5_keyivgen(secret_key)
       cipher.update(password) + cipher.final
+
+    rescue OpenSSL::Cipher::CipherError => e
+      raise e, "Is config/secret.key the same one used to encrypt?: #{e}", e.backtrace
     end
   end
 end
