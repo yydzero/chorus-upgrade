@@ -4,7 +4,7 @@ require 'timecop'
 describe SessionsController do
   describe "#create" do
     let(:user) { users(:admin) }
-    let(:params) { {:username => user.username, :password => FixtureBuilder.password} }
+    let(:params) { {:username => user.username, :password => SPEC_PASSWORD} }
 
     before(:each) do
         stub(LdapClient).enabled? { false } # We should have a separate test config to avoid stuff like this
