@@ -7,7 +7,7 @@ describe Session do
   describe "create" do
     it "sets session_id" do
       user = users(:default)
-      session = Session.create!(:username => user.username, :password => FixtureBuilder.password)
+      session = Session.create!(:username => user.username, :password => SPEC_PASSWORD)
       session.session_id.should match /\S{20}/
     end
   end
@@ -31,7 +31,7 @@ describe Session do
 
     it "is valid if the credentials correct" do
       user = users(:default)
-      session = Session.new(:username => user.username, :password => FixtureBuilder.password)
+      session = Session.new(:username => user.username, :password => SPEC_PASSWORD)
       session.should be_valid
     end
 
@@ -65,7 +65,7 @@ describe Session do
           stub(LdapClient).enabled? { true }
           dont_allow(LdapClient).authenticate
 
-          session = Session.new(:username => user.username, :password => FixtureBuilder.password)
+          session = Session.new(:username => user.username, :password => SPEC_PASSWORD)
           session.should be_valid
           session.user.should == user
         end
@@ -78,7 +78,7 @@ describe Session do
           session.should have_error_on(:username_or_password).with_message(:invalid)
         end
       end
-    end    
+    end
   end
 
   describe "expired?" do
