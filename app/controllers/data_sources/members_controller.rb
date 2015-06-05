@@ -11,7 +11,7 @@ module DataSources
       gpdb_data_source = DataSource.unshared.find(params[:data_source_id])
       authorize! :edit, gpdb_data_source
 
-      account = gpdb_data_source.accounts.find_or_initialize_by_owner_id(params[:account][:owner_id])
+      account = gpdb_data_source.accounts.find_or_initialize_by(owner_id: params[:account][:owner_id])
 
       account.attributes = params[:account]
 
