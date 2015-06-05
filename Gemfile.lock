@@ -366,7 +366,7 @@ DEPENDENCIES
   sunspot_solr (= 2.1.0)
   timecop
   vcr (~> 2.3.0)
-  will_paginate (= 3.0.4)
+  will_paginate
 
 BUNDLED WITH
    1.10.3
