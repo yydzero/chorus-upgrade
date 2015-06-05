@@ -195,7 +195,10 @@ class BaseSchema < ActiveRecord::Migration
     end
 
     add_index "datasets", ["deleted_at", "id"], name: "index_datasets_on_deleted_at_and_id", using: :btree
+
+    # KT: note this is not database agnostic, not serializable to schema.rb, and forces use of structure.sql:
     execute "CREATE UNIQUE INDEX index_datasets_on_name_schema_id_and_type ON datasets ( name, schema_id, type ) WHERE deleted_at IS NULL"
+
     add_index "datasets", ["schema_id"], name: "index_database_objects_on_schema_id", using: :btree
 
     create_table "datasets_notes", force: true do |t|
@@ -588,6 +591,9 @@ class BaseSchema < ActiveRecord::Migration
       t.integer "taggings_count", default: 0, null: false
     end
 
+    # KT: note this is not database agnostic, not serializable to schema.rb, and forces use of structure.sql:
+    execute "CREATE UNIQUE INDEX index_tags_on_lowercase_name ON tags ((lower(name)));"
+
     create_table "uploads", force: true do |t|
       t.integer "user_id"
       t.text "contents_file_name"
@@ -623,6 +629,9 @@ class BaseSchema < ActiveRecord::Migration
       t.string "auth_method"
       t.string "ldap_group_id"
     end
+
+    # KT: note this is not database agnostic, not serializable to schema.rb, and forces use of structure.sql:
+    execute "CREATE UNIQUE INDEX index_users_on_lower_case_username ON users (lower(username)) WHERE deleted_at IS NULL;"
 
     add_index "users", ["deleted_at", "id"], name: "index_users_on_deleted_at_and_id", using: :btree
 
@@ -687,7 +696,7 @@ class BaseSchema < ActiveRecord::Migration
       t.string "status", default: "idle"
     end
 
-    add_index "workfiles", ["file_name", "workspace_id"], name: "index_workfiles_on_file_name_and_workspace_id", unique: true, using: :btree
+    execute "CREATE UNIQUE INDEX index_workfiles_on_file_name_and_workspace_id ON workfiles (file_name, workspace_id) WHERE deleted_at IS NULL"
     add_index "workfiles", ["owner_id"], name: "index_workfiles_on_owner_id", using: :btree
     add_index "workfiles", ["workspace_id"], name: "index_workfiles_on_workspace_id", using: :btree
 
