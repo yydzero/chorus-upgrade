@@ -125,7 +125,7 @@ class Workfile < ActiveRecord::Base
     if column_name.blank? || column_name == "file_name"
       order("lower(workfiles.file_name), workfiles.id")
     else
-      order("user_modified_at desc")
+      order("workfiles.user_modified_at desc")
     end
   end
 
