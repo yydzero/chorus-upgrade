@@ -11,7 +11,7 @@ class JdbcHiveDataSourcesController < ApplicationController
   def index
     succinct = params[:succinct] == 'true'
     includes = succinct ? [] : [{:owner => :tags}, :tags]
-    present paginate(JdbcHiveDataSource.scoped.includes(includes)), :presenter_options => {:succinct => succinct}
+    present paginate(JdbcHiveDataSource.all.includes(includes)), :presenter_options => {:succinct => succinct}
   end
 
   def show
