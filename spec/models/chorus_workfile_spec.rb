@@ -262,7 +262,7 @@ describe ChorusWorkfile do
     end
 
     context 'when :content is an uploaded file' do
-      let(:file) { test_file('some.txt', 'text/sql') }
+      let(:file) { test_file('some.txt', 'text/plain') }
 
       it 'changes the file content' do
         workfile.create_new_version(user, {:content => file, :commit_message => 'A new version'})
@@ -305,6 +305,7 @@ describe ChorusWorkfile do
     let!(:workfile2) { FactoryGirl.create(:chorus_workfile, :file_name => 'workfile.sql', :workspace => workspace) }
     let!(:draft) { FactoryGirl.create(:workfile_draft, :workfile_id => workfile1.id, :owner_id => user.id) }
 
+    # these are failing
     it 'has_draft return true for workfile1' do
       workfile1.has_draft(user).should == true
     end

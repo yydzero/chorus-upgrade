@@ -69,8 +69,16 @@ module RocketPants
     protected
 
     # Like process, but automatically adds the api version.
-    def process(action, parameters = nil, session = nil, flash = nil, http_method = 'GET')
-      parameters ||= {}
+    #def process(action, parameters = nil, session = nil, flash = nil, http_method = 'GET')
+    def process(action, *args)
+
+      # Prakash: Rails 4 changes the method signature. In rails 3, parameters is the first argument.
+      # In Rails 4, it's the second. Why are we not using the rocket_pants gem instead of copying this one file?
+      if args.first.is_a?(String)
+        parameters = (args[1] ||= {})
+      else
+        parameters = (args[0] ||= {})
+      end
       if _default_version.present? && parameters[:version].blank? && parameters['version'].blank?
         parameters[:version] = _default_version
       end

@@ -7,10 +7,11 @@ class Attachment < ActiveRecord::Base
                     :path => ":rails_root/system/:class/:id/:style/:basename.:extension",
                     :url => "/notes/:note_id/attachments/:id?style=:style",
                     :styles => {:original => "", :icon => "50x50>" }
+  do_not_validate_attachment_file_type :contents
 
   before_post_process :contents_are_image?
 
-  belongs_to :note, :class_name => 'Events::Base', :conditions => "events.action ILIKE 'Events::Note%'", :touch => true
+  belongs_to :note, -> { where "events.action ILIKE 'Events::Note%'" }, :class_name => 'Events::Base', :touch => true
 
   validates_attachment_size :contents, :less_than => ChorusConfig.instance['file_sizes_mb']['attachment'].megabytes, :message => :file_size_exceeded
 

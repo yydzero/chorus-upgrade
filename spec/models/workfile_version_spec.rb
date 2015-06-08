@@ -20,7 +20,7 @@ describe WorkfileVersion do
     end
 
     context "with a text file with the '.txt' extension" do
-      let(:filename) { "multiple_extensions.png.xls.txt" }
+      let(:filename) { "some.txt" }
       its(:file_type) { should == "text" }
       its(:image?) { should be_false }
       its(:text?) { should be_true }

@@ -4,7 +4,7 @@ class GpdbSchema < Schema
   has_many :views, :source => :datasets, :class_name => 'GpdbView', :foreign_key => :schema_id
   has_many :tables, :source => :datasets, :class_name => 'GpdbTable', :foreign_key => :schema_id
 
-  validates :name, :format => /^[^\/?&]*$/
+  validates :name, :format => /\A[^\/?&]*\z/
 
   before_save :mark_schemas_as_stale
 
