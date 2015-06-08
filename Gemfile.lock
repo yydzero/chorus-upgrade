@@ -195,7 +195,7 @@ GEM
       sprockets (>= 2.0.0, < 4.0)
       tilt (~> 1.2)
     hashie (2.0.5)
-    headless (2.1.0)
+    headless (1.0.1)
     highline (1.6.21)
     hike (1.2.3)
     honor_codes (0.1.1)
@@ -434,7 +434,7 @@ DEPENDENCIES
   fuubar
   handlebars_assets
   hashie
-  headless
+  headless (= 1.0.1)
   honor_codes (~> 0.1.0)
   jasmine!
   jasmine-core!

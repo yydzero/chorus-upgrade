@@ -47,7 +47,7 @@ end
 
 group :integration do
   gem 'capybara', "~> 2.0.0", :require => false
-  gem 'headless'
+  gem 'headless', '1.0.1'
   gem 'capybara-screenshot'
 end
 
