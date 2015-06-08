@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SessionPresenter, :type => :view do
   let(:user) { users(:owner) }
-  let(:session) { Session.create!(:username => user.username, :password => FixtureBuilder.password) }
+  let(:session) { Session.create!(:username => user.username, :password => SPEC_PASSWORD) }
   let(:options) { {} }
   let(:presenter) { SessionPresenter.new(session, view, options) }
   before(:each) do

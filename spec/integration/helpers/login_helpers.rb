@@ -5,7 +5,7 @@ module LoginHelpers
     URI.parse(current_url).fragment
   end
 
-  def login(user, password = FixtureBuilder.password)
+  def login(user, password = SPEC_PASSWORD)
     visit("/#/login")
     page.should have_selector("form.login")
     fill_in 'username', :with => user.username
