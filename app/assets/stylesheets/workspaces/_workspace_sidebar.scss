@@ -1,0 +1,19 @@
+.workspace_list_sidebar, .workspace_show_sidebar {
+    .info {
+        .name {
+            @include ellipsis;
+            @include heading-sidebar;
+            margin-bottom: 10px;
+        }
+    }
+
+    .workspace_member_list .members {
+        @include sidebar-panel;
+    }
+
+    img.workspace_image {
+        max-width: $sidebar-width - 16px;
+        width: 100%;
+        height: auto;
+    }
+}

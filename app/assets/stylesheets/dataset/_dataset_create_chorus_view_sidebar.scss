@@ -1,0 +1,111 @@
+.dataset_create_chorus_view_sidebar {
+    legend {
+        color: $color-text1;
+        font-size: 16px;
+        font-weight: $semibold;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+
+    .joins {
+        margin-bottom: 20px;
+    }
+
+    .join {
+        margin-bottom: 5px;
+        .aliased_name {
+            overflow: hidden;
+        }
+        .column {
+            @include ellipsis;
+            width: 57px;
+            display: inline-block;
+            font-size: $default-font-size;
+            line-height: 19px;
+            font-weight: normal;
+            color: black;
+        }
+
+        .delete {
+            visibility: hidden;
+            cursor: pointer;
+        }
+        &:hover .delete {
+            visibility: visible;
+        }
+    }
+
+    .selected_columns {
+        @include sidebar-panel;
+        color: $color-text2;
+
+        & > span, & > div, & > ul {
+           padding: 0px 8px;
+        }
+
+        .dataset {
+            margin: 5px 0px;
+            @include secondary-text-semibold;
+
+            .aliased_name {
+                overflow: hidden;
+            }
+
+            .label {
+                line-height: 19px;
+                display: inline-block;
+                margin-right: 2px;
+                overflow: hidden;
+            }
+            .name {
+                @include ellipsis;
+                max-width: 115px;
+                font-size: $default-font-size;
+                line-height: 19px;
+                color: $color-text1;
+                font-weight: $semibold;
+                display: inline-block;
+            }
+        }
+    }
+
+    button {
+        margin-top: 10px;
+    }
+
+    a.remove {
+        float: right;
+        display: none;
+        @include secondary-text-small;
+    }
+
+    .no_columns_selected {
+        @include secondary-text-normal;
+    }
+
+    .columns, .no_columns_selected {
+        margin-bottom: 15px;
+    }
+
+    .columns {
+        .name {
+            display: inline-block;
+            font-size: $default-font-size;
+            font-weight: normal;
+            color: black;
+            max-width: 124px;
+            @include ellipsis;
+        }
+    }
+
+    .sidebar_row {
+        width: 100%;
+        @include after-clearfix;
+
+        &:hover {
+            .remove {
+                display: inline-block;
+            }
+        }
+    }
+}

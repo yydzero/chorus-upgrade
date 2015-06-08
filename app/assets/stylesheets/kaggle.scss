@@ -1,0 +1,83 @@
+@import "_common";
+@import "compass/css3/border-radius";
+
+.kaggle_header {
+    .summary {
+        @include font-normal-delta;
+        margin-bottom: 10px;
+    }
+
+    img {
+        width: 150px;
+    }
+}
+
+div[data-page="KaggleUserIndex"] {
+    .content_details {
+        height: auto;
+        padding: 0;
+
+      .count {
+        margin-left: 10px;
+        display: inline-block;
+      }
+
+      .search_kaggle_user {
+          margin-left: 20px;
+          /* need to override the content-details style*/
+          @include border-radius(0px);
+          border: 1px solid $border-color;
+          background: white;
+          color: $link-color;
+          display: inline-block;
+          float: none;
+          &.is_loading {
+              color: $color-text4;
+          }
+          font-size: 16px;
+          font-weight: normal;
+      }
+    }
+
+    .kaggle_rank {
+        background-color: $color-text3;
+        color: white;
+        padding: 0 5px;
+        @include border-radius(3px);
+        margin-right: 5px;
+    }
+
+    .kaggle_filter {
+        .comparator {
+            width: 215px;
+        }
+    }
+}
+
+.kaggle_compose_kaggle_message_dialog {
+  font-size: 13px;
+
+  form > div {
+    margin: 0 0 20px 0;
+  }
+
+  input, textarea {
+    font-size: 13px;
+  }
+
+  textarea {
+    height: 288px;
+  }
+
+  .inline-field {
+    label {
+      display: inline-block;
+      width: 80px;
+    }
+
+    input {
+      display: inline-block;
+      height: 24px;
+    }
+  }
+}

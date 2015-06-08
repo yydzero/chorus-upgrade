@@ -1,0 +1,329 @@
+$cell-width: 150px;
+
+// colors for different data types displayed in the headers and elsewhere in app
+// TODO: should be expanded across app and made common
+$datatype-text-backgroundcolor: #8989BA;
+$datatype-integer-backgroundcolor: #55A3EE;
+$datatype-date_time-backgroundcolor: #61D0F4;
+
+
+.table_import_csv.dialog {
+    .grid {
+      height: 300px;
+    }
+
+    .directions {
+        @include font-normal-alpha;
+        display: inline-block;
+        margin-bottom: 15px;
+
+        input {
+            display: inline-block;
+            width: 401px;
+        }
+
+        input.hdfs {
+            width: 215px;
+        }
+
+        select {
+            width: 160px;
+        }
+
+        .name_label {
+            padding: 0 5px;
+        }
+
+        .select_label {
+            padding-right: 5px;
+        }
+    }
+
+    .options {
+        height: 25px;
+        margin-bottom: 10px;
+        padding: 0 15px;
+
+        .header_options {
+            float: right;
+            margin-top: 6px;
+            display: inline-block;
+        }
+
+        span.delimiter {
+            @include font-normal-alpha;
+            color: black;
+        }
+
+        label.delimiter {
+            font-size: $small-font;
+            font-weight: normal;
+            color: $color-text2;
+            padding-right: 5px;
+        }
+
+        input[name=custom_delimiter] {
+            display: inline-block;
+            width: 2em;
+        }
+    }
+
+    .path_types {
+        padding-bottom: 15px;
+
+        input#pattern {
+            margin-left: 15px;
+        }
+
+        input[name=pattern] {
+            width: 215px;
+            display: inline-block;
+        }
+    }
+
+    .slick-header-column.ui-state-default {
+        height: inherit;
+        padding: 0px;
+    }
+
+    .slick-headerrow-columns {
+      overflow: visible;
+    }
+
+    .slick-headerrow {
+      overflow: visible !important;
+      background: none;
+    }
+
+    .import_data_grid {
+      .type {
+        line-height: 16px;
+        font-size: $small-font;
+        padding: 0px;
+        overflow: visible;
+        z-index: $data-grid-column-header-z-index;
+
+        .link_menu {
+          position: absolute;
+          left: 0;
+          right: 0;
+          padding: 0;
+          display: inline-block;
+
+          > a {
+            position: absolute !important; // Facebox clobbers this w/o !important
+            left: 0;
+            right: 0;
+          }
+
+          .chosen {
+            height: 16px;
+            display: inline-block;
+            border: none;
+            color: $core-white;
+            margin-left: 5px;
+            left: 0;
+            right: 0;
+          }
+
+
+          .popup img { display: none; }
+
+          li { padding: 0; }
+          .popup_filter {
+            right: 14px;
+            width: 100px;
+            padding: 9px 13px 9px 0px;
+
+            .pointer { left: 47px; }
+          }
+        }
+
+        .arrow {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            @include triangle-glyph(down);
+            color: $core-white;
+        }
+
+        &.integer, &.double_precision {
+//           background: url(/images/datatypes/label_sm_datatype_dkblue2.png) repeat;
+            background-color: $datatype-integer-backgroundcolor;
+        }
+
+        &.text {
+//           background: url(/images/datatypes/label_sm_datatype_purple2.png) repeat;
+          background-color: $datatype-text-backgroundcolor;
+        }
+
+        &.date, &.time, &.date_time, &.timestamp {
+//           background: url(/images/datatypes/label_sm_datatype_ltblue2.png) repeat;
+            background-color: $datatype-date_time-backgroundcolor;
+        }
+
+        .popup_filter {
+          z-index: $popup_filter-z-index;
+        }
+      }
+
+      .column_mapping {
+        font-size: $small-font;
+
+        a {
+          @include ellipsis;
+          font-size: $small-font;
+          font-weight: $semibold;
+          max-width: $cell-width - 68px;
+          margin-left: 3px;
+          &.selection_conflict {
+            color: #cc0000;
+
+            .arrow {
+              @include triangle-glyph(down);
+              color: #CC0000;
+            }
+          }
+
+          .destination_column_name {
+            margin-right: 5px;
+          }
+
+          .arrow {
+            display: inline-block;
+		    @include triangle-glyph(down);
+		    color: $link-color;
+          }
+        }
+      }
+    }
+
+/* to be deleted when final */
+/*     .form_controls { */
+/*         margin-top: 0px; */
+/*     } */
+}
+
+.existing_table_import_csv.table_import_csv {
+    .directions {
+        @include ellipsis;
+        max-width: 610px;
+        vertical-align: middle;
+        padding-bottom: 2px;
+
+        .destination {
+            font-weight: $semibold;
+        }
+    }
+    .progress_wrapper {
+        margin-left: 15px;
+
+        .progress {
+            display: inline-block;
+            @include results-console;
+            vertical-align: middle;
+            margin-bottom: 5px;
+            padding-bottom: 2px;
+        }
+
+        .automap {
+            font-size: $small-font;
+            font-weight: $semibold;
+            padding-left: 10px;
+        }
+    }
+}
+
+.table_import_csv.qtip {
+
+    .ui-tooltip-content {
+        max-height: 420px;
+        overflow-y: auto;
+        width: 300px;
+    }
+
+    .check_wrapper {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 3px;
+
+/* to be deleted when final */
+/*         .check { */
+/*             background-image: url("/images/check.png"); */
+/*             display: inline-block; */
+/*             width: 10px; */
+/*             height: 10px; */
+/*         } */
+        .check {
+            display: inline-block;
+    
+            position: absolute;
+            top: 10px;
+            left: -12px;
+
+            &::after {
+                font-family: FontAwesome;
+                 /* glyph: check */
+                content: "\f00c";
+            }
+        }
+    }
+
+    li {
+        a.name {
+            @include font-menu;
+            vertical-align: baseline;
+            @include ellipsis;
+            max-width: 180px;
+            display: inline-block;
+            height: 16px;
+            color: $color-text1;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &.selected {
+                color: $color-text2;
+            }
+
+            &.selection_conflict {
+                color: #cc0000;
+            }
+        }
+        .type {
+            @include secondary-text-small;
+            float: right;
+        }
+    }
+}
+
+.new_table_import_csv {
+    .column_name {
+      padding: 0;
+    }
+
+    .slick-headerrow-columns {
+      height: 18px;
+    }
+}
+
+.existing_table_import_csv {
+  .slick-headerrow-columns {
+    height: 32px;
+  }
+
+  .slick-headerrow-column {
+    height: auto;
+  }
+
+  .slick-header-column:hover {
+    background: none;
+  }
+  .column_name {
+    display: block;
+    padding: 5px;
+    font-size: $default-font-size;
+  }
+}

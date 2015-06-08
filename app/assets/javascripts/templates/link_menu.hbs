@@ -1,0 +1,20 @@
+<span class="title">{{title}}</span>
+<a class="popup" href="#">
+	<span class="chosen">{{chosenText}}</span>
+</a>
+
+<div class="menu hidden popup_filter">
+    <div class="pointer"/>
+    <ul data-event="{{event}}" class="list">
+        {{#each options}}
+            <li data-type="{{data}}">
+                <span class="check {{#unless isChecked}}hidden{{/unless}}"></span>
+                {{#if disabled}}
+                    <span class="unavailable">{{text}}</span>
+                {{else}}
+                    <a href="#">{{text}}</a>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
+</div>

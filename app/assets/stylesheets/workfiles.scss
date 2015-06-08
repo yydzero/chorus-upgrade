@@ -1,0 +1,24 @@
+@import "_common";
+@import "compass/css3/border-radius";
+@import "compass/css3/opacity";
+
+@import "workfiles/_workfile_new";
+@import "workfiles/_workfile_show";
+@import "workfiles/_workfile_sidebar";
+@import "workfiles/_results_console";
+
+.image_workfile_content {
+    background: $core-white;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+button .down_caret {
+
+/*     @include triangle-css(down, #aaa, 8px, 4px); */
+/*     @include triangle-glyph(down); */
+    
+    margin: 0 0 0 $caret-margin;
+}

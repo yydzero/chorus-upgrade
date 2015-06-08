@@ -1,0 +1,25 @@
+.dataset_preview.dialog {
+    &.dialog {
+        h1 {
+            @include ellipsis;
+        }
+    }
+
+/* to be deleted when final */
+/*     .form_controls { */
+/*         margin-top: 0px; */
+/*     } */
+
+    .results_console {
+        .execution {
+            h1.title {
+                display: none;
+            }
+        }
+
+        .bottom_gutter {
+            display: none;
+        }
+
+    }
+}

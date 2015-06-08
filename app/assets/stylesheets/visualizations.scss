@@ -1,0 +1,94 @@
+@import "_common";
+
+$default-image-width: 920px;
+$default-image-height: 340px;
+
+$default-stroke-chart-thin: 0.4;
+$default-stroke-chart-tick: .25;
+
+svg.chart {
+    background: #FFFFFF;
+    height: $default-image-height;
+    width: $default-image-width;
+
+    line {
+        stroke-width: $default-stroke-chart-thin;
+        stroke: #444;
+    }
+
+    path {
+        fill: none;
+    }
+
+    .ytick, .xtick {
+        stroke-dasharray: 1;
+        stroke-width: $default-stroke-chart-tick;
+        stroke: #aaa;
+    }
+
+    .axis_edge line {
+        stroke-width: $default-stroke-chart-thin;
+        stroke: #444;
+    }
+
+    text {
+        font-size: 12px;
+        font-weight: $semibold;
+        fill: $color-text2;
+    }
+
+    .xaxis, .yaxis, .axis {
+        line {
+            stroke-width: $default-stroke-chart-thin;
+            stroke: #444;
+        }
+
+        .grid, .grid line {
+            stroke-dasharray: 1;
+            stroke-width: 0.25;
+            stroke: #444;
+        }
+    }
+
+    &.time_series path {
+        stroke-width: 0.6;
+        stroke: black;
+    }
+
+    &.boxplot {
+        .quartile {
+            fill: $chart-fill-color;
+        }
+
+        .midline, .whisker, .median {
+            stroke: #000000;
+            stroke-width: 1.0;
+        }
+    }
+
+    &.frequency {
+        rect {
+            fill: $chart-fill-color;
+        }
+    }
+
+    &.timeseries {
+        path.series {
+            stroke-width: 5.0;
+            stroke: $chart-fill-color;
+        }
+    }
+
+    &.histogram {
+        rect.bar {
+            fill: $chart-fill-color;
+        }
+    }
+
+    &.heatmap {
+        rect.bin {
+            stroke-width: 1;
+            stroke: #FFFFFF;
+        }
+    }
+}

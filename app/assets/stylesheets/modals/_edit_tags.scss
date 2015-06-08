@@ -1,0 +1,31 @@
+.edit_tags {
+    .dialog_content {
+        .tag_input_instruction {
+          text-align: center;
+        }
+        .tags_input {
+
+            border: none;
+            // padding: 0px;
+            padding: 0px 15px 0px 15px;
+
+            .text-core {
+                .text-wrap {
+                    overflow-y: auto;
+                    input {
+                        margin: 3px 3px 3px 0px;
+                    }
+                }
+            }
+            .text-tags {
+                height: 140px;
+                overflow-y: auto;
+            
+                .text-tag {
+                    margin: 3px;
+                }
+            }
+        }
+    }
+    
+}

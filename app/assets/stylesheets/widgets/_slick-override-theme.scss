@@ -1,0 +1,62 @@
+@import "common";
+
+.slick-header-columns {
+  background: none;
+}
+
+.slick-header-column {
+  background: none;
+}
+
+.slick-header-column:hover, .slick-header-column-active {
+  background: white;
+}
+
+.slick-group-toggle.expanded {
+  background: none;
+}
+
+.slick-group-toggle.collapsed {
+  background: none;
+}
+
+// from _slick.grid.scss */
+.slick-sort-indicator-desc,
+.slick-sort-indicator-asc {
+  background-image: none;
+}
+
+.slick-sort-indicator-desc {
+//   @include triangle-css(down, $default-font-color, 10px, 5px); */
+	font-style: normal;
+	@include triangle-glyph(down);
+	color: $default-font-color;
+  	margin-top: 4px;
+}
+
+.slick-sort-indicator-asc {
+//   @include triangle-css(up, $default-font-color, 10px, 5px); */
+	font-style: normal;
+	@include triangle-glyph(up);
+	color: $default-font-color;
+}
+
+.slick-header-column-sorted {
+  font-style: italic;
+}
+
+.slick-sort-indicator {
+  display: inline-block;
+//   width: auto; */
+//   height: auto; */
+  margin-left: auto;
+  right: 10px;
+  top: 2px;
+  position: absolute;
+}
+.slick-header-sortable {
+  .slick-column-name {
+    padding-right: 15px;
+  }
+}
+

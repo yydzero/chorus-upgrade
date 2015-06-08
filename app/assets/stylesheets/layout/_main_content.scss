@@ -1,0 +1,92 @@
+#main_content {
+/*     border: $border-canon; */
+    border-right: $border-canon;
+/*     @include border-radius(3px); */
+}
+
+.content_header {
+    background: #FFFFFF;
+    min-height: 36px;
+    padding: 12px $padding-x 5px;
+    border-bottom: $border-canon;
+    @include border-top-radius(3px);
+
+    .tags_input {
+        border: none;
+        .text-core .text-wrap .text-tags {
+            cursor: inherit;
+            .text-tag div.text-button {
+                padding-right: 1px;
+            }
+        }
+
+        .text-remove,
+/*         .tag-remove, */
+        .transition-border, #tag_editor {
+            display: none;
+        }
+    }
+
+    h1 {
+        @include ellipsis;
+        padding-top: 16px;
+        padding-bottom: 7px;
+        margin-right: 25%;
+        
+        @include heading-normal;
+    }
+
+    .icon {
+        padding-top: 6px;
+        float: left;
+        padding-right: 5px;
+    }
+
+    .menus {
+        float: right;
+        text-align : right;
+        margin-top:25px;
+        height: 25px;
+        @include after-clearfix;
+    }
+}
+
+.list_header {
+    @include toggle-menus;
+
+    .title {
+        img {
+            float: left;
+        }
+        h1 {
+            padding-left: 5px;
+        }
+    }
+
+    select, .ui-selectmenu-button .ui-button {
+        display: block;
+        min-width: 215px;
+    }
+}
+
+.content_details {
+    border-bottom: $border-canon;
+}
+
+
+.content_footer {
+    height: auto;
+    border-top: $border-canon;
+}
+
+.tableau_icon {
+  display:inline-block;
+  vertical-align:-3px;
+
+  margin-left:1px;
+  margin-right:2px;
+
+  height: 16px;
+  width:16px;
+  background-image: url("/images/general/tableau_icon.png");
+}

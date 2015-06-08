@@ -1,0 +1,157 @@
+.pick_dataset_with_action,
+.import_datasets_picker_list {
+    .list {
+        .text {
+            .main {
+                width: 350px;
+            }
+        }
+    }
+}
+
+.pick_dataset_with_action,
+.import_datasets_picker_list,
+.workfile_picker_list {
+    .search {
+        padding: 5px 10px;
+        border-bottom: $border-canon;
+    }
+
+    .list_content_details {
+        width: auto;
+    }
+
+    .list {
+        overflow: auto;
+        max-height: 363px;
+        li {
+            .actions {
+                float: right;
+                height: 35px;
+                line-height: 35px;
+                padding-right: 10px;
+
+                a {
+                    font-size: $small-font;
+                }
+
+                .separator {
+                    color: $color-text3;
+                    margin: 0 $separator-space;
+                }
+            }
+
+            .text {
+                .main {
+                    .name {
+                        @include ellipsis;
+                        @include font-normal-alpha;
+                    }
+                }
+            }
+
+            .column_count {
+                @include secondary-text-small;
+            }
+
+            &.selected {
+                background-color: $picklist-selected-background-color;
+
+                .name, .column_count, a {
+                    color: white;
+                }
+
+                .spacer_left, .spacer_right {
+                    background-color: $picklist-selected-background-color;
+                    margin-bottom: -1px;
+                }
+
+                &:last-child {
+                    .spacer_left, .spacer_right {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .original a.join {
+                @include secondary-text-small;
+                cursor: default;
+            }
+        }
+    }
+
+    .canonical_name {
+        a {
+            font-size: inherit;
+            border-bottom: dotted 1px;
+
+			@include menu-triangle-glyph; 
+        }
+    }
+}
+
+.join_configuration {
+    .join_tables_content {
+        padding: 20px;
+        padding-top: 10px;
+
+        label {
+            margin-top: 15px;
+            margin-bottom: 4px;
+            display: block;
+            width: 326px;
+        }
+
+        select {
+            display: block;
+            width: 326px;
+        }
+    }
+}
+
+.preview_columns {
+    .list_container {
+        max-height: 10 * 36px;
+        overflow-y: auto;
+    }
+
+//     .list { */
+//         margin-right: 20px; */
+//         border-right: 1px solid $border-color-dark; */
+//     } */
+
+    .sub_header {
+        .chorus_search_container {
+            margin-top: 5px;
+            float: right;
+            width: 250px;
+//             display: inline-block; */
+        }
+
+        .name {
+            display: inline-block;
+            max-width: 165px;
+            @include ellipsis;
+            font-weight: $semibold;
+        }
+    }
+
+    .column_count {
+        vertical-align: top;
+    }
+
+    .text {
+        .name {
+            @include font-normal-alpha;
+        }
+
+        .comment {
+            @include secondary-text-small;
+        }
+    }
+
+}
+
+.join_schemas.components_menu {
+    width: auto;
+}

@@ -1,0 +1,62 @@
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* * */
+/* .form_controls= the 'footer' section at bottom of dialogs with the buttons */
+/* * */
+
+#dialog_bottom {
+    height: 50px;
+}
+
+.popup .form_controls {
+    background-color: $dialog-header-background;
+    border-top: $border-canon;
+
+    .links,
+    button {
+         @include vertical-align;
+    }
+
+    .links {
+        margin-left: 14px;
+        float: left;
+    }
+}
+
+.controls,
+.form_controls {
+    button {
+        display: inline-block;
+        
+        /* general rule to float left a form button at bottom */
+        &.left {
+            float: left;
+        }
+        &.left:first-child {
+            padding-left: 0;
+        }
+        
+
+        div[aria-role=progressbar] {
+            top: -4px;
+            left: 17px;
+            display: inline-block;
+            > group {
+                /* Position fixes for IE8 VML fallback */
+                position: absolute;
+                bottom: 7px;
+                left: 0px;
+            }
+        }
+
+        &.is_loading {
+            padding-right: 35px;
+        }
+    }
+}
