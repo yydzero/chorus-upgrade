@@ -98,3 +98,5 @@ screenshot*.html
 
 # Ignore built hadoop jars
 /vendor/hadoop/hdfs-query-service*.jar
+
+.sass-cache

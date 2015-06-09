@@ -10,10 +10,10 @@ gem 'activeresource'
 gem 'protected_attributes'
 
 gem 'will_paginate', '3.0.4'
-gem 'net-ldap', '0.11',    :require => false
+gem 'net-ldap', '0.11', :require => false
 gem 'paperclip', '4.2.1'
 gem 'queue_classic', :github => 'Chorus/queue_classic'
-gem 'clockwork',     :require => false
+gem 'clockwork', :require => false
 gem 'allowy', '0.4.0'
 gem 'jetpack', :github => 'Chorus/jetpack', :branch => '6c9253195b+chorus', :require => false
 gem 'nokogiri'
@@ -47,16 +47,14 @@ platform :jruby do
   gem 'activerecord-jdbcpostgresql-adapter'
 end
 
-group :assets do
-  gem 'sass-rails'
-  gem 'compass-rails'
-  gem 'handlebars_assets'
-  gem 'therubyrhino'
-  gem 'uglifier'
-  gem 'yui-compressor', '0.12.0'
-  gem 'turbo-sprockets-rails3'
-  gem 'jquery-rails', '2.1.4'
-end
+# assets
+gem 'sass-rails'
+gem 'compass-rails'
+gem 'handlebars_assets'
+gem 'therubyrhino'
+gem 'uglifier'
+gem 'yui-compressor', '0.12.0'
+gem 'jquery-rails', '2.1.4'
 
 group :integration do
   gem 'capybara', "~> 2.0.0", :require => false
@@ -74,16 +72,16 @@ group :test, :integration, :packaging, :ci_jasmine, :ci_legacy, :ci_next do
   gem 'timecop'
   gem 'hashie'
   gem 'vcr', '~> 2.3.0'
-  gem 'fakefs',              :require => false
+  gem 'fakefs', :require => false
   gem 'chunky_png'
-  gem 'database_cleaner',    :require => false
+  gem 'database_cleaner', :require => false
   gem 'poltergeist'
 end
 
 group :development, :test, :integration, :packaging, :ci_jasmine, :ci_legacy, :ci_next do
-  gem 'foreman', '>= 0.62',      :require => false
-  gem 'rake',                    :require => false
-  gem 'rspec', '2.14.1',                :require => 'rspec/core/rake_task'
+  gem 'foreman', '>= 0.62', :require => false
+  gem 'rake', :require => false
+  gem 'rspec', '2.14.1', :require => 'rspec/core/rake_task'
   gem 'jasmine', :github => 'pivotal/jasmine-gem'
   gem 'jasmine-core', :github => 'pivotal/jasmine'
   gem 'fixture_builder'
