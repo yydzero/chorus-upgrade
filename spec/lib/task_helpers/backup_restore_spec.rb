@@ -1,10 +1,11 @@
 require 'spec_helper'
 require 'timecop'
 
-require 'backup_restore'
 require 'pathname'
 
-describe 'BackupRestore' do
+require "#{Rails.root}/lib/task_helpers/backup_restore"
+
+describe BackupRestore do
   describe 'Backup' do
     describe ".backup" do
       context "with a fake chorus installation in a temporary directory" do
