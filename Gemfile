@@ -45,6 +45,7 @@ platform :jruby do
 end
 
 group :test do
+  gem 'minitest'
   gem 'rr', :require => false
   gem 'fuubar'
   gem 'factory_girl'

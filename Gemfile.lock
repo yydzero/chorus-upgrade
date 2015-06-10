@@ -327,6 +327,7 @@ DEPENDENCIES
   license_finder (~> 0.8.1)
   logger-syslog
   messengerjs-rails
+  minitest
   mizuno
   net-ldap (= 0.11)
   newrelic_rpm
@@ -356,4 +357,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.10.2
+   1.10.3
