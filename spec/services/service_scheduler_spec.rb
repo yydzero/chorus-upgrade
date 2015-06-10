@@ -3,7 +3,7 @@ require 'service_scheduler'
 
 class ServiceScheduler
   def job_named(job)
-    @@manager.events.find { |event|
+    Clockwork.manager.events.find { |event|
       event.job == job
     }
   end
@@ -11,7 +11,7 @@ end
 
 module Clockwork
   def self.config
-    @@manager.config
+    Clockwork.manager.config
   end
 
   class Manager
