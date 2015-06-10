@@ -15,7 +15,7 @@ module SoftDelete
   end
 
   def deleted?
-    deleted_at.present?
+    deleted_at.present? || being_destroyed?
   end
 
   def being_destroyed?
