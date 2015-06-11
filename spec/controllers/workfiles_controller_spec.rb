@@ -76,7 +76,7 @@ describe WorkfilesController do
     end
 
     describe "pagination" do
-      let(:sorted_workfiles) { workspace.workfiles.sort_by! { |wf| wf.file_name.downcase } }
+      let(:sorted_workfiles) { workspace.workfiles.order("LOWER(file_name)") }
 
       it "defaults the per_page to fifty" do
         get :index, :workspace_id => workspace.id
