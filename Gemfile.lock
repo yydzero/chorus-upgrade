@@ -428,7 +428,7 @@ DEPENDENCIES
   fuubar
   handlebars_assets
   hashie
-  headless (= 1.0.1)
+  headless
   honor_codes (~> 0.1.0)
   jasmine!
   jasmine-core!
