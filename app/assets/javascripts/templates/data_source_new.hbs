@@ -1,0 +1,237 @@
+<form action="#">
+    <div class="girdle">
+        
+        <div>
+            <label for="data_sources">{{t "datasource.type"}}</label><br/>
+            <select class="data_sources" id="data_sources">
+                <option selected name="select_one" value="">{{t "selectbox.select_one"}}</option>
+                <option name="register_existing_greenplum" value="register_existing_greenplum">{{t "datasource.greenplum"}}</option>
+                <option name="register_existing_postgres" value="register_existing_postgres">{{t "datasource.postgres"}}</option>
+                {{#if oracleConfigured}}
+                    <option name="register_existing_oracle" value="register_existing_oracle">{{t "datasource.oracle"}}</option>
+                {{/if}}
+                <option name="register_existing_hdfs" value="register_existing_hdfs">{{t "datasource.hdfs"}}</option>
+                <option name="register_existing_hawq" value="register_existing_hawq" hawq="true">{{t "datasource.hawq"}}</option>
+                <option name="register_existing_jdbc" value="register_existing_jdbc">{{t "datasource.jdbc"}}</option>
+                <option name="register_existing_jdbc_hive" value="register_existing_jdbc_hive">{{t "datasource.jdbc_hive"}}</option>
+                {{#if gnipConfigured}}
+                    <option name="register_existing_gnip" value="register_existing_gnip">{{t "datasource.gnip"}}</option>
+                {{/if}}
+            </select>
+        </div>
+
+
+        <!-- GPDB -->
+        <div class="data_source_fields collapsed register_existing_greenplum">
+            {{formInfoBlock "data_sources.new_dialog.register_existing_greenplum_help_text"}}
+            
+            {{generalDataSourceFields}}
+ 
+            {{dbDataSourceFields defaultGpdbFields}}
+            
+            {{generaldBAccountFields}}
+            
+            <div>
+                <input type="checkbox" name="shared" id="register_greenplum_shared"/>
+                <label for="register_greenplum_shared">{{t "data_sources.dialog.is_community_account"}}
+                    <span class="fa fa-question-circle help" data-text='{{t "data_sources.new_dialog.is_community_account.help_text"}}'></span>
+                </label>
+            </div>
+            
+            <div>
+                <input type="checkbox" id="gpdb_ssl" name="ssl"/>
+                <label for="gpdb_ssl">{{t "data_sources.dialog.use_ssl"}}</label>
+            </div>
+        </div>
+
+        <!-- HAWQ -->
+        <div class="data_source_fields collapsed register_existing_hawq">
+            {{formInfoBlock "data_sources.new_dialog.register_existing_hawq_help_text"}}
+            
+            {{generalDataSourceFields}}
+ 
+            {{dbDataSourceFields defaultGpdbFields}}
+            
+            {{generaldBAccountFields}}
+            
+            <div>
+                <input type="checkbox" name="shared" id="register_hawq_shared"/>
+                <label for="register_hawq_shared">{{t "data_sources.dialog.is_community_account"}}
+                    <span class="fa fa-question-circle help" data-text='{{t "data_sources.new_dialog.is_community_account.help_text"}}'></span>
+                </label>
+            </div>
+            
+            <div>
+                <input type="checkbox" id="hawq_ssl" name="ssl"/>
+                <label for="hawq_ssl">{{t "data_sources.dialog.use_ssl"}}</label>
+            </div>
+        </div>
+
+
+        <!-- POSTGRES -->
+        <div class="data_source_fields collapsed register_existing_postgres">
+            {{formInfoBlock "data_sources.new_dialog.register_existing_postgres_help_text"}}
+                        
+            {{generalDataSourceFields}}
+
+            {{dbDataSourceFields defaultGpdbFields}}
+
+            {{generaldBAccountFields}}
+
+
+            <div>
+                <input type="checkbox" name="shared" id="register_postgres_shared"/>
+                <label for="register_postgres_shared">{{t "data_sources.dialog.is_community_account"}}
+                    <span class="fa fa-question-circle help" data-text='{{t "data_sources.new_dialog.is_community_account.help_text"}}'></span>
+                </label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="pg_ssl" name="ssl"/>
+                <label for="pg_ssl">{{t "data_sources.dialog.use_ssl"}}</label>
+            </div>
+        </div>
+
+
+        <!-- ORACLE -->
+        <div class="data_source_fields collapsed register_existing_oracle">
+            {{formInfoBlock "data_sources.new_dialog.register_existing_oracle_help_text"}}
+
+            {{generalDataSourceFields}}
+
+            {{dbDataSourceFields}}
+
+            {{generaldBAccountFields}}
+
+            <div>
+                <input type="checkbox" name="shared" id="register_oracle_shared"/>
+                <label for="register_oracle_shared">{{t "data_sources.dialog.is_community_account"}}
+                    <span class="fa fa-question-circle help" data-text='{{t "data_sources.new_dialog.is_community_account.help_text"}}'></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- JDBC -->
+        <div class="data_source_fields collapsed register_existing_jdbc">
+            {{formInfoBlock "data_sources.new_dialog.register_existing_jdbc_help_text"}}
+
+            {{generalDataSourceFields}}
+
+            <div>
+            {{jdbcDataSourceFields}}
+            </div>
+
+            {{generaldBAccountFields}}
+
+            <div>
+                <input type="checkbox" name="shared" id="register_jdbc_shared"/>
+                <label for="register_jdbc_shared">{{t "data_sources.dialog.is_community_account"}}
+                    <span class="fa fa-question-circle help" data-text='{{t "data_sources.new_dialog.is_community_account.help_text"}}'></span>
+                </label>
+            </div>
+        </div>
+
+
+        <!-- JDBC HIVE -->
+        <div class="data_source_fields collapsed register_existing_jdbc_hive">
+            {{formInfoBlock "data_sources.new_dialog.register_existing_jdbc_help_text"}}
+
+            {{generalDataSourceFields}}
+            
+            <div>
+            {{hdfsVersionsSelect true true}}
+            </div>
+            
+            <div>
+            {{jdbcDataSourceFields}}
+            </div>
+
+            <div>
+                <label>{{t "data_sources.dialog.authentication"}}</label>
+                
+                <div>
+                <input type="radio" id="hiveKerberos_nonKerberos" name="hiveKerberos" value="false" checked/>&nbsp;
+                <label for="hiveKerberos_nonKerberos">{{t "data_sources.dialog.account_password"}}</label>
+                </div>
+                
+                <div>
+                <input type="radio" id="hiveKerberos_kerberos" name="hiveKerberos" value="true"/>&nbsp;
+                <label for="hiveKerberos_kerberos">{{t "data_sources.dialog.kerberos"}}</label>
+                </div>
+            </div>
+
+            {{generaldBAccountFields}}
+
+            {{jdbcHiveDataSourceFields}}
+
+            <div>
+                <input type="checkbox" name="shared" id="register_jdbc_hive_shared"/>
+                <label for="register_jdbc_hive_shared">{{t "data_sources.dialog.is_community_account"}}
+                    <span class="fa fa-question-circle help" data-text='{{t "data_sources.new_dialog.is_community_account.help_text"}}'></span>
+                </label>
+            </div>
+        </div>
+
+
+        <!-- HDFS -->
+        <div class="data_source_fields collapsed register_existing_hdfs">
+            {{formInfoBlock "data_sources.new_dialog.register_existing_hdfs_help_text"}}
+
+            <input class="hidden" type="checkbox" name="shared" checked="checked"/>
+
+            {{generalDataSourceFields}}
+
+            {{hdfsVersionsSelect true false}}
+            
+            {{hdfsDataSourceFields this}}
+        </div>
+
+
+        {{#if gnipConfigured}}
+            <!-- GNIP -->
+            <div class="data_source_fields collapsed register_existing_gnip">
+                {{formInfoBlock "data_sources.new_dialog.register_existing_gnip_help_text"}}
+    
+                {{generalDataSourceFields}}
+
+                <div>
+                    <label class="required gnip_host" name="host" for="streamUrl">
+                        {{t "data_sources.dialog.gnip_url"}}
+                        <span class="fa fa-question-circle help" data-text='{{t "data_sources.dialog.gnip_help_text"}}'></span>
+                    </label>
+                    <input class="gnip_host" type="text" id="streamUrl" name="streamUrl" maxlength="255"/>
+                </div>
+
+                <div class="multiple_fields">
+                    <div class="width_half_left">
+                        <label class="gnip_username required" name="username" for="gnip_username">{{t "data_sources.dialog.gnip_username"}}</label>
+                    </div>
+
+                    <div class="width_half_right">
+                        <label class="gnip_password required" name="password" for="gnip_password">{{t "data_sources.dialog.gnip_password"}}</label>
+                    </div>
+                </div>
+
+                <div class="multiple_fields">
+                    <div class="width_half_left">
+                        <input class="gnip_username" type="text" id="gnip_username" name="username" maxlength="255" />
+                    </div>
+
+                    <div class="width_half_right">
+                        <input class="gnip_password" type="password" id="gnip_password" name="password" maxlength="255" autocomplete="off"/>
+                    </div>
+                </div>
+
+            </div>
+        {{/if}}
+
+        {{> legendRequired}}
+        
+    </div>
+    <!-- END girdle -->
+    
+    <div id="dialog_bottom" class="form_controls">
+        <button type="submit" class="submit modalish" tabindex="99" disabled="disabled">{{t "data_sources.new_dialog.save"}}</button>
+        <button type="button" class="cancel modalish" tabindex="100">{{t "actions.cancel"}}</button>
+    </div>
+</form>

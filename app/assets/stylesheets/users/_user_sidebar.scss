@@ -1,0 +1,37 @@
+#sidebar{
+    .user_sidebar {
+        .info {
+            .full_name {
+                @include ellipsis;
+                @include heading-sidebar;
+                margin-bottom: 0;
+            }
+
+            .title {
+                @include secondary-text-small;
+            }
+        }
+    }
+  .kaggle_user_sidebar {
+    .multiple_selection {
+      box-shadow: 0 0 4px #999 inset;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      padding: 10px;
+      background-color: $shaded-background-color;
+
+      .count {
+        font-size: 18px;
+        font-weight: $semibold;
+        display: inline-block;
+        margin-bottom: 8px;
+      }
+
+      li a {
+        font-size: $small-font;
+        font-weight: $semibold;
+      }
+    }
+  }
+}

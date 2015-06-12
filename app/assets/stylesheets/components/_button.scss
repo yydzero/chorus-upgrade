@@ -1,0 +1,62 @@
+@import "compass/css3/opacity";
+@import "_common";
+@import "_button_common";
+
+a.button,
+button,
+input[type=submit] {
+    -webkit-appearance: initial;
+    display: inline-block;
+    color: $default-font-color;
+    line-height: ($button-height - 2px);
+    vertical-align: middle;
+    margin: 0;
+    padding: 0 $button-padding-sides;
+    vertical-align: middle;
+    cursor: pointer;
+    outline-color: $button-border-color;
+    font-family: $font-family;
+
+    &:disabled {
+        cursor: initial;
+    }
+}
+
+button.modalish,
+.button_modalish {
+    @include secondary-button;
+
+    &.cancel,
+    &.close_dialog {
+        // turn off all the visual
+        color: $default-link-color;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+
+        &:disabled {
+            background: transparent;
+        }
+    }
+    
+    // overrides for the cancel button "link" so that it is closer to the other buttons */
+    &.cancel {
+        min-width: 75px;
+        margin-right: 0px;
+    }
+
+    &[type='submit'], 
+    &.submit, 
+    &.save {
+        @include primary-button;
+    }
+
+    &:disabled {
+        color: $low-light-type;
+    }
+}
+
+.button_action {
+    @include actionary-button;
+
+}

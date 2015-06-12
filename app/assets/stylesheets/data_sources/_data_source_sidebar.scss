@@ -1,0 +1,73 @@
+.data_source_list_sidebar {
+    .info {
+        margin-bottom: 10px;
+    }
+
+    .account_info {
+        vertical-align: middle;
+        margin-bottom: 10px;
+
+        img {
+            vertical-align: middle;
+            padding-right: 4px;
+        }
+        
+        .datasource_access_panel {
+            margin: 10px 0px 10px 0px;
+            width: 250px;
+            
+            .panelcontent {
+                margin: 5px;
+            }
+            
+            .fa {
+                margin-right: 5px;
+            }
+            
+            &.has_access {
+                border: 1px solid #bbccaa;
+                border-radius: 3px;
+                background-color: #DDEEDD;
+            }
+            &.no_access {
+                border: 1px solid #eecc99;
+                border-radius: 3px;
+                background-color: #ffeecc;
+            }
+        }
+    }
+
+    .data_source_name {
+        @include ellipsis;
+        @include heading-sidebar;
+    }
+
+    .data_source_type {
+        @include secondary-text-small;
+    }
+
+    .data_source_configuration_details {
+        dl {
+            padding-right: 8px;
+            font-size: $default-font-size;
+            line-height: 19px;
+        }
+
+        dt {
+            @include font-normal-alpha;
+            float: left;
+            clear: left;
+        }
+
+        dd {
+            float: right;
+            width: 142px;
+            text-align: right;
+            @include ellipsis;
+        }
+    }
+
+    .tabbed_content_area .selected {
+        display: block;
+    }
+}

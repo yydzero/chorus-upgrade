@@ -1,0 +1,32 @@
+.workspace_association {
+	display: inline-block;
+	margin-right: 25px;
+}
+
+// TODO item_metadata is used in many places. Generalize this class rule
+.item_metadata {
+    line-height: 20px;
+
+    @include font-secondary-content;
+
+    a {
+        @include font-secondary-link;
+        @include ellipsis;
+        max-width: 70%;
+    }
+
+    .open_other_menu {
+        @include menu-triangle-glyph;
+        color: $brand-dark;
+    }
+
+    .other_menu {
+        display: none;
+    }
+}
+
+.found_in_other_workspaces_menu {
+    li {
+        line-height: 18px;
+    }
+}

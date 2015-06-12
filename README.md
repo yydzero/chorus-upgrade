@@ -1,28 +1,18 @@
-# What is this repo?
+This ReadMe mirrors our [Github Wiki page](https://github.com/Chorus/chorus/wiki), which houses information for developers contributing to the OpenChorus project.
 
-@prakash-alpine & @kevin-alpine are upgrading Chorus to work with the latest versions of Rails, RSpec, and other gems,
-as well as performing other tasks:
+Browse to the [Wiki pages list](https://github.com/Chorus/chorus/wiki/_pages) to review what's available here.Key pages include:
 
-* removing the dependency on postgres, and restoring database agnosticism
-* removing the dependency on the solr search plugin
-* swapping out the queue_classic background processing library for the more modern [Sidekiq](http://sidekiq.org/)
+1. [Contributing to Chorus](https://github.com/Chorus/chorus/wiki/Contributing-to-Chorus)
+1. [Architecture Overview](https://github.com/Chorus/chorus/wiki/Architecture-Overview)
+1. [Javascript Architecture](https://github.com/Chorus/chorus/wiki/Javascript-Architecture)
+1. [Building a Package for Deployment](https://github.com/Chorus/chorus/wiki/Building-a-Package-for-Deployment)
+1. [Getting started with Chorus development](https://github.com/Chorus/chorus/wiki/Getting-started-with-Chorus-development)
+1. [New-Class-Walkthrough](https://github.com/Chorus/chorus/wiki/New-Class-Walkthrough)
+1. [How to run Chorus tests](https://github.com/Chorus/chorus/wiki/How-to-run-Chorus-tests)
+1. [Test Writing Guidelines](https://github.com/Chorus/chorus/wiki/Test-Writing-Guidelines)
+1. [Code Style Guidelines](https://github.com/Chorus/chorus/wiki/Code-style)
+1. [Troubleshooting and Environment Notes](https://github.com/Chorus/chorus/wiki/Troubleshooting-and-Environment-Notes)
 
-When the work is done, we will copy the models and model specs from this repository, into the new 
-[persistence component](https://github.com/Chorus/ensemble/tree/master/components/persistence).  This repository will
-serve as a bridge between the [current Chorus repo](https://github.com/Chorus/chorus), and 
-[the new one](https://github.com/Chorus/ensemble). 
+Have a question? Reach us via the [development mailing list](https://groups.google.com/forum/?fromgroups#!forum/chorus-dev). 
 
-Here is a general plan of the work:
- 
-1. Upgrade from Rails 3.2 to 4.0 (following the [Rails Upgrade Guide](http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html)). 
-2. Upgrade from Rails 4.0 to 4.1. 
-3. Upgrade from RSpec 2 to RSpec 3 using the [automated Transpec tool](http://yujinakayama.me/transpec/). 
-4. Comment out all Solr related code. 
-5. Replace queue_classic with Sidekiq.
-6. Using sqlite3 as test database, try to remove postgres specific code.
-6. TBD misc other tasks 
-   
-As we upgrade, with each step, we'll keep the ~2900 test RSpec model testing suite green.  I will carry out the work
-in a series of branches so that each step can be reviewed via Github PRs.  We will be able to merge ongoing work from
-the Chorus repo by `cp -R app/models .` and then using `git rebase` to reapply our upgrades to the new code.  (Likewise,
-although we don't anticipate this happening, we could potentially merge the upgrades back to the main Chorus repo.)
+If you are interested in accessing the latest commercially released version of Chorus, please [email Alpine Data Labs](mailto:support@alpinenow.com).

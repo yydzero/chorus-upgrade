@@ -1,0 +1,142 @@
+.workfile_sidebar {
+    .info {
+        .fileName {
+            @include ellipsis;
+            @include heading-sidebar;
+            margin-bottom: 10px;
+        }
+
+        .updated {
+            color: $color-text4;
+            margin-top: 5px;
+        }
+    }
+
+    .workfile_image {
+        display: none;
+    }
+}
+
+
+.workfile_sidebar {
+    .info {
+        margin-bottom: 20px;
+    }
+
+    html.ie8 & {
+        button {
+            font-size : 15px;
+        }
+
+    }
+}
+
+.workfile_sidebar {
+    .info {
+        margin: 5px 0 20px 0;
+    }
+
+    .version_list {
+        font-size: $small-font;
+//         span { 
+//         color: $link-color; */
+//         }
+
+    }
+}
+
+.workfile_version_list {
+    li {
+        position: relative;
+        max-width: 360px;
+
+        a {
+            padding-top: 10px;
+            display: inline-block;
+        }
+
+        &:first-child a {
+            /* qtip has some top padding already */
+            padding-top: 5px;
+        }
+
+        &:last-child .spacer {
+            border-bottom: none;
+        }
+
+        &:hover {
+            .version_title {
+                text-decoration: underline;
+            }
+        }
+
+//         img {
+//             display: inline-block;
+//             vertical-align: top;
+//         }
+
+        .version_info {
+            display: inline-block;
+            width: 80%;
+        }
+
+        .version_title {
+            @include font-menu;
+        }
+
+        .version_details {
+            margin-top: 2px;
+            @include secondary-text-small;
+            padding-bottom: 10px;
+        }
+
+        .spacer {
+            border-bottom: $border-canon;
+        }
+
+        a.delete_link {
+          position: absolute;
+          right: 0;
+          top: 0;
+          @include font-secondary-link;
+        }
+    }
+}
+
+
+
+.schema_menu {
+    overflow: auto;
+    max-height: 300px;
+
+/* alert */
+/* for some reason, this ul/li list was made different than the others in the app */
+/* such as those used for filters on a page of items. */
+/* needs to be reconciled so that they all work the same way */
+
+
+    li {
+        margin-left: 10px;
+        
+        .checkmark {
+/*          background-repeat: no-repeat; */
+/*          background-image: url("/images/check.png"); */
+            display: inline-block;
+            float: left;
+            position: relative;
+            left: -21px;
+            width: 0;
+
+			font-size: 16px;
+			color: #606060;
+        
+            &.hidden {
+                visibility: hidden;
+            }
+        }
+
+/*         a { */
+/*             cursor: pointer; */
+/*         } */
+    }
+}

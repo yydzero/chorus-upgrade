@@ -1,0 +1,308 @@
+@import "_browser_support";
+
+body .ui-draggable-dragging {
+    .name {
+        max-width: 60%;
+    }
+
+    .details {
+        float: right;
+        margin-top: 8px;
+        color: $color-text3;
+    }
+
+    @include grab_cursor;
+}
+
+#sidebar {
+    .multiple_selection { @include dark-sidebar-panel; }
+
+    &:focus {
+        outline: none;
+    }
+
+    width: $sidebar-width;
+    padding-left: $sidebar-padding-x;
+    padding-top: $sidebar-padding-top;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+//    #help {
+//        top: 1px;
+//        left: $sidebar-width - $help-pill-width - $guts-padding + $sidebar-padding-x;
+//    }
+
+    .spacer {
+        height: $breadcrumbs-height + $padding-y;
+    }
+
+    .info {
+        margin-bottom: 5px;
+
+        .name {
+            @include heading-sidebar;
+            margin-bottom: 5px;
+        }
+
+        .details {
+            @include secondary-text-small;
+        }
+    }
+
+    .image {
+        margin-top: $sidebar-padding-top;
+        
+        .workspace_image {
+            border: $border-canon;
+        }
+    }
+
+    .pairs {
+        font-size: $default-font-size;
+        line-height: 18px;
+
+        .pair {
+            display: block;
+            border-bottom: $border-canon;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            
+            &:last-child {
+            	border-bottom: none;
+            }
+        }
+
+        .key {
+            color: $color-text1;
+            font-weight: $semibold;
+        }
+
+        .value {
+            color: $color-text1;
+            word-wrap: break-word;
+        }
+    }
+
+    .members {
+
+        li {
+            display: inline-block;
+            vertical-align: middle;
+            height: $icon-image-height + 3px;
+            width: $icon-image-width + 3px;
+        }
+
+        .dialog {
+            font-size: $small-font;
+            font-weight: $semibold;
+            margin-left: 10px;
+        }
+    }
+
+    .notice {
+        a {
+            font-size: $small-font;
+        }
+        font-size: $small-font;
+        color: $color-text2;
+        padding: $dialog-padding;
+        background-color: $activity-stream-comment-background-color;
+        margin: auto;
+
+        .bottom {
+            display: inline-block;
+            margin: 8px 0;
+        }
+    }
+
+    .sidebar_content {
+        margin-bottom: $guts-padding-bottom;
+
+        & > .actions {
+            @include dark-sidebar-panel;
+        }
+
+        .tabbed_content_area {
+            .context {
+                font-size: $default-font-size;
+
+                span {
+                    vertical-align: bottom;
+                }
+
+                a {
+                    @include ellipsis;
+                    max-width: 140px;
+                    color: $link-color;
+                    
+                    @include menu-triangle-glyph;
+                }
+            }
+
+            .back {
+                font-size: $small-font;
+                font-weight: $semibold;
+            }
+
+            .none_found {
+                @include font-normal-beta;
+            }
+
+            .context, .back, .none_found {
+                margin: 4px 0px 15px 10px;
+            }
+
+            .data_tab_dataset {
+                .toggle_display {
+                    position: relative;
+                    width: 10px;
+                }
+            }
+        }
+    }
+}
+
+.function_tab {
+    li {
+        a {
+            @include grab_cursor;
+        }
+
+        &:hover {
+            background-color: $selected-row-hover-background-color;
+            @include grab_cursor;
+        }
+    }
+}
+
+.function_tab, .data_tab {
+    ul {
+        margin-top: 10px;
+    }
+
+    li {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: $color-text2;
+
+        img {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .name {
+            font-weight: $semibold;
+            padding-bottom: 0px;
+        }
+
+        .list_item_text {
+            margin-top: 2px;
+            margin-bottom: 2px;
+            font-size: $default-font-size;
+            display: inline-block;
+            max-width: 75%;
+            vertical-align: middle;
+            line-height: 19px;
+            word-break: break-all;
+        }
+    }
+
+    a.more {
+        display: block;
+        font-size: 13px;
+        font-weight: $semibold;
+        text-align: center;
+        margin-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .empty_selection {
+        .top {
+            @include secondary-text-small-semibold;
+        }
+    }
+
+    .schema_menu {
+        display: none;
+    }
+
+    .accordion {
+        li {
+            .dataset_title {
+                &:hover { @include grab_cursor; }
+            }
+
+            a { @include grab_cursor; }
+        }
+    }
+}
+
+.data_tab_dataset_column_list {
+    ul {
+        margin: 0 0 5px 0;
+    }
+
+    li {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: $color-text2;
+        cursor: pointer;
+        border-bottom: none;
+
+        .column_name {
+            font-weight: $semibold;
+            max-width: 60%;
+        }
+        .column_type {
+            color: $color-text3;
+            vertical-align: top;
+        }
+
+        &:hover {
+            @include grab_cursor;
+        }
+    }
+}
+
+.drag_helper {
+    width: 225px;
+    height: 29px;
+    z-index: $drag-z-index;
+    margin-top: 2px;
+    font-size: 14px;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    line-height: 19px;
+    font-weight: $semibold;
+    background-color: $selected-row-hover-background-color;
+    @include opacity(0.6);
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: $color-text2;
+
+    .name {
+        width: 175px;
+        display: inline-block;
+        @include ellipsis;
+    }
+
+    img {
+        margin-top: 2px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+#sidebar_wrapper .sidebar_schema_picker .ui-tooltip-content {
+    padding: 0;
+    white-space: nowrap;
+    ul {
+        overflow-x: hidden;
+        padding: 3px 10px;
+    }
+}

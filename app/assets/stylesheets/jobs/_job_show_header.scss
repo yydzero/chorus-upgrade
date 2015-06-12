@@ -1,0 +1,20 @@
+@import "_common";
+
+.job_information {
+    .label {
+        font-weight: $bold;
+    }   
+    .frequency, .next_run, .last_run, .owner {
+        display: inline-block;
+    }
+    .frequency {
+        width: 150px;
+    }
+    .next_run {
+        width: 250px;
+    }
+    .last_run {}
+    .owner {
+        @include ellipsis;
+    }
+}

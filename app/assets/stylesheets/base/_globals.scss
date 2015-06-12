@@ -1,0 +1,120 @@
+i {
+    font-size: $small-font;
+}
+
+*:focus {
+    outline: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+a {
+    color: $link-color;
+    font-size: $default-font-size;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+html, body {
+    color: $color-text1;
+    background-color: $body-background-color !important;
+    font-family: $font-family;
+    height: 100%;
+}
+
+label {
+    text-align: left;
+    font-size: $default-font-size;
+    color: $color-text3;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    font-size: $default-font-size;
+    padding: 2px 3px 3px 3px;
+    font-family: $font-family;
+    @include borderbox;
+}
+
+textarea {
+    resize: none;
+
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    display: inline;
+    width: auto;
+}
+
+input[type=checkbox] {
+    margin: 5px 4px 5px 0;
+}
+
+// form: red asterisk for required fields */
+.required::after {
+    content: "*";
+    color: $required-marker-color;
+    margin-left: 2.4px;
+    font-size: 1.04em;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.pull_left {
+    float: left;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.no_cursor {
+    cursor: none;
+}
+
+img.disabled {
+    @include opacity(0.25);
+}
+
+// Prevent focus outline on scrollable elements */
+.jspScrollable:focus {
+    outline: none;
+}
+
+.badge {
+    div {
+        height: 15px;
+        display: inline-block;
+        @include secondary-text-small;
+        font-weight: $semibold;
+        vertical-align: middle;
+        line-height: 14px;
+        color: white;
+    }
+    .left {
+        background: url(/images/ribbons/counter_orange_round1.png) no-repeat;
+        width: 6px;
+    }
+    .center {
+        background: url(/images/ribbons/counter_orange_2.png) repeat;
+    }
+    .right {
+        background: url(/images/ribbons/counter_orange_round3.png) no-repeat;
+        width: 8px;
+    }
+}
+
+// Removes the MSIE clear-button imposed on all text inputs
+::-ms-clear {
+  display: none;
+}

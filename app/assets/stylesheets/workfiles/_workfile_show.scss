@@ -1,0 +1,92 @@
+.workspace .fixed_header {
+    top: $workspace-header-height;
+}
+
+.fixed_header {
+  position: fixed;
+  min-width: $page-min-width - $sidebar-width - $sidebar-padding-x - 8;
+  left: $guts-padding;
+  margin-right: $sidebar-width + $sidebar-padding-x + 1;
+  right: 0px;
+  top: $header-height - 1;
+  z-index: $header-z-index - 10;
+}
+
+.workfile_content_details {
+  .auto_save {
+      color: $color-text4;
+  }
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+.drop_insertion_point {
+    margin-top: -3px;
+    margin-left: -2px;
+    display: none;
+    border: none;
+    position: absolute;
+    z-index: $drag-z-index + 1;
+    width:3px;
+    height: 1.2em;
+    background-color:$content-details-create-background-color;
+    border-radius: 1px;
+}
+
+.no_cursor_overlay {
+    display: none;
+    position: absolute;
+    z-index: $ridiculously-large-z-index;
+    width: 100%;
+    height: 100%;
+    top:  0px;
+    left:  0px;
+}
+
+.save_menu,
+.run_menu, 
+.schema_menu {
+    li {
+        padding: 5px;
+
+        a, span {
+            @include font-menu;
+        }
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &.disabled {
+                text-decoration: none;
+                cursor: default;
+                @include secondary-text-normal;
+            }
+        }
+
+        span.run_default, span.run_and_download {
+            color: $color-text4;
+        }
+
+        span.disabled {
+            color: $color-text4;
+        }
+
+        .menu_shortcut {
+            @include font-menu;
+            color: $color-text4;
+            float: right;
+            padding-left: (6 * $padding-x);
+        }
+    }
+}
+
+.alpine_workfile_content {
+    .alpine_workfile_image {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,99 @@
+@mixin action_bar_icon($name) {
+    .#{$name}.action_bar_icon {
+        background-image: url("/images/visualizations/create_icons/#{$name}_off.png");
+        &.selected {
+            background-image: url("/images/visualizations/create_icons/#{$name}_on.png");
+        }
+    }
+}
+
+$action-bar-height: 32px;
+
+.action_bar_icon {
+  width: 50px;
+  height: $action-bar-height;
+  display: inline-block;
+  vertical-align: middle;
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &.selected {
+    background-color: $content-details-chart-icon-selected-background-color;
+    position: relative;
+
+    .triangle {
+/*       display: inline-block; */
+      position: absolute;
+      left: 17px;
+      bottom: -10px;
+/*       @include triangle-css(down, $content-details-chart-icon-selected-background-color, 16px, 10px); */
+      	@include triangle-glyph(down);
+      	color: $content-details-chart-icon-selected-background-color;
+    }
+  }
+}
+
+.chart_type_title {
+  line-height: $action-bar-height;
+  vertical-align: middle;
+}
+
+.dataset_content_details {
+    .chorus_search_container {
+/*         display: inline-block; */
+        width: 50%;
+/*         margin-top: 3px; */
+    }
+    .chorus_search {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .sql {
+      line-height: 2;
+      @include ellipsis;
+      width: 100%;
+      display: block;
+    }
+
+  .pennant_bar {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    position: relative;
+    line-height: $action-bar-height - 2px;
+  }
+
+  .action_bar_pennant {
+    color: $core-white;
+    background-color: $content-details-create-background-color;
+    display: inline-block;
+    min-width: 65px;
+    padding-left: 8px;
+    vertical-align: middle;
+    line-height: $action-bar-height;
+  }
+  .triangle_right {
+/*     @include triangle-css(right, $content-details-create-background-color, 12px, $action-bar-height); */
+	@include triangle-glyph(right);
+	color: $content-details-create-background-color;
+/*     display: inline-block; */
+    vertical-align: top;
+  }
+
+  .info_bar {
+    padding: 7px 10px;
+  }
+
+  @include action_bar_icon(frequency);
+  @include action_bar_icon(histogram);
+  @include action_bar_icon(heatmap);
+  @include action_bar_icon(timeseries);
+  @include action_bar_icon(boxplot);
+  @include action_bar_icon(chorusview);
+}
+
+.select_all_or_none {
+	display: inline-block;
+}

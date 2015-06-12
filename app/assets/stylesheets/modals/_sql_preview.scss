@@ -1,0 +1,33 @@
+.sql_preview {
+    min-height: 120px;
+
+/* to be deleted when final */
+/*     .dialog_content { */
+/*         .form_controls { */
+/*             margin-top: 0px; */
+/*         } */
+/*     } */
+
+    .sql {
+        min-height: $texteditor-min-height;
+        max-height: $texteditor-min-height;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    .CodeMirror {
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .CodeMirror-scroll {
+        //avoid y-scrollbars
+        min-height: $texteditor-min-height - 2px;
+    }
+
+    .CodeMirror-gutter {
+        background-color: $body-background-color;
+    }
+}

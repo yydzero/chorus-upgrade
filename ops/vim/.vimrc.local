@@ -1,0 +1,68 @@
+set smarttab
+
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+
+" don't blink cursor
+set gcr=n:blinkon0
+set number
+set ic
+set hls
+set nobackup
+set nowritebackup
+set noswapfile
+set bg=dark
+
+set wildignore+=public/system
+set wildignore+=vendor
+set wildignore+=var/db
+
+" for test_server plugin
+nmap <D-S-F10> <Esc>:RunTestLine<CR>
+xmap <D-S-F10> <Esc>:RunTestLine<CR>
+imap <D-S-F10> <Esc>:RunTestLine<CR>
+nmap <D-F10> <Esc>:RunTest<CR>
+xmap <D-F10> <Esc>:RunTest<CR>
+imap <D-F10> <Esc>:RunTest<CR>
+nmap <D-F9> <Esc>:RunTestAgain<CR>
+xmap <D-F9> <Esc>:RunTestAgain<CR>
+imap <D-F9> <Esc>:RunTestAgain<CR>
+
+noremap <D-S-F8> <Esc>:call system("/Users/pivotal/workspace/chorus/launch_jasmine.sh " . expand("%"))<CR><C-l>
+map <D-S-F9> :!/Users/pivotal/workspace/chorus/launch_phantom_jasmine.sh %<CR>
+map <D-k> :Gstatus<CR>
+
+map <C-Q> <C-w>o:vsp<CR><C-W>l<D-T>
+map <D-Y> <C-w>o:vsp<CR><C-W>l<D-T>
+
+map <D-F> :Ack<cr>
+
+set nocursorline
+
+set foldmethod=indent
+
+let g:syntastic_mode_map = { 'mode': 'passive',
+                             \ 'active_filetypes': ['javascript'],
+                             \ 'passive_filetypes': [] }
+
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>""
+map <C-n> :tabnew<cr>
+
+autocmd FileType javascript set softtabstop=4 | set tabstop=4 | set shiftwidth=4
+autocmd FileType ruby       set softtabstop=2 | set tabstop=2 | set shiftwidth=2
+
+autocmd FileType * normal zR
+
+function! OpenHandlebars()
+    let file_path = "~/workspace/chorusrails/" . system("~/workspace/chorusrails/script/find_handlebars.rb " . expand("%"))
+    exec ":e " . file_path
+endfunction
+
+map <C-h> :call OpenHandlebars()<CR>
+map <D-H> :sp<CR><C-w>j<C-h>
+
+let g:CommandTMaxFiles = 100000
+colorscheme solarized
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+

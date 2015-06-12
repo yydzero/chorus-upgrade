@@ -1,0 +1,55 @@
+.data_source_list {
+
+    li {
+        background-color: #FFFFFF !important;
+    }
+
+    &.data_source_provider .details{
+        @include list-section-heading;
+        padding: 5px 10px;
+        background-color: $subheader-background-color;
+        border-top: $border-canon;
+        border-bottom: $border-canon;
+    }
+
+    .no_data_sources {
+        @include secondary-text-small;
+        margin: 10px;
+    }
+
+    .list.selectable input[type=checkbox] {
+        margin-top: 10px;
+    }
+
+    .datasource_images {
+        position: relative;
+    }
+        
+    img.state {
+        /*         position: absolute; */
+        /*         left: 26px; */
+        /*         width: 12px; */
+        /*         height: auto; */
+        position: relative;
+        float: left;
+        margin-right: 5px;
+        top: 10px;
+    }
+
+    img.provider {
+        float: left;
+        padding-right: 5px;
+    }
+
+    .data_source_details {
+        margin-left: 60px;
+    }
+
+    .description {
+        @include secondary-text-normal;
+    }
+
+    span.name{
+        color: $color-text3;
+    }
+}

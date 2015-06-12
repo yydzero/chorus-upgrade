@@ -1,0 +1,56 @@
+.comments {
+    margin-top: $activity-gutter;
+    margin-bottom: $activity-gutter;
+
+    > li {
+        .object {
+            display: none;
+        }
+
+        .author{
+            font-size: $default-font-size;
+            font-weight: $semibold;
+        }
+    }
+
+    li.more {
+        display: none;
+    }
+
+    .morelinks {
+        padding: $activity-gutter;
+        padding-top: 0;
+        a {
+            font-size: $small-font;
+
+            &.less {
+                display: none;
+            }
+        }
+    }
+
+    &.more {
+        li.more {
+            display: block;
+        }
+
+        .morelinks {
+            a.less {
+                display: inline;
+            }
+        }
+
+        a.more {
+            display: none;
+        }
+    }
+    
+    .icon {
+        position: relative;
+
+        .insight_ribbon {
+            white-space: nowrap;
+            top: -18px;
+        }
+    }
+}

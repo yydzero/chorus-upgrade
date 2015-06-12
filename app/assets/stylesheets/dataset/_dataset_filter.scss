@@ -1,0 +1,58 @@
+$remove-circle-color: $charcoal;
+
+/* $filterRow-margin-top: 3px;         *//* TODO: delete when final */
+$filterRow-height: 40px;
+$filterRow-padding-top: 3px;
+$filterRow-padding-bottom: 0px;
+       
+.filter_wizard {
+
+    .filter_content {
+        padding: 0 $dialog-padding-leftRight;
+        background-color: $body-background-color;
+    }
+    
+    .add_filter {
+        float: right;
+    }
+
+}
+
+.dataset_filter,
+.kaggle_filter {
+    padding-top: $filterRow-padding-top;
+    padding-bottom: $filterRow-padding-bottom;
+    height: $filterRow-height - ($filterRow-padding-top + $filterRow-padding-bottom);
+    border-bottom: 0;
+
+/* TODO: delete when final */
+/*     .remove { */
+/*         display: inline-block; */
+/*         margin-top: 4px; */
+/*         vertical-align: top; */
+/* 	    color: $remove-circle-color; */
+/*     } */
+
+    select, .ui-selectmenu-button .ui-button {
+        width: $selectlist-width-medium;
+        margin-right: 10px;
+    }
+
+    .ui-selectmenu-menu ul {
+      padding: 2px 8px 2px 2px;
+    }
+
+    input[type=text] {
+        width: 25%;
+        max-width: $input-width-medium;
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: top;
+    }
+
+    .filter.date input {
+        width: 80px;
+    }
+
+    .removeWidget {}
+}

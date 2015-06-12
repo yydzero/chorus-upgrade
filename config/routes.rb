@@ -1,5 +1,4 @@
 Chorus::Application.routes.draw do
-
   resource :sessions, :only => [:create, :destroy, :show]
   resource :config, :only => [:show], :controller => 'configurations'
   resource :license, :only => [:show]

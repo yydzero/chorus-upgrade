@@ -1,0 +1,25 @@
+.publish_to_tableau_dialog {
+  .target_location {
+    @include ellipsis;
+    padding-bottom: 8px;
+  }
+
+  label {
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  .username, .password, .sitename, .projectname {
+    margin-left: 0px;
+    width: $default-dialog-width/2 - 30px;
+    display: inline-block;
+  }
+
+  .password, .projectname {
+    margin-left: 25px;
+  }
+
+  .disabled {
+    color: #a9a9a9;
+  }
+}

@@ -1,0 +1,62 @@
+.remove_source {
+    margin: 0px 0px 0px 12px;
+    position: absolute;
+    right: 50px;
+    bottom: 7px;
+}
+
+.schema_picker,
+.database_picker,
+.location_picker {
+
+$select_width: 375px;
+    
+    a {
+        font-size: $small-font;
+    }
+
+    .execution_location_picker {
+        position: relative;
+    }
+
+    .half-width {
+        width: $select_width;
+        display: inline-block;
+
+        select {
+            width: $select_width;
+        }
+    }
+
+    .data_source {
+        margin-right: 25px;
+    }
+
+    .header_container {
+        margin-bottom: 3px;
+
+        a {
+            float: right;
+            margin-top: 8px;
+        }
+    }
+
+    .unavailable {
+        @include font-normal-beta;
+    }
+
+    .create_container {
+        a.cancel {
+            display: none;
+        }
+
+        &.show_cancel_link {
+
+            a.cancel {
+                display: inline;
+                float: right;
+                line-height: 28px;
+            }
+        }
+    }
+}

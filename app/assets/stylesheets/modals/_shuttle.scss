@@ -1,0 +1,184 @@
+$shuttle-list-item-height: 40px;
+
+.shuttle_widget {
+    background-color: $body-background-color;
+
+    .subheader {
+        border-bottom: $border-canon;
+        position: relative;
+        height: 35px;
+
+        .shuttle_left, 
+        .shuttle_right {
+            position: absolute;
+            width: 50%;
+            vertical-align: middle;
+            line-height: 25px;
+        }
+        
+        .shuttle_left {
+            left: 0;
+            border-right: $border-canon;
+        }
+        
+        .shuttle_right {
+            left: 50%;
+        }
+
+        .search_container {
+            padding-right: 15px;
+        }
+        .summary {
+            padding-left: 15px;
+        }
+
+        a {
+            float: right;
+            font-weight: $semibold;
+        }            
+
+        .chorus_search_container {
+            display:inline-block;
+            width: 70%;
+        }
+
+//         > div { */
+//             padding: 4px 0; */
+//         } */
+
+//     } */
+        
+        .selected_title,
+        .selected_count {
+            font-weight: $semibold;
+        }
+
+        .selected_count {
+            padding-left: 5px;
+        }
+
+    }
+
+    .fa-stack .fa-check {
+        top: -1px;
+    }
+
+    .shuttle_body {
+        position: relative;
+        height: (($shuttle-list-item-height + $default-border-width) * 8);
+    }
+
+    a {
+        font-size: $small-font;
+    }
+
+    .was_added {
+        color: $color-text3;
+        float: right;
+        font-size: $small-font;
+    }
+
+    li a {
+        float: right;
+    }
+
+    img.profile {
+        max-height: 100%;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    div.image {
+        position: relative;
+        display: inline-block;
+        width: $shuttle-list-item-height - 6px;
+        height: $shuttle-list-item-height - 10px;
+    }
+
+    ul {
+        position: absolute;
+        width: 50%;
+        top: 0;
+        bottom: 0;
+        vertical-align: top;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        li {
+            height: $shuttle-list-item-height;
+            border-bottom: $border-canon;
+            padding: 0;
+            line-height: $shuttle-list-item-height - 3px;
+
+            .name {
+                @include font-normal-alpha;
+                vertical-align: middle;
+                @include ellipsis;
+                padding-left: 10px;
+                display: inline-block;
+                max-width: 65%;
+            }
+        }
+
+// available = left-side of the 2column list */
+        &.available {
+            left: 0;
+            border-right: $border-canon;
+
+            li {
+                padding-right: 10px;
+
+                .checkmark {
+                    display: none;
+                    position: absolute;
+                    top: 17px;
+                    right: -2px;
+                    font-size: 10px;
+                    color: #77CC33;
+                }
+
+                &.added {
+                    // css to 'remove' a user from the available list when added */
+                    display: none;
+
+//                     when above is enabled, remove the following 4 */
+//                     .checkmark { */
+//                         display: inherit; */
+//                     } */
+//                     a { */
+//                         display: none; */
+//                     } */
+//                     .was_added { */
+//                         display: inline; */
+//                     } */
+                }
+
+//                 a { */
+//                     display: inline; */
+//                 } */
+
+                .was_added {
+                    display: none;
+                }
+            }
+        }
+        
+// selected = right-side of the 2column list */
+        &.selected {
+            left: 50%;
+
+            li {
+                display: none;
+                padding-left: 10px;
+                
+                // fix for the girdle border */
+                margin-right: -1 * ($dialog-padding-leftRight - 5);
+                padding-right: $dialog-padding-leftRight;
+                
+                &.added {
+                    display: block;
+                }
+            }
+        }
+    }
+}

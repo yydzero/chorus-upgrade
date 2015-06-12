@@ -1,0 +1,94 @@
+.search_result_list {
+    li {
+        background-color: #FFFFFF !important;
+    }
+
+    .list_content_details {
+        @include list-section-heading;
+        width: auto;
+        padding: 5px 10px;
+        background-color: $subheader-background-color;
+        border-top: $border-canon;
+        border-bottom: $border-canon;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: middle;
+
+        .pagination {
+            span, a {
+                font-size: 12px;
+                padding-left: 15px;
+            }
+        }
+    }
+
+    .count, .page_numbers {
+        font-size: 12px;
+        padding: 4px;
+        color: $color-text2;
+    }
+    .count {
+        font-weight: $semibold;
+    }
+
+    div.pagination .links .next {
+        padding-right: 10px;
+    }
+
+    span.previous, span.next {
+        color: $color-text4;
+    }
+
+    .result_item {
+        min-height: 45px;
+
+        em {
+            background-color: $search-highlight-color;
+            font-weight: $semibold;
+        }
+
+        .content {
+            @include font-normal-alpha;
+        }
+
+        .supporting_message, .more_comments {
+            span {
+                line-height: 1.5em;
+                vertical-align: baseline;
+            }
+        }
+
+        .comments, .more_comments, .supporting_message, .more_supporting_message, .column_description, .table_description{
+            margin: 0;
+
+            .comment {
+                padding: 3px 0;
+
+                .comment_type {
+                    padding-right: 5px;
+                }
+            }
+
+            .has_more_comments, .more_comments {
+                a {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .version_comments {
+            .version_comment {
+                color: $color-text2;
+                font-size: $default-font-size;
+                font-weight: $semibold;
+                line-height: 19px;
+                padding: 3px 0;
+            }
+
+            .comment_type {
+                padding-right: 5px;
+                font-size: 13px;
+            }
+        }
+    }
+}

@@ -1,0 +1,168 @@
+$label-width: 82px;
+
+
+.notes_new,
+.edit_note,
+.dialog.comment {
+
+    font-size: $small-font;
+    
+    textarea {
+        min-width: 350px;
+        min-height: 75px;
+        resize: none;
+    }
+
+    a {
+        font-size: $small-font;
+        font-weight: $semibold;
+    }
+
+    .options_area {
+        .file-wrapper {
+            margin-bottom: 2px;
+        }
+
+        .label {
+            color: $color-text2;
+            font-weight: $semibold;
+            width: 72px;
+            display: inline-block;
+        }
+
+        .separator {
+            color: $link-color;
+            margin: 0 $separator-space;
+        }
+
+        .attachment_links {
+            &.disabled {
+                input {
+                    display: none;
+                }
+
+                a {
+                    color: $color-text4;
+                }
+            }
+        }
+    }
+
+    .file_details, .dataset_details {
+        line-height: 32px;
+        img {
+            vertical-align: middle;
+            max-height: 35px;
+            max-width: 35px;
+        }
+
+        .image {
+            height: 35px;
+            width: 35px;
+            display: inline-block;
+        }
+
+        .remove {
+            float: right;
+            line-height: 32px;
+        }
+        .progress_bar {
+            display: inline-block;
+            background-color: $progress-bar-background-color;
+            width: 100px;
+            height: 15px;
+            float: right;
+            margin-top: 7px;
+            position: relative;
+            span {
+                background-image: url(/images/general/loading_animation.gif);
+                position: absolute;
+                display: inline-block;
+                left: 0;
+                top: 0;
+                bottom: 0;
+            }
+        }
+        .upload_finished {
+            float : right;
+            color: $color-text4
+        }
+    }
+
+    .name {
+        display: inline-block;
+        width: 200px;
+        @include ellipsis;
+        color: $color-text2;
+        font-weight: $semibold;
+    }
+
+    .options_text, .options_area {
+        font-size: $small-font;
+        margin: 8px 8px;
+    }
+
+    .options_text {
+        color: $color-text3;
+
+        .show_options {
+            font-weight: $semibold;
+        }
+    }
+
+    .row {
+        margin-bottom: 10px;
+
+        a.workfile {
+            vertical-align: bottom;
+        }
+    }
+
+    .link_menu {
+        padding-left: 8px;
+    }
+
+
+	.recipients_menu {}
+	
+    .notification_recipient {
+        margin-left: 5px;
+        margin-right: 8px;
+        margin-top: 8px;
+
+        .add_user {
+            font-size: $small-font;
+            font-weight: $semibold;
+        }
+
+        .user_lists {
+            margin-left: $label-width;
+
+            .dropdown {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .picked_users {
+            line-height: 20px;
+            .name {
+                @include ellipsis;
+                max-width: 200px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        select {
+            width: 200px;
+        }
+    }
+    
+    .remove {
+        float: right;
+        font-size: $default-font-size;
+        line-height: 20px;
+    }
+        
+}

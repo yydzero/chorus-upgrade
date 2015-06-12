@@ -1,0 +1,126 @@
+@import "compass/css3/box-sizing";
+
+$alert-marker-width: 60px;
+
+// general alert dialog styles */
+
+.alert {
+
+    width: $default-dialog-width;
+    
+    .errors {
+        padding-bottom: $dialog-padding;
+    }
+    
+    // elaborate hacky trapping for when .errors is outside of girdle
+    > .errors {
+        padding-top: 10px;  //$dialog-girdle-padding-top: 10px;
+        padding-bottom: 0;
+        padding-left: $dialog-padding-leftRight;
+        padding-right: $dialog-padding-leftRight;
+ 
+//         ul {
+//             li {
+//                 &:first-child {
+//                     margin-top: 0px;
+//                 }
+//             }
+//         }
+    }
+
+// OVERRIDES for when errors are within aalert dialog
+
+    .errors,
+    .sql_errors,
+    .dataset_errors,
+    .warning {
+        ul {
+            li {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    }
+
+
+
+
+    .guts {
+        width: $default-dialog-width;
+        background-color: $body-background-color;
+
+        .content {
+
+            .left {
+                float: left;
+                max-width: 360px;
+                word-wrap: break-word;
+                @include after-clearfix;
+
+                h1 {
+                    color: $black;
+                    font-size: 22px;
+                    font-weight: $semibold;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    @include font-normal-alpha;
+                }
+            }
+
+            .right {
+                float: right;
+                width: 90px;
+
+                img {
+                    float: right;
+
+                    &.info {
+                        display: none;
+                    }
+                    &.error {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .body {
+            margin-top: 60px;
+            padding: 10px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: 300px;
+            border: 1px solid $border-color;
+            font-size: $small-font;
+            font-weight: normal;
+            color: $black;
+        }
+    }
+
+    &.info {
+        img.message {
+            display: none;
+        }
+        img.error {
+            display: none;
+        }
+        img.info {
+            display: inline !important;
+        }
+    }
+
+    &.error {
+        img.message {
+            display: none;
+        }
+        img.info {
+            display: none;
+        }
+        img.error {
+            display: inline !important;
+        }
+    }
+}
+

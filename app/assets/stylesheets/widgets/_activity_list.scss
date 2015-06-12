@@ -1,0 +1,294 @@
+@import "_browser_support";
+@import "dashboard";
+
+$text-padding-y: 4px;
+$big-gutter: (2 * $activity-gutter);
+$media-gutter: 10px;
+$system-action-color: #7C7D7D;
+$refresh-activity-gutter: $activity-gutter - 5;
+
+.media, .media > .bd {
+    overflow: hidden;
+}
+
+.media > .icon {
+    float: left;
+    margin-right: $activity-gutter;
+    width: $icon-image-width + 3px;
+    height: $icon-image-height + 3px;
+}
+
+.notification_list, 
+.activity_list {
+    a[href=''], a:not([href]) {
+        color: $color-text3;
+        text-decoration: none;
+    }
+
+    .no_items {
+        @include secondary-text-normal;
+        padding: 0 $activity-gutter;
+    }
+}
+
+.more_items {
+    font-size: $small-font;
+    padding: $padding-top-canon 0 $padding-bottom-canon 0;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        max-width: 50%;
+        width: 100%;
+        @include panel-button(30px);
+    }
+}
+
+.activity {
+    &.unread {
+        background: #ffface;
+    }
+
+    .activity_item {
+        padding: $refresh-activity-gutter $refresh-activity-gutter ($activity-gutter - 3) $refresh-activity-gutter;
+        position: relative;
+        overflow: visible;
+
+        .fa.failure {
+            position: relative;
+            font-size: 34px;
+            top: 4px;
+            left: 2px;
+            color: $error-icon-color;
+        }
+
+        .fa.success {
+            position: relative;
+            font-size: 34px;
+            top: 4px;
+            left: 2px;
+            color: $success-icon-color;
+        }
+    }
+}
+
+.insight_ribbon {
+	padding: 0;
+	position: absolute;
+	left: -7px;
+	top: -9px;
+	z-index: 10;
+	line-height: 11px;
+	height: 22px;
+
+	.left {
+		background: url(/images/ribbons/label_insight1.png) no-repeat;
+		width: 6px;
+		height: 22px;
+		display: inline-block;
+	}
+
+	.center {
+		background: url(/images/ribbons/label_insight2.png) repeat-x;
+		display: inline-block;
+		height: 14px;
+		padding: 3px 8px 2px 8px;
+		vertical-align: top;
+		@include insight-ribbon;
+		@include uppercase;
+	}
+
+	.right {
+		background: url(/images/ribbons/label_insight3.png) no-repeat;
+		width: 12px;
+		height: 22px;
+		display: inline-block;
+	}
+}
+
+.comment_list {
+    .comments {
+        background: $shaded-background-color;
+    }
+}
+
+.activity_content, 
+.comment_content {
+    ul.attachments {
+        img {
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        li {
+            @include ellipsis;
+        }
+    }
+
+    .name {
+        font-size: $small-font;
+        font-weight: $semibold;
+    }
+
+    .body {
+        @include font-normal-beta;
+        padding-bottom: $text-padding-y;
+        word-wrap: break-word;
+    }
+
+    .activity_header,
+    .comment_header {
+        word-wrap: break-word;
+        @include secondary-text-normal;
+        // line-height: 20px;
+        
+        .author { 
+            font-weight: $semibold;
+        }
+    }
+
+    .actions {
+        margin-top:5px;
+    
+        .timestamp {
+            @include secondary-text-small;
+            line-height: 20px;
+        }
+
+        .details {
+            padding-bottom: 4px;
+
+            a {
+                @include secondary-text-small-semibold;
+                color: $link-color;
+            }
+        }
+
+        a.delete_link,
+        a.edit_link {
+            display: none;
+
+            @include secondary-text-small;            
+            border-left: solid 1px;
+            padding-left: 5px;
+            margin-left: 5px;
+
+        }
+    }
+
+    .links {
+        padding: 5px 0 0 0;
+        font-size: $small-font;
+
+        a {
+            font-size: $small-font;
+        }
+
+        .separator {
+            position: relative;
+            top: -1px;
+            color: $shadow-gray;
+            margin: 0 $separator-space;
+        }
+    }
+
+    .promoted_by {
+        @include secondary-text-small;
+    }
+}
+
+span.fa {
+    &.fa-trash {
+        padding: 0 3px;
+        // vertical-align: middle;
+    }
+}
+            
+.popup_notifications li,
+li .activity_content,
+.comment_content {
+    &:hover {
+        a.edit_link,
+        a.delete_link {
+            display: inline;
+        }
+    }
+}
+
+#sidebar .activity_heading {
+    padding: 12px 0;
+    @include heading-sidebar;
+    color: $color-text2;
+    font-size: 16px;
+}
+
+.activity_list.workspace_detail,
+.dashboard_activity_list.dashboard,
+.recent_comments_list,
+.notification_list {
+    .comments {
+        margin-left: ($icon-image-width + (2 * $activity-gutter));
+    }
+
+    li.activity {
+        border-bottom: $border-canon;
+        
+        &.insight {
+            background: #FFFFFF;
+            border-bottom: $border-canon;
+            .activity_item {
+                padding-top: 12px;
+            }
+        }
+        
+        // special case when the insight is the first item in the list
+        &.insight:first-child {
+            .activity_item {
+                padding-top: 20px;
+            }
+            .insight_ribbon {
+                top: -1px;
+            }
+        }
+    }
+}
+
+.recent_comments_list {
+    .ui-tooltip-content {
+        padding: 0;
+        overflow: visible;
+
+        ul.activities {
+            > li {
+                &.insight {
+                    border-right: none;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+#sidebar .activity_list {
+    li.insight {
+        background: #FFFFFF;
+        .insight_ribbon {
+            left: -5px;
+        }
+    }
+}
+
+#sidebar {
+    &.data_source_list_sidebar, 
+    &.workfile_show_sidebar {
+        .activity_list .heading {
+            display: none
+        }
+    }
+}
+
+
+

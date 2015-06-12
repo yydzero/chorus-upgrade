@@ -1,0 +1,257 @@
+@import "compass/css3/box-sizing";
+
+$dialog-girdle-padding-top: 10px;
+
+// GENERAL DIALOG STYLES */
+
+// .girdle wraps the content of the dialog popup */
+// and sets the overall margins for the content area */
+.popup .girdle {
+    padding: $dialog-girdle-padding-top $dialog-padding $dialog-padding $dialog-padding;
+    border: none;
+
+    @include box-sizing(border-box);
+    overflow-y: auto;
+
+//     development: to remove */
+//  		border: 1px dotted #A44;
+//     END development: to remove */
+    
+    background-color: $body-background-color;
+
+    .action_bar {
+        // counteract the dialog padding when it is inside .girdle
+        margin-top: -$dialog-girdle-padding-top;
+        margin-left: -$dialog-padding-leftRight;
+        margin-right: -$dialog-padding-leftRight;
+    }
+}
+
+#dialog_header {
+    height: 40px;
+    background-color: $dialog-header-background;
+    border-bottom: $border-canon;
+
+    line-height: 40px;
+    padding: 0 $dialog-padding-leftRight;
+    word-break: break-all;
+}
+
+#dialog_content {
+    
+    .girdle {}
+}
+
+
+.dialog {
+    // interim fix for background of dialogs
+    background-color: $body-background-color;
+
+    h1 {
+        font-size: $medium-font;
+        color: $color-text3;
+        @include uppercase;
+        vertical-align: middle;
+        margin: 0;
+        padding-right: 25px;
+        @include ellipsis;
+    }
+
+
+    h2 {
+        font-size: $medium-font;
+    }
+
+    .message_callout {
+        font-weight: bold;
+    }
+    
+    .dialog_content {
+        // background-color: $body-background-color;
+
+        line-height: 16px;
+
+        .menus {
+            height: 30px;
+        }
+
+        &.is_loading {
+            padding: 50px;
+            text-align: center;
+
+            & > div {
+                display: inline-block;
+            }
+        }
+
+        legend.subtitle {
+            padding: 10px 10px 10px 0px;
+            width: 100%;
+            @include font-normal-alpha;
+
+            .text {
+                float: left;
+                padding-right: 10px;
+            }
+        }
+    }
+
+    .errors {
+        word-break: break-word;
+    }
+
+    fieldset.in_a_box {
+        border: none;
+        padding: 0 0 $dialog-padding-bottom 0;
+
+        legend label {
+            font-size: $default-font-size;
+            font-weight: normal;
+            color: $color-text1;
+        }
+
+        form label {
+            margin-top: 8px;
+        }
+
+        form label, input {
+            display: inline-block;
+        }
+    }
+
+    &.with_sub_header {
+        .sub_header {
+            padding: 0 0 5px 0;
+            border-bottom: $border-canon;
+        }
+
+        .loading_section {
+            padding: 20px;
+        }
+
+        // .form_controls { margin: 0; } */
+    }
+
+    .sub_header {
+        padding : 0;
+        line-height: 34px;
+        vertical-align: middle;
+
+        .sort_menu {
+            float: right;
+        }
+    }
+
+    .chorus_search_container {
+        display: block;
+    }
+
+    label {
+        @include dialog-label;
+    }
+
+    .additional_options {
+        float: right;
+        font-size: 13px;
+    }
+
+    .display_box {
+         margin-top: 10px;
+         padding: 10px;
+         overflow-y: auto;
+         overflow-x: hidden;
+         max-height: 100px;
+         border: 1px solid $border-color;
+         @include font-normal-delta;
+         margin-left: 14px;
+         margin-right: 14px;
+    }
+}
+
+// replace and delete this one with the one following it for more simplicity*/
+.icon-add,
+.icon-remove {
+    &.fa {
+        font-size: 16px;
+    }
+}
+
+.add,
+.remove {
+    &.fa {
+        font-size: 16px;
+    }
+}
+
+// ************* */
+// dialog widths */
+div.dialog {
+    width: $default-dialog-width;
+    // interim fix for background of dialogs
+    background-color: $body-background-color;
+    
+    &.dialog_wide {
+        width: $default-dialog-width-wide;
+    }
+}
+
+
+// Custom Dialog widths */
+
+.dialog {
+    &.data_source_permissions {
+        width: $default-dialog-width-medium;
+    }
+
+    &.workspace_edit_dialog {
+        width: $default-dialog-width-medium;
+    }
+}
+
+
+// TODO: work out what should be in show_image.scss and what should be here */
+.dialog.show_image {
+    width: 100%;
+    min-width: 600px;
+
+    .workspace_row {
+        background-color: $dialog-header-background;
+        height:25px;
+        border-bottom: 1px solid $border-color;
+
+        .workspace_image {
+            height: 18px;
+            padding-left: 20px;
+            padding-right: 5px;
+            float: left;
+        }
+    }
+
+    .content_space {
+        padding: 10px;
+
+        img {
+            max-width: 1200px;
+        }
+
+        .interactions_row {
+            padding-left: 10px;
+            a {
+                padding-right: 20px;
+            }
+        }
+
+        .image_space {
+            text-align: center;
+
+            .main_image {
+                padding:10px;
+            }
+        }
+    }
+}
+
+.dialog .full_dialog_horizontal {
+    display: block;
+    width: $default-dialog-width - 35px;
+}

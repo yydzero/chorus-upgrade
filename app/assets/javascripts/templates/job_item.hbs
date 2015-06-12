@@ -1,0 +1,59 @@
+<span class="image">
+    <img src="{{iconUrl}}"/>
+</span>
+
+<div class="item_information">
+    <div class="item_name">
+        {{#if url}}
+            <a title="{{name}}" class="name" href="{{url}}">{{name}}</a>
+        {{else}}
+            <span class="name">{{name}}</span>
+        {{/if}}
+    </div>
+
+<div class="job_information">
+    <div class="item_metadata">
+        <div>
+            {{#if frequency}}
+                <span class="frequency">
+                    <span class="label">{{t "job.run_frequency.label"}}</span>
+                    {{frequency}}
+                </span>
+            {{/if}}
+
+            {{#if nextRun}}
+                <span class="next_run">
+                    <span class="label">{{t "job.next_run"}}</span>
+                    {{displayTimestamp nextRun}}
+                </span>
+            {{/if}}
+
+            <span class="state">
+                {{#if running}}
+                    <span class='loading_spinner'></span>
+                {{/if}}
+
+                {{t stateKey}}
+            </span>
+
+            <!-- NOTE -->
+            <!-- There was a template conditional here for 'title' and 'lastComment' -->
+            <!-- now removed because it doesnt appear possible for those attributes to exist on jobs -->
+
+        </div>
+        
+        <div>
+            <span class="last_run">
+                <strong>{{t "job.last_run"}}</strong>
+                {{#if lastRun}}
+                    <a class='last_run_date' href='#' title="{{t 'job.show_details.tip'}}">{{displayTimestamp lastRun}}. <span class="status">{{t lastRunStatusKey}}<span></a>
+                {{else}}
+                    {{t "job.last_run_no_last_run"}}
+                {{/if}}
+            </span>
+        </div>
+
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,36 @@
+.tag.administrator, .tag.import_frequency, .tag.developer {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 12px;
+
+    .tag_name {
+        color: #FFFFFF;
+        font-size: $small-font;
+        line-height: 12px;
+        font-weight: $semibold;
+        padding: 4px 7px 4px 2px;
+        display: inline-block;
+        @include border-right-radius(2px);
+    }
+
+    .arrow_left {
+        display: inline-block;
+        width: 0px;
+        height: 0px;
+        border-bottom:10px solid transparent;  /* left arrow slant */
+        border-top:10px solid transparent; /* right arrow slant */
+        border-right-width: 10px;
+        border-right-style: solid;
+        font-size: 0px;
+        line-height: 0px;
+        vertical-align: top;
+    }
+
+    .tag_name {
+        background: $brand-dark;
+    }
+
+    .arrow_left {
+        border-right-color: $brand-dark;
+    }
+}

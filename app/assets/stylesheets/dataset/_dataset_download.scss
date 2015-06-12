@@ -1,0 +1,15 @@
+.dataset_download {
+
+    input[name=rowLimit] {
+        display: inline-block;
+        width: 50px;
+    }
+
+    .specify {
+        margin-bottom: 10px;
+
+        input {
+            margin-right: 5px;
+        }
+    }
+}

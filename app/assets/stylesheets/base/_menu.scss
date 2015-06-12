@@ -1,0 +1,129 @@
+@mixin checkmark {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: -12px;
+
+    &::after {
+        font-family: FontAwesome;
+        content: "\f00c"; /* fa-check */
+    }
+}
+
+
+.components_menu {
+    li {
+        padding: 5px 0;
+
+        a, span {
+            @include font-menu;
+        }
+
+        a {
+            &:not([disabled]):hover {
+                text-decoration: underline;
+            }
+
+            &[disabled] {
+                text-decoration: none;
+                cursor: default;
+                @include secondary-text-normal;
+            }
+        }
+
+        &.selected {
+            .check {
+                visibility: visible;
+            }
+        }
+    }
+
+    .check {
+        @include checkmark;    
+    }
+}
+
+.menu {
+    display: inline;
+    position: absolute;
+    background: #FFFFFF;
+    border:1px solid #B0B0B0;
+    text-align: left;
+    z-index: $menu-z-index;
+
+    .pointer {
+        width: 21px;
+        height: 13px;
+        background-image : url("/images/general/menu-triangle.png");
+        background-repeat: no-repeat;
+        position: absolute;
+        top: -13px;
+        left: 49px;
+    }
+
+    a {
+        @include font-menu;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
+
+
+a .chosen {
+	@include menu-triangle-glyph;
+}
+
+.link_menu {
+    position: relative;
+    z-index : $link-menu-z-index;
+    display:inline-block;
+    padding-left: 20px;
+
+    a {
+/*         img { */
+/*            margin: 2px; */
+/*         } */
+    }
+
+    .popup_filter {
+        min-width:140px;
+        right: -2px;
+        top: 28px;
+        padding: 5px 5px 9px 2px;
+        z-index : $link-menu-z-index;
+
+        .pointer {
+            left: 100px;
+        }
+
+        li {
+            margin: 0px 4px 0px 18px;
+
+            .check {
+
+                @include checkmark;
+	
+                &.hidden {
+                    visibility: hidden;
+                }
+            }
+
+            a {
+                font-weight: normal;
+                color: #000000 !important;
+            }
+
+            .unavailable {
+                @include secondary-text-small;
+                font-style: italic;
+                margin-left: 3px;
+            }
+        }
+    }
+}

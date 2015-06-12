@@ -1,0 +1,153 @@
+.results_console {
+    .execution {
+        height: 30px;
+        clear: both;
+        line-height: 30px;
+        vertical-align: middle;
+        padding: 0;
+        background: $core-white;
+//         border-bottom: $border-canon; */
+
+        h1 {
+            @include results-console;
+            display: inline-block;
+            padding-right: $padding-x;
+        }
+
+        a {
+            font-size: $small-font;
+            font-weight: $semibold;
+        }
+
+        .controls {
+            float: right;
+            margin-left: 10px;
+
+            .separator {
+                margin: 0 $separator-space;
+            }
+            &.collapsed {
+                .separator.collapsable {
+                    display: none;
+                    &.close {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .right {
+            float: right;
+
+            .execution_info {
+                display: none;
+
+                .spinner {
+                  display: inline-block;
+                  width: 25px;
+                }
+                div[aria-role=progressbar] {
+                      left: 13px;
+                      top: -3px;
+                }
+
+                .task_loading {
+                    display: inline-block;
+                }
+
+                .cancel {
+                    font-weight: normal;
+                }
+            }
+
+            &.executing {
+                .message {
+                    display: none;
+                }
+
+                .execution_info {
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    .separator {
+        color: $color-text3;
+        margin: 0 $separator-space;
+    }
+
+    .result_table {
+        clear: both;
+    }
+
+    .actions {
+        color: white;
+        float: right;
+
+        a {
+            float: none;
+        }
+    }
+
+    .bottom_gutter {
+        background: white;
+        height: 20px;
+        text-align: center;
+        vertical-align: top;
+        border-top: $border-canon;
+        line-height: 16px;
+    }
+
+    .expander_button {
+        cursor: pointer;
+        background: $data-grid-background-color;
+        width: 30px;
+        height: 15px;
+
+        display: inline-block;
+
+        border: $border-canon;
+        border-top: none;
+        margin-top: -4px;
+
+//         text-align: center; */
+        vertical-align: middle;
+
+        .arrow {
+            display: inline-block;
+			position: relative;
+			
+			// adjust position to 1/2 of glyph width */
+			left: -4px;
+        }
+
+        .up {
+            @include triangle-glyph(up);
+        }
+
+        .down {
+			@include triangle-glyph(down);
+        }
+    }
+
+    .minimized .data_grid {
+        height: 300px;
+    }
+
+    .collapsed .data_grid {
+        display: none;
+    }
+
+    .data_grid {
+        width: 100%;
+    }
+
+    &.fixed_header {
+        top: $header-height + 30px + 3px;
+    }
+}
+
+.workspace .results_console.fixed_header {
+    top: $workspace-header-height + 30px + 3px;
+}

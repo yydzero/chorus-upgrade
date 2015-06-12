@@ -1,0 +1,78 @@
+@import "compass/css3/border-radius";
+
+#facebox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $dialog-z-index;
+    /* overflow-y: auto; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+    
+    text-align: left;
+    @include border-radius(3px);
+
+    .popup {
+        position: relative;
+    }
+    .content {
+        @include after-clearfix();
+        padding: 0;
+
+        > p {
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .alert .content {
+        background: $body-background-color;
+    }
+
+    .header {
+        .close {
+            position: absolute;
+            top: 7px;
+            right: 15px;
+            padding: 2px;
+            color: $color-text4;
+        }
+    }
+
+    &.alert_facebox .close {
+        display: none;
+    }
+
+    .loading, .image {
+        text-align: center;
+    }
+}
+
+/* .dialog_facebox, */
+/* .alert_facebox { */
+/*     img { */
+/*         border: 0; */
+/*         margin: 0; */
+/*     } */
+/* } */
+
+#facebox_overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: $lightbox-overlay-color !important;
+}
+
+.facebox_hide {
+    z-index: $hidden-z-index;
+}
+
+.facebox_overlayBG {
+    z-index: $dialog-overlay-z-index;
+}
