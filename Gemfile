@@ -7,9 +7,11 @@ gem 'activeresource'
 # Protected Attributes gem for a smooth upgrade path."
 # Due to config/initializers/additional_data.rb it's not trivial to delete all the attr_accessible pieces from the
 # models.  This gem should be removed via refactoring after the Rails 4 upgrades are merged into master.
+
 gem 'protected_attributes'
 
-gem 'will_paginate'
+#PT. Removing it Temp. It is comflicting with ActiveAdmin
+#gem 'will_paginate'
 gem 'net-ldap', '0.11',    :require => false
 gem 'paperclip', '4.2.1'
 gem 'queue_classic', :github => 'Chorus/queue_classic'
@@ -30,6 +32,16 @@ gem 'honor_codes', '~> 0.1.0'
 gem 'jbuilder'
 # Gem that allows you to call view renders from anywhere (model, lib, rake, etc.)
 gem 'render_anywhere'
+
+gem 'mustache', '0.99.4'
+
+# gems for ActiveAdmin
+gem 'activeadmin', github: 'activeadmin'
+gem 'sass-rails'
+gem 'devise'
+gem 'active_admin_importable'
+gem 'active_skin'
+
 
 # KT: Group all Solr related together ..
 gem 'sunspot_rails', '2.1.0'
