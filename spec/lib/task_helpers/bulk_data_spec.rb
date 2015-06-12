@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+require "#{Rails.root}/lib/task_helpers/bulk_data"
+
 describe BulkData do
   let(:user_columns) { %w(first_name last_name username admin email title dept notes) }
   let(:user_name) { users(:admin).username }

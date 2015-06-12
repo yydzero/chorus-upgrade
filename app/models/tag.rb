@@ -30,7 +30,7 @@ class Tag < ActiveRecord::Base
     find_each { |tag| Tag.reset_counters(tag.id, :taggings) }
   end
 
-  def self.find_or_create_by_tag_name(name)
+  def self.case_insensitive_find_or_create_by_tag_name(name)
     self.where("UPPER(name) = UPPER(?)", name).first_or_create!(:name => name)
   end
 

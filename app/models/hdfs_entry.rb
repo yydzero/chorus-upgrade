@@ -18,7 +18,7 @@ class HdfsEntry < ActiveRecord::Base
   validates_format_of :path, :with => %r{\A/.*}
   validates_length_of :path, :maximum => 4096
 
-  scope :files, where(:is_directory => false)
+  scope :files, -> { where(:is_directory => false) }
 
   attr_accessor :highlighted_attributes, :search_result_notes
   searchable_model :unless => lambda { |model| model.is_directory? || model.stale? } do
@@ -77,7 +77,7 @@ class HdfsEntry < ActiveRecord::Base
   def self.list(path, hdfs_data_source)
     query_service = Hdfs::QueryService.for_data_source(hdfs_data_source, current_user ? current_user.username : '')
     current_entries = query_service.list(path).map do |result|
-      hdfs_entry = hdfs_data_source.hdfs_entries.find_or_initialize_by_path(result["path"])
+      hdfs_entry = hdfs_data_source.hdfs_entries.find_or_initialize_by(path: result["path"])
       hdfs_entry.stale_at = nil if hdfs_entry.stale?
       hdfs_entry.hdfs_data_source = hdfs_data_source
       hdfs_entry.assign_attributes(result, :without_protection => true)
@@ -147,7 +147,7 @@ class HdfsEntry < ActiveRecord::Base
 
   def build_full_path
     return true if path == "/"
-    self.parent = hdfs_data_source.hdfs_entries.find_or_create_by_path(parent_path)
+    self.parent = hdfs_data_source.hdfs_entries.find_or_create_by(path: parent_path)
     self.parent.is_directory = true
     self.parent.save!
   end

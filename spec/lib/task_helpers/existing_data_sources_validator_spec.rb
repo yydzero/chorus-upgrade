@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+require "#{Rails.root}/lib/task_helpers/existing_data_sources_validator"
+
 def it_validates_duplicate(new_model, existing_model)
   it "returns false if a #{new_model.to_s.classify} is invalid" do
     FactoryGirl.create(new_model, :name => 'awesome_duplicate_name')

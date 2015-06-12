@@ -13,7 +13,7 @@ class DataSource < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User'
   has_many :accounts, :class_name => 'DataSourceAccount', :inverse_of => :data_source, :foreign_key => 'data_source_id', :dependent => :destroy
-  has_one :owner_account, :class_name => 'DataSourceAccount', :foreign_key => 'data_source_id', :inverse_of => :data_source, :conditions => proc { {:owner_id => owner_id} }
+  has_one :owner_account, ->(record) { where :owner_id => record.owner_id }, :class_name => 'DataSourceAccount', :foreign_key => 'data_source_id', :inverse_of => :data_source
 
   has_many :activities, :as => :entity
   has_many :events, :through => :activities
@@ -43,7 +43,7 @@ class DataSource < ActiveRecord::Base
 
   def self.owned_by(user)
     if user.admin?
-      scoped
+      all
     else
       where(:owner_id => user.id)
     end
@@ -135,7 +135,7 @@ class DataSource < ActiveRecord::Base
     data_source = DataSource.find(id)
     data_source.check_status!
   rescue => e
-    Rails.logger.error  "Unable to check status of DataSource: #{data_source.inspect}"
+    Rails.logger.error "Unable to check status of DataSource: #{data_source.inspect}"
     Rails.logger.error "#{e.message} :  #{e.backtrace}"
   end
 
@@ -166,7 +166,7 @@ class DataSource < ActiveRecord::Base
   def update_state_and_version
     self.state = "online"
     self.version = connect_as_owner.version
-  rescue  => e
+  rescue => e
     Chorus.log_error "Could not connect while updating state: #{e}: #{e.message} on #{e.backtrace[0]}"
     self.state = "offline"
   end
@@ -181,6 +181,7 @@ class DataSource < ActiveRecord::Base
 
   def build_data_source_account_for_owner
     build_owner_account(:owner => owner, :db_username => db_username, :db_password => db_password)
+    # DataSourceAccount.new(:owner => owner, :db_username => db_username, :db_password => db_password)
   end
 
   def validate_owner?
@@ -202,9 +203,9 @@ class DataSource < ActiveRecord::Base
   def create_name_changed_event
     if name_changed?
       Events::DataSourceChangedName.by(current_user).add(
-          :data_source => self,
-          :old_name => name_was,
-          :new_name => name
+        :data_source => self,
+        :old_name => name_was,
+        :new_name => name
       )
     end
   end

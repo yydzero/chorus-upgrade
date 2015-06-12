@@ -8,6 +8,9 @@ VCR.configure do |c|
   c.filter_sensitive_data('<SUPPRESSED_KAGGLE_API_KEY>', :filter_kaggle_api_key) do |interaction|
     ChorusConfig.instance['kaggle']['api_key']
   end
+
+  # KT: useful if you suspect tests are failing because of VCR
+  # c.debug_logger = File.open("#{Rails.root}/log/vcr.log", 'w')
 end
 
 def record_with_vcr(tape_name = nil, &block)

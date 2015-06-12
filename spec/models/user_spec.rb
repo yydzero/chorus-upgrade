@@ -52,8 +52,12 @@ describe User do
   end
 
   describe ".order" do
+    def users_sorted_without_order_method(sorted_by)
+      User.find_by_sql("SELECT * FROM users WHERE deleted_at IS NULL ORDER BY LOWER(#{sorted_by}), id ASC").to_a
+    end
+
     it "sorts by first name, by default" do
-      User.order(nil).to_a.should == User.all(:order => "LOWER(first_name), id").to_a
+      User.order(nil).to_a.should == users_sorted_without_order_method('first_name')
     end
 
     it "sorts by id as a secondary sort" do
@@ -64,13 +68,13 @@ describe User do
 
     context "with a recognized sort order" do
       it "respects the sort order" do
-        User.order("last_name").to_a.should == User.all(:order => "LOWER(last_name), id").to_a
+        User.order("last_name").to_a.should == users_sorted_without_order_method('last_name')
       end
     end
 
     context "with an unrecognized sort order" do
       it "sorts by first name" do
-        User.order("last_name; DROP TABLE users;").to_a.should == User.order("LOWER(first_name), id").to_a
+        User.order("last_name; DROP TABLE users;").to_a.should == users_sorted_without_order_method('first_name')
       end
     end
   end
@@ -101,7 +105,7 @@ describe User do
   end
 
   describe "validations" do
-    let(:max_user_icon_size) {ChorusConfig.instance['file_sizes_mb']['user_icon']}
+    let(:max_user_icon_size) { ChorusConfig.instance['file_sizes_mb']['user_icon'] }
 
     it { should validate_presence_of :first_name }
     it { should validate_presence_of :last_name }
@@ -319,13 +323,13 @@ describe User do
 
       it "should raise an error when the user is not in the LDAP server" do
         stub(LdapClient).search.with_any_args { [] }
-        args = { :bogus => 'field', :username => 'aDmin2', :password => 'secret', :first_name => "Jeau", :last_name => "Bleau", :email => "jb@emc.com" }
+        args = {:bogus => 'field', :username => 'aDmin2', :password => 'secret', :first_name => "Jeau", :last_name => "Bleau", :email => "jb@emc.com"}
         expect { User.create(args) }.to raise_error(LdapClient::LdapCouldNotBindWithUser)
       end
 
       it "should succeed when the user is found in the LDAP server" do
         stub(LdapClient).search.with_any_args { [:result] }
-        args = { :bogus => 'field', :username => 'aDmin2', :password => 'secret', :first_name => "Jeau", :last_name => "Bleau", :email => "jb@emc.com" }
+        args = {:bogus => 'field', :username => 'aDmin2', :password => 'secret', :first_name => "Jeau", :last_name => "Bleau", :email => "jb@emc.com"}
         expect { User.create(args) }.not_to raise_error
       end
     end
@@ -342,7 +346,7 @@ describe User do
 
     it "does not allow deleting a user who owns a workspace" do
       workspace = FactoryGirl.create(:workspace)
-      expect { workspace.owner.destroy}.to raise_exception(ActiveRecord::RecordInvalid)
+      expect { workspace.owner.destroy }.to raise_exception(ActiveRecord::RecordInvalid)
       workspace.owner.should have_error_on(:workspace_count).with_message(:equal_to).with_options(:count => 0)
     end
 

@@ -8,5 +8,5 @@ class Notification < ActiveRecord::Base
 
   validates_presence_of :recipient_id, :event_id
 
-  scope :unread, where(:read => false)
+  scope :unread, -> { where(:read => false) }
 end

@@ -195,7 +195,7 @@ Chorus::Application.routes.draw do
   end
 
   namespace :import_console do
-    match '/' => 'imports#index'
+    get '/' => 'imports#index'
     resources :imports, :only => :index
   end
 
@@ -203,7 +203,7 @@ Chorus::Application.routes.draw do
 
   post 'download_data', :controller => 'data_downloads'
 
-  match '/' => 'root#index'
-  match 'VERSION' => 'configurations#version'
+  get '/' => 'root#index'
+  get 'VERSION' => 'configurations#version'
 
 end

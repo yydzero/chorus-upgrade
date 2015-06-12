@@ -9,7 +9,7 @@ class HdfsDataSource < ActiveRecord::Base
   has_many :activities, :as => :entity
   has_many :events, :through => :activities
   has_many :hdfs_entries
-  has_many :workfile_execution_locations, :foreign_key => :execution_location_id, :conditions => { :execution_location_type => 'HdfsDataSource' }, :dependent => :destroy
+  has_many :workfile_execution_locations, -> { where :execution_location_type => 'HdfsDataSource' }, :foreign_key => :execution_location_id, :dependent => :destroy
   validates_presence_of :name, :host
   validates_presence_of :port, :unless => :high_availability?
   validates_inclusion_of :hdfs_version, :in => ChorusConfig.instance.hdfs_versions
