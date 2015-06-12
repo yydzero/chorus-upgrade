@@ -1,11 +1,14 @@
 Chorus::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resource :sessions, :only => [:create, :destroy, :show]
   resource :config, :only => [:show], :controller => 'configurations'
   resource :license, :only => [:show]
   resources :activities, :only => [:index, :show], :controller => 'events'
   resources :taggings, :only => [:create, :index]
   resources :tags, :only => [:index, :destroy, :update]
+
   resources :users, :only => [:index, :show, :create, :update, :destroy] do
     collection do
       get :ldap
@@ -204,7 +207,7 @@ Chorus::Application.routes.draw do
 
   post 'download_data', :controller => 'data_downloads'
 
-  get '/' => 'root#index'
+  get '/' => 'admin/dashboard#index'
   get 'VERSION' => 'configurations#version'
 
 end
