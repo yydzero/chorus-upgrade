@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226002407) do
+ActiveRecord::Schema.define(version: 20150607032855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "activities", force: true do |t|
     t.integer "entity_id"
@@ -24,6 +39,24 @@ ActiveRecord::Schema.define(version: 20150226002407) do
 
   add_index "activities", ["entity_id", "entity_type"], name: "index_activities_on_entity_id_and_entity_type", using: :btree
   add_index "activities", ["event_id"], name: "index_activities_on_event_id", using: :btree
+
+  create_table "admin_users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "associated_datasets", force: true do |t|
     t.integer  "dataset_id"
@@ -74,8 +107,17 @@ ActiveRecord::Schema.define(version: 20150226002407) do
     t.integer  "permissions_mask"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "scope_id"
+    t.integer  "chorus_scope_id"
     t.integer  "owner_id"
+    t.integer  "parent_id"
+  end
+
+  create_table "chorus_scopes", force: true do |t|
+    t.string   "name",        null: false
+    t.string   "description"
+    t.integer  "group_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "comments", force: true do |t|
@@ -206,7 +248,7 @@ ActiveRecord::Schema.define(version: 20150226002407) do
   end
 
   add_index "datasets", ["deleted_at", "id"], name: "index_datasets_on_deleted_at_and_id", using: :btree
-  add_index "datasets", ["name", "schema_id", "type", "deleted_at"], name: "index_datasets_on_name_schema_id_and_type", unique: true, using: :btree
+  add_index "datasets", ["name", "schema_id", "type"], name: "index_datasets_on_name_schema_id_and_type", unique: true, where: "(deleted_at IS NULL)", using: :btree
   add_index "datasets", ["schema_id"], name: "index_database_objects_on_schema_id", using: :btree
 
   create_table "datasets_notes", force: true do |t|
@@ -492,6 +534,7 @@ ActiveRecord::Schema.define(version: 20150226002407) do
     t.string   "description"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "sequence"
   end
 
   create_table "permissions", force: true do |t|
@@ -511,7 +554,7 @@ ActiveRecord::Schema.define(version: 20150226002407) do
     t.datetime "locked_at"
   end
 
-  add_index "queue_classic_jobs", ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", using: :btree
+  add_index "queue_classic_jobs", ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", where: "(locked_at IS NULL)", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name",        null: false
@@ -543,14 +586,6 @@ ActiveRecord::Schema.define(version: 20150226002407) do
   add_index "schemas", ["deleted_at", "id"], name: "index_schemas_on_deleted_at_and_id", using: :btree
   add_index "schemas", ["name", "parent_id", "parent_type"], name: "index_schemas_on_name_and_parent_id_and_parent_type", unique: true, using: :btree
   add_index "schemas", ["parent_id"], name: "index_gpdb_schemas_on_database_id", using: :btree
-
-  create_table "scopes", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "description"
-    t.integer  "group_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", limit: 40
@@ -598,8 +633,6 @@ ActiveRecord::Schema.define(version: 20150226002407) do
     t.string  "name"
     t.integer "taggings_count", default: 0, null: false
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "uploads", force: true do |t|
     t.integer  "user_id"
@@ -700,7 +733,7 @@ ActiveRecord::Schema.define(version: 20150226002407) do
     t.string   "status",                     default: "idle"
   end
 
-  add_index "workfiles", ["file_name", "workspace_id"], name: "index_workfiles_on_file_name_and_workspace_id", unique: true, using: :btree
+  add_index "workfiles", ["file_name", "workspace_id"], name: "index_workfiles_on_file_name_and_workspace_id", unique: true, where: "(deleted_at IS NULL)", using: :btree
   add_index "workfiles", ["owner_id"], name: "index_workfiles_on_owner_id", using: :btree
   add_index "workfiles", ["workspace_id"], name: "index_workfiles_on_workspace_id", using: :btree
 
