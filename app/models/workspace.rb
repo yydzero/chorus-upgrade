@@ -5,6 +5,7 @@ class Workspace < ActiveRecord::Base
   include TaggableBehavior
   include Notable
   include RenderAnywhere
+  include Permissioner
 
   PROJECT_STATUSES = [:on_track, :needs_attention, :at_risk]
 
