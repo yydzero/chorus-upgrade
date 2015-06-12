@@ -55,11 +55,7 @@ describe "resources which require authentication" do
   context "when user has a bogus session_id" do
     before do
       stub(LdapClient).enabled? { false } # We should have a separate test config to avoid stuff like this
-<<<<<<< HEAD
-      post "/sessions", :session => {:username => user.username, :password => FixtureBuilder.password}
-=======
       post "/sessions", :session => {:username => user.username, :password => SPEC_PASSWORD}
->>>>>>> rails-3.2.18-legacy-frontend
       response.should be_success
       Session.last.delete
     end
