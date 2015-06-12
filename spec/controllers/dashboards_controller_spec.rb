@@ -1,11 +1,15 @@
 require 'spec_helper'
 
 describe DashboardsController do
+  # Prakash. Mock current_user to avoid accessing private method in application_controller
+  let(:context) { Object.new }
   let(:user) { users(:the_collaborator) }
   let(:params) { {:entity_type => entity_type} }
 
   before do
     log_in user
+    # Prakash. Mock current_user to avoid accessing private method in application_controller
+    stub(context).current_user { user }
   end
 
   describe '#show' do

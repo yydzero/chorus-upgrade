@@ -7,10 +7,6 @@ require_relative './database_integration/postgres_integration'
 require_relative './current_user'
 require 'rr'
 
-def FixtureBuilder.password
-  'password'
-end
-
 FixtureBuilder.configure do |fbuilder|
   # rebuild fixtures automatically when these files change:
   fbuilder.files_to_check += Dir[*%w{

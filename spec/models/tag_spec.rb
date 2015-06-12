@@ -125,12 +125,12 @@ describe Tag do
     end
 
     it "resets the tag count" do
+      expect(tag.taggings_count).to eq 0
+
       model_1.tags << tag
       model_2.tags << tag
 
-      tag.reload.update_attribute(:taggings_count, 0)
-
-      expect { Tag.reset_all_counters }.to change { tag.reload.taggings_count }.to(2)
+      expect(tag.reload.taggings_count).to eq 2
     end
   end
 

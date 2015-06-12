@@ -7,7 +7,7 @@ describe "data source credentials" do
   before do
     stub(License.instance).workflow_enabled? { true }
     stub(LdapClient).enabled? { false } # We should have a separate test config to avoid stuff like this
-    post "/sessions", :session => { :username => user.username, :password => FixtureBuilder.password }
+    post "/sessions", :session => { :username => user.username, :password => SPEC_PASSWORD }
   end
 
   context "when request is from localhost" do
