@@ -1,0 +1,6 @@
+<% %w(workspace user).each do |clazz| %>
+    <h4 style='margin-bottom:0;margin-top:0.5em;color:darkslateblue;'><%= "#{clazz} Permissions" %></h4>
+        <% @operations["#{clazz}"].each do |opr| %>
+        <%= check_box_tag "role[#{clazz}-permissions][#{opr.id}]", opr.name %><%= label_tag opr.name %>&nbsp;&nbsp;
+        <% end %>
+<% end %>
