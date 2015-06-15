@@ -189,9 +189,11 @@ FactoryGirl.define do
     association :schema, :factory => :gpdb_schema
     association :workspace
     query "select 1;"
-    after(:build) do |chorus_view|
-      chorus_view.instance_variable_get(:@changed_attributes).delete("query")
-    end
+
+    # Skip validations because, we cannot pass ChorusView#validate_query without a real connection ...
+    to_create {|instance|
+      instance.save(validate: false)
+    }
   end
 
   factory :hdfs_dataset do

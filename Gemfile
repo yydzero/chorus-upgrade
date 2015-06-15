@@ -11,7 +11,7 @@ gem 'protected_attributes'
 
 gem 'will_paginate', '3.0.4'
 gem 'net-ldap', '0.11', :require => false
-gem 'paperclip', '4.2.1'
+gem 'paperclip', '4.2.0'
 gem 'queue_classic', :github => 'Chorus/queue_classic'
 gem 'clockwork', :require => false
 gem 'allowy', '0.4.0'
