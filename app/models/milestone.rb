@@ -21,6 +21,7 @@ class Milestone < ActiveRecord::Base
   end
 
   def update_workspace_target_date
+    workspace.reload
     date = workspace.milestones.any? ? workspace.milestones.order(:target_date).last.target_date : nil
     workspace.update_attribute(:project_target_date, date)
   end

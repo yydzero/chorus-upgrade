@@ -13,6 +13,7 @@ module Events
       reference_type = Import.name
 
       possible_events = filter_for_import_events(import)
+      possible_events = possible_events.to_a
 
       # optimized to avoid fetching all events since the intended event is almost certainly the last event
       while event = possible_events.last
