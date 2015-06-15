@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.10'
+gem 'rails', '4.2.1'
 gem 'activeresource'
 
 # KT TODO: "Rails 4.0 has removed attr_accessible and attr_protected feature in favor of Strong Parameters. You can use the
@@ -35,11 +35,11 @@ gem 'render_anywhere'
 gem 'mustache', '0.99.4'
 
 # KT: Group all Solr related together ..
-gem 'sunspot_rails', '2.1.0'
+gem 'sunspot_rails', '2.2.0 '
 group :development, :test do
-  gem 'sunspot_matchers', '2.1.0'
-  gem 'sunspot_solr', '2.1.0'
-  gem 'rsolr', '1.0.10' # block deprecation notices, delete this when upgrading Sunspot to 2.2.0
+  gem 'sunspot_matchers', '2.2.0 '
+  gem 'sunspot_solr', '2.2.0 '
+  gem 'rsolr'
 end
 
 platform :jruby do
