@@ -3,6 +3,8 @@ ActiveAdmin.register User do
 
   active_admin_importable
 
+  #belongs_to :group
+
   menu priority: 1 # so it's on the very left
   # Turn of commenting feature
   config.comments = false
@@ -17,6 +19,38 @@ permit_params :first_name, :last_name, :email, :username, :created_at
 #   end
 # end
 
+  show do
+    attributes_table do
+      row :full_name
+      row :description
+      row 'Groups' do
+        table_for resource.groups do
+          column :name
+          column :description
+        end
+      end
+      row 'Roles' do
+        table_for resource.roles do
+          column :name
+          column :description
+        end
+      end
+      row 'Workspaces' do
+        table_for resource.owned_workspaces do
+          column :name
+          column :summary
+        end
+      end
+
+    end
+    # panel "Users in Group" do
+    #   table_for group.users do
+    #     column :full_name
+    #     column :username
+    #     column :created_at
+    #   end
+    # end
+  end
 
 index do
   column 'User Name' do |user|
@@ -63,6 +97,32 @@ controller do
   def scoped_collection
     super.includes :groups, :roles
   end
+
+  def show
+
+  end
+
+
+  def update
+    user = User.find(params[:id])
+    user.update_attributes(params[:user])
+    group_ids = params[:user][:group_ids]
+    group_ids.delete("")
+    user.groups.delete_all
+    group_ids.each do |id|
+      user.groups << Group.find(id)
+    end
+    user.roles.delete_all
+    role_ids = params[:user][:role_ids]
+    role_ids.delete("")
+    role_ids.each do |id|
+      user.roles << Role.find(id)
+    end
+    user.save!
+    redirect_to "/admin/users/#{params[:id]}"
+  end
+
+
 end
 
 csv do

@@ -1,0 +1,13 @@
+<table>
+  <% @scopes.each do |scope| %>
+      <tr>
+        <td>
+          <% if @group.chorus_scope == scope %>
+              <%= radio_button_tag 'group[scope]', scope.name, true %>&nbsp;&nbsp;<%= label_tag scope.name %>
+          <% else %>
+              <%= radio_button_tag 'group[scope]', scope.name, false %>&nbsp;&nbsp;<%= label_tag scope.name %>
+        <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table>

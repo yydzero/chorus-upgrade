@@ -1,6 +1,8 @@
 class Group < ActiveRecord::Base
 
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :users
+  # accepts_nested_attributes_for :users
+
 
   validates :name, :presence => true
 

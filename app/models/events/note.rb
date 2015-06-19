@@ -4,6 +4,7 @@ require 'model_map'
 module Events
   class Note < Base
     include SearchableHtml
+    include Permissioner
 
     validates_presence_of :actor_id
     validate :no_note_on_archived_workspace, :on => :create

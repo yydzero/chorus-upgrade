@@ -1,4 +1,6 @@
 class Tag < ActiveRecord::Base
+  include Permissioner
+
   has_many :taggables, :through => :taggings
   has_many :taggings
   belongs_to :workfile, :touch => true

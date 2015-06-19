@@ -1,5 +1,7 @@
 class JobTask < ActiveRecord::Base
   include SoftDelete
+  include Permissioner
+
   attr_accessible :index, :type, :job, :status, :payload_result_id, :killable_id
 
   RUNNING = 'running'

@@ -1,0 +1,22 @@
+<h4 style='margin-bottom:0;margin-top:0.5em;color:darkslateblue;'>Select Users</h4>
+<table>
+  <% col = 0 %>
+  <tr>
+    <% @users.each do |user| %>
+        <% if col < 6 %>
+            <td>
+              <% if @group.users.include?(user) %>
+                <%= check_box_tag "group[users][#{user.id}]", user.full_name, {:checked => 'checked'} %>&nbsp;&nbsp;<%= label_tag user.full_name %>&nbsp;&nbsp;
+              <% else %>
+                  <%= check_box_tag "group[users][#{user.id}]", user.full_name %>&nbsp;&nbsp;<%= label_tag user.full_name %>&nbsp;&nbsp;
+              <% end %>
+            </td>
+        <% else %>
+        </tr>
+        <tr>
+        <% col = -1 %>
+        <% end %>
+        <% col = col + 1 %>
+  <% end %>
+  </tr>
+</table>

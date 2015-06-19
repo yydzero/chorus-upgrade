@@ -20,6 +20,7 @@ module Permissioner
 
   # Returns true if current user has assigned scope. False otherwise
   def self.user_in_scope?(user)
+
     if self.is_admin?(user)
       return false
     end
@@ -184,6 +185,30 @@ module Permissioner
         end
       end
       return total
+    end
+
+    # returns permissions for a given role and chorus _clas as an array of symbols
+    # role = role name as string
+    # chorus_class = chorus class name as string
+    def permissions_for_role(role_name)
+      chorus_class = ChorusClass.find_by_name(self.name)
+      if chorus_class == nil
+        return []
+      end
+      role = Role.find_by_name(role_name)
+      operations = Operation.where(:chorus_class_id => chorus_class.id).order(:sequence).pluck('name')
+      activity_symbols = Set.new
+      permission = role.permissions.where(:chorus_class_id => chorus_class.id).first
+      if permission == nil
+        return []
+      end
+      bits = permission.permissions_mask
+      bit_length = bits.size * 8
+      bit_length.times do |i|
+        activity_symbols.add(operations[i].to_sym) if bits[i] == 1
+      end
+
+      activity_symbols.to_a
     end
 
     def permission_symbols_for(user)

@@ -1,4 +1,6 @@
 class Milestone < ActiveRecord::Base
+  include Permissioner
+
   STATES = ['planned', 'achieved']
 
   belongs_to :workspace, :touch => true

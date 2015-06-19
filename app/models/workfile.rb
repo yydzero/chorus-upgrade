@@ -2,6 +2,7 @@ class Workfile < ActiveRecord::Base
   include SoftDelete
   include TaggableBehavior
   include Notable
+  include Permissioner
 
   @@entity_subtypes = Hash.new('ChorusWorkfile').merge!({
      'alpine' => 'AlpineWorkfile'

@@ -3,6 +3,8 @@ class ChorusClass < ActiveRecord::Base
 
   has_many :chorus_objects
   has_many :operations
+  accepts_nested_attributes_for :operations
+
   #TODO: Prakash. Need to discuss with Andrew. Why is this needed here. The permissions are on the role object Not on chorus_object
   has_many :permissions
 

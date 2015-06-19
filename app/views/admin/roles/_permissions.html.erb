@@ -1,6 +1,23 @@
-<% %w(workspace user).each do |clazz| %>
-    <h4 style='margin-bottom:0;margin-top:0.5em;color:darkslateblue;'><%= "#{clazz} Permissions" %></h4>
-        <% @operations["#{clazz}"].each do |opr| %>
-        <%= check_box_tag "role[#{clazz}-permissions][#{opr.id}]", opr.name %><%= label_tag opr.name %>&nbsp;&nbsp;
-        <% end %>
+<table>
+<% %w(user workspace data_source  schema comment workfile job job_task milestone tag).each do |clazz| %>
+    <% if clazz != nil %>
+          <tr>
+            <td>
+                <h4 style='margin-bottom:0;margin-top:0.5em;color:darkslateblue;'><%= "#{clazz} Permissions" %></h4>
+            </td>
+            <td>
+                <% @operations["#{clazz}"].each do |opr| %>
+                  <% if @permissions["#{clazz}"].include?(opr.name.to_sym) %>
+                      <%= check_box_tag "[#{clazz}-permissions][]", opr.name, {:checked => 'checked'} %>&nbsp;&nbsp;<%= label_tag opr.name %>&nbsp;&nbsp;
+                  <% else %>
+                      <%= check_box_tag "[#{clazz}-permissions][]", opr.name %>&nbsp;&nbsp;<%= label_tag opr.name %>&nbsp;&nbsp;
+                  <% end %>
+
+                <% end %>
+            </td>
+          </tr>
+    <% else %>
+
+    <% end %>
 <% end %>
+</table>

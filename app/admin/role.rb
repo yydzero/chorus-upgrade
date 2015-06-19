@@ -32,25 +32,62 @@ ActiveAdmin.register Role do
     end
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :description
+    end
+    @permissions = {}
+    %w(user workspace data_source schema comment workfile job job_task milestone tag).each do |name|
+      puts "----- #{name} -------"
+      clazz = name.camelize.constantize
+      @permissions[name] = clazz.permissions_for_role(@role.name) if clazz != nil
+    end
+    panel "Permissions" do
+      render :partial => 'show', :locals => {:role => @role }
+    end
+  end
+
   controller do
     def new
       @role = Role.new
       @operations = {}
-      @operations['workspace'] = ChorusClass.find_by_name('Workspace').operations
-      @operations['user'] = ChorusClass.find_by_name('User').operations
+      %w(user workspace data_source schema comment workfile job job_task milestone tag).each do |name|
+        @operations[name] = ChorusClass.find_by_name(clazz.camelize).operations
+      end
+    end
+
+    def edit
+      @role = Role.find(params[:id])
+      @permissions = {}
+      %w(user workspace data_source schema comment workfile job job_task milestone tag).each do |name|
+        puts "----- #{name} -------"
+        clazz = name.camelize.constantize
+        @permissions[name] = clazz.permissions_for_role(@role.name) if clazz != nil
+      end
+      @operations = {}
+      %w(user workspace data_source  schema comment workfile job job_task milestone tag).each do |name|
+        chorus_class = ChorusClass.find_by_name(name.camelize)
+        if chorus_class != nil
+          @operations[name] = ChorusClass.find_by_name(name.camelize).operations
+        else
+          #@operations[name] = nil
+        end
+        puts @operations.inspect
+      end
     end
 
     def create
       role = Role.create!(:name => params[:role][:name], :description => params[:role][:description])
-      %w(workspace user).each do |class_name|
+      %w(user workspace data_source schema comment workfile job job_task milestone tag).each do |name|
         sym_array = []
-        clazz = class_name.camelize.constantize
-        permissions = params[:role]["#{class_name}-permissions"]
+        clazz = name.camelize.constantize
+        permissions = params[:role]["#{name}-permissions"]
         if permissions != nil
           permissions.each do |key, value|
             sym_array << value.to_sym
           end
-          puts   "---- permissions for #{class_name} -------"
+          puts   "---- permissions for #{name} -------"
           puts sym_array.inspect
           puts "---------------------------------------"
 
@@ -60,6 +97,25 @@ ActiveAdmin.register Role do
       redirect_to '/admin/roles'
     end
 
+    def update
+      role = Role.find(params[:id])
+      role.update_attributes(params[:role])
+      %w(user workspace data_source schema comment workfile job job_task milestone tag).each do |name|
+        sym_array = []
+        clazz = name.camelize.constantize
+        permissions = params["#{name}-permissions"]
+        if permissions != nil
+          permissions.each do |value|
+            sym_array << value.to_sym
+          end
+          puts   "---- permissions for #{name} -------"
+          puts sym_array.inspect
+          puts "---------------------------------------"
+          clazz.set_permissions_for(role, sym_array)
+        end
+      end
+      redirect_to "/admin/roles/#{params[:id]}"
+    end
 
 
   end
@@ -67,7 +123,7 @@ ActiveAdmin.register Role do
   # or
   #
   # permit_params do
-  #   permitted = [:permitted, :attributes]
+  #   permitted = [:permitted, :attribu
   #   permitted << :other if resource.something?
   #   permitted
   # end

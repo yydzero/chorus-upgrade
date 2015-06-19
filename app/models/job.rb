@@ -1,5 +1,6 @@
 class Job < ActiveRecord::Base
   include SoftDelete
+  include Permissioner
 
   ENQUEUED = 'enqueued'
   RUNNING = 'running'
