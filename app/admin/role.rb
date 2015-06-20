@@ -38,13 +38,13 @@ ActiveAdmin.register Role do
       row :description
     end
     @permissions = {}
-    %w(user workspace data_source schema comment workfile job job_task milestone tag).each do |name|
+    %w(user workspace data_source schema comment workfile events/note job job_task milestone tag).each do |name|
       puts "----- #{name} -------"
       clazz = name.camelize.constantize
-      @permissions[name] = clazz.permissions_for_role(@role.name) if clazz != nil
+      @permissions[name] = clazz.permissions_for_role(resource.name) if clazz != nil
     end
     panel "Permissions" do
-      render :partial => 'show', :locals => {:role => @role }
+      render :partial => 'show', :locals => {:role => @role, :permissions => @permissions }
     end
   end
 

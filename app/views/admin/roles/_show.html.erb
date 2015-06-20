@@ -1,12 +1,18 @@
 <table>
-
+  <thead>
+    <tr>
+      <td>Chorus Class</td>
+      <td>Permissions</td>
+    </tr>
+  </thead>
+    <% permissions.each do |key, value| %>
       <tr>
-
+        <td>
+          <b><%= key %></b>
+        </td>
+        <td>
+          <%= value.inspect %>
+        </td>
       </tr>
-  <td>
-    Workspace
-  </td>
-  <td>
-    show edit destroy
-  </td>
+    <% end %>
 </table>
