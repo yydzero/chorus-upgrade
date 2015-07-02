@@ -2,7 +2,7 @@ ActiveAdmin.register Role do
 
   active_admin_importable
 
-  menu priority: 3
+  menu priority: 4
 
   config.comments = false
 
@@ -52,9 +52,11 @@ ActiveAdmin.register Role do
     def new
       @role = Role.new
       @operations = {}
+      @permissions = {}
       %w(user workspace data_source schema comment workfile job job_task milestone tag).each do |name|
-        @operations[name] = ChorusClass.find_by_name(clazz.camelize).operations
+        @operations[name] = ChorusClass.find_by_name(name.camelize).operations
       end
+      puts @operations.inspect
     end
 
     def edit

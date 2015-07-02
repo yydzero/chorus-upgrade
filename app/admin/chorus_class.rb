@@ -1,6 +1,7 @@
 ActiveAdmin.register ChorusClass do
 
-  menu priority: 4
+  menu priority: 4, label: 'Permissions'
+#  menu label: 'Permissions'
 
   permit_params :name, :description
 

@@ -5,7 +5,7 @@ ActiveAdmin.register User do
 
   #belongs_to :group
 
-  menu priority: 1 # so it's on the very left
+  menu priority: 2 # so it's on the very left
   # Turn of commenting feature
   config.comments = false
 # See permitted parameters documentation:

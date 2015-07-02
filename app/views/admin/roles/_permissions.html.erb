@@ -7,7 +7,7 @@
             </td>
             <td>
                 <% @operations["#{clazz}"].each do |opr| %>
-                  <% if @permissions["#{clazz}"].include?(opr.name.to_sym) %>
+                  <% if @permissions["#{clazz}"] != nil && @permissions["#{clazz}"].include?(opr.name.to_sym) %>
                       <%= check_box_tag "[#{clazz}-permissions][]", opr.name, {:checked => 'checked'} %>&nbsp;&nbsp;<%= label_tag opr.name %>&nbsp;&nbsp;
                   <% else %>
                       <%= check_box_tag "[#{clazz}-permissions][]", opr.name %>&nbsp;&nbsp;<%= label_tag opr.name %>&nbsp;&nbsp;

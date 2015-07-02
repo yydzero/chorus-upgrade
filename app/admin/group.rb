@@ -1,6 +1,6 @@
 ActiveAdmin.register Group do
 
-  menu priority: 2
+  menu priority: 3
 
 #  belongs_to :chorus_scope
 
