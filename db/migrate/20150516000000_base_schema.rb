@@ -5,7 +5,8 @@ class BaseSchema < ActiveRecord::Migration
     # These are extensions that must be enabled in order to support this database
     enable_extension "plpgsql"
 
-    execute("DELETE FROM schema_migrations WHERE CAST(version AS unsigned) < 20150516000000")
+    # TRUNCATE is a PostgreSQL extension that provides a faster mechanism to remove all rows from a table.
+    execute("TRUNCATE schema_migrations")
 
     tables = ActiveRecord::Base.connection.tables
 
