@@ -8,7 +8,7 @@ resource "Sessions" do
     parameter :password, "password"
 
     let(:username) { user.username }
-    let(:password) { FixtureBuilder.password }
+    let(:password) { SPEC_PASSWORD }
 
     example_request "Login" do
       status.should == 201

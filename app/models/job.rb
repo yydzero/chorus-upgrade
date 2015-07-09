@@ -111,7 +111,7 @@ class Job < ActiveRecord::Base
   end
 
   def kill
-    job_tasks.map(&:kill)
+    job_tasks.each{ |jt| jt.kill if jt.respond_to?(:kill)}
     update_attribute(:status, STOPPING)
   end
 
