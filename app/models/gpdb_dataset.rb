@@ -1,5 +1,3 @@
-require 'stale'
-
 class GpdbDataset < RelationalDataset
   delegate :definition, :to => :statistics
   delegate :database, :to => :schema
