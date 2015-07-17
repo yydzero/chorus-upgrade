@@ -18,7 +18,7 @@ if [ -f $SCHEDULER_PID_FILE ]; then
   fi
 fi
 
-JRUBY_OPTS=$JRUBY_OPTS CHORUS_JAVA_OPTIONS=$CHORUS_JAVA_OPTIONS_WITHOUT_XMS RAILS_ENV=$RAILS_ENV $RUBY script/rails runner "ServiceScheduler.run" >> $CHORUS_HOME/log/scheduler.$RAILS_ENV.log 2>&1 &
+JRUBY_OPTS=$JRUBY_OPTS CHORUS_JAVA_OPTIONS=$CHORUS_JAVA_OPTIONS_WITHOUT_XMS RAILS_ENV=$RAILS_ENV $RUBY bin/rails runner "ServiceScheduler.run" >> $CHORUS_HOME/log/scheduler.$RAILS_ENV.log 2>&1 &
 scheduler_pid=$!
 echo $scheduler_pid > $SCHEDULER_PID_FILE
 log "scheduler started as pid $scheduler_pid"

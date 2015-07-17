@@ -629,7 +629,7 @@ class ChorusInstaller
       if [ "$CHORUS_HOME" = "" ]; then
         echo "CHORUS_HOME is not set.  Exiting..."
       else
-        RAILS_ENV=production $CHORUS_HOME/current/bin/ruby $CHORUS_HOME/current/script/rails console
+        RAILS_ENV=production $CHORUS_HOME/current/bin/ruby $CHORUS_HOME/current/bin/rails console
       fi
   CHORUS_RAILS_CONSOLE
 

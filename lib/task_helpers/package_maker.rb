@@ -8,7 +8,7 @@ module PackageMaker
     lib/*
     packaging/
     public/
-    script/rails
+    bin/rails
     solr/conf/
     vendor/
     WEB-INF/

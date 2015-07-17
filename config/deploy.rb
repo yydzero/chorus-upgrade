@@ -46,7 +46,7 @@ set :use_sudo, false
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
 #ssh_options[:keys] = %w(/Path/To/id_rsa)            # If you are using ssh_keys
-set :chmod755, "app config db lib public vendor script script/* public/disp*"
+set :chmod755, "app config db lib public vendor script script/* bin bin/* public/disp*"
 
 
 
@@ -110,9 +110,9 @@ after 'deploy:update_code', :roles => [:app, :db, :web] do
   #run "ln -nfs #{shared_path}/public/new_channel #{release_path}/public/new_channel"
   #run "ln -nfs #{shared_path}/vendor #{release_path}/vendor"
   # fix permissions
-  #run "chmod +x #{release_path}/script/process/reaper"
+  #run "chmod +x #{release_path}/bin/process/reaper"
   #run "chmod 755 #{release_path}/public/uploads/photos/*.JPG"
-  #run "chmod +x #{release_path}/script/process/spawner"
+  #run "chmod +x #{release_path}/bin/process/spawner"
   #run "cd #{release_path}"
   #run "rake assets:precompile RAILS_ENV=production"
   #run "chmod 755 #{release_path}/public/dispatch.*"
@@ -177,13 +177,13 @@ end
 desc "Restarting after deployment"
 task :after_deploy, :roles => [:app, :db, :web] do
   run "touch #{release_path}/tmp/restart.txt"
-  #run "/home/#{user}/#{application}/current/script/process/reaper --dispatcher=dispatch.fcgi"
+  #run "/home/#{user}/#{application}/current/bin/process/reaper --dispatcher=dispatch.fcgi"
   #run "touch /home/#{user}/#{application}/current/public/dispatch.fcgi"
 end
 
 desc "Restarting after rollback"
 task :after_rollback, :roles => [:app, :db, :web] do
-  #run "/home/#{user}/#{application}/current/script/process/reaper --dispatcher=dispatch.fcgi"
+  #run "/home/#{user}/#{application}/current/bin/process/reaper --dispatcher=dispatch.fcgi"
   #run "touch /home/#{user}/#{application}/current/public/dispatch.fcgi"
 end
 
