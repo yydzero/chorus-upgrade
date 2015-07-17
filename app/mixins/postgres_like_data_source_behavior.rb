@@ -15,7 +15,7 @@ module PostgresLikeDataSourceBehavior
     end
 
     database_account_groups.each do |database_name, db_usernames|
-      database = databases.find_or_initialize_by_name(database_name)
+      database = databases.find_or_initialize_by(name: database_name)
 
       if database.invalid?
         databases.delete(database)
