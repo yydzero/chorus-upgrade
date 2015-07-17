@@ -578,17 +578,6 @@ class BaseSchema < ActiveRecord::Migration
       add_index "permissions", ["role_id", "chorus_class_id"], name: "index_permissions_on_role_id_and_chorus_class_id", unique: true, using: :btree
     end
 
-    unless tables.include?("queue_classic_jobs")
-      create_table "queue_classic_jobs", force: true do |t|
-        t.string "q_name"
-        t.string "method"
-        t.text "args"
-        t.datetime "locked_at"
-      end
-
-      add_index "queue_classic_jobs", ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", using: :btree
-    end
-
     unless tables.include?("roles")
       create_table "roles", force: true do |t|
         t.string "name", null: false
