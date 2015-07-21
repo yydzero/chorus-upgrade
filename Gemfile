@@ -36,10 +36,10 @@ gem 'mustache', '0.99.4'
 
 # KT: Group all Solr related together ..
 gem 'sunspot_rails', '2.1.0'
+gem 'rsolr', '1.0.10' # block deprecation notices, delete this when upgrading Sunspot to 2.2.0
 group :development, :test do
   gem 'sunspot_matchers', '2.1.0'
   gem 'sunspot_solr', '2.1.0'
-  gem 'rsolr', '1.0.10' # block deprecation notices, delete this when upgrading Sunspot to 2.2.0
 end
 
 platform :jruby do
